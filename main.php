@@ -70,7 +70,7 @@
           <div class="row">
             <div class="col-xl-3 col-sm-6">
               <div class="product-gap" style="max-width:90%">
-                <div class="product-image">wishlist
+                <div class="product-image">
                   <a href=""><img src="" alt=""></a>
                 </div>
                 <div class="product-title">
