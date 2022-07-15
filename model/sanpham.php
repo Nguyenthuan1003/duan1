@@ -1,7 +1,6 @@
 <?php
-    include './PDO.php';
     function select_page_home(){
-    $sql = "SELECT count(id_pro) as sl_sp FROM products" ;
+        $sql = "SELECT count(id_pro) as sl_sp FROM products" ;
         $Total_Sp = pdo_query_one($sql);
         // tổng sản phẩm trong bảng sản phẩm 
         $Total_Product_On_Page = 12;
