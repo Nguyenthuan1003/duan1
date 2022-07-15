@@ -1,40 +1,35 @@
 <?php
-     require_once ("model/PDO.php");
-
-     $Conn = pdo_get_connection();
-     // kết nối cơ sở dữ liệu 
-
-     $Sql = "SELECT count(id_pro) as sl_sp FROM products" ;
-     $Total_Sp = pdo_query_one($Sql);
-     // tổng sản phẩm trong bảng sản phẩm 
-     $Total_Product_On_Page = 12;
-     // số lượng sản phẩm trên page
-     $Total_Page = ceil($Total_Sp['sl_sp']/$Total_Product_On_Page) ;
-     // tổng lượng page sản phẩm hiển thị lên website 
+    //  $Sql = "SELECT count(id_pro) as sl_sp FROM products" ;
+    //  $Total_Sp = pdo_query_one($Sql);
+    //  // tổng sản phẩm trong bảng sản phẩm 
+    //  $Total_Product_On_Page = 12;
+    //  // số lượng sản phẩm trên page
+    //  $Total_Page = ceil($Total_Sp['sl_sp']/$Total_Product_On_Page) ;
+    //  // tổng lượng page sản phẩm hiển thị lên website 
 
  
 
-     $Curent_Page = 1 ;
-     // page hiện tại 
+    //  $Curent_Page = 1 ;
+    //  // page hiện tại 
 
-     if(isset($_GET['curent_page'])){
-     $Curent_Page = $_GET['curent_page'];
-     }
-     else { $Curent_Page = 1 ;} ;
-     // bắt sự kiện next trang 
+    //  if(isset($_GET['curent_page'])){
+    //  $Curent_Page = $_GET['curent_page'];
+    //  }
+    //  else { $Curent_Page = 1 ;} ;
+    //  // bắt sự kiện next trang 
 
-     $Limit_Start = ($Total_Product_On_Page - 1)*($Curent_Page-1) ;
+    //  $Limit_Start = ($Total_Product_On_Page - 1)*($Curent_Page-1) ;
 
-     // lấy sản phẩm bắt đầu từ $limit_start 
+    //  // lấy sản phẩm bắt đầu từ $limit_start 
 
    
-     $sql = "SELECT * FROM products LIMIT $Limit_Start,$Total_Product_On_Page";
-     $Products = pdo_query($sql) ;
+    //  $sql = "SELECT * FROM products LIMIT $Limit_Start,$Total_Product_On_Page";
+    //  $Products = pdo_query($sql) ;
      // truy vấn sản phẩm 
 
      
-     $sql_dm = "SELECT * FROM categories";
-     $Categories = pdo_query($sql_dm) ;
+    //  $sql_dm = "SELECT * FROM categories";
+    //  $Categories = pdo_query($sql_dm) ;
      // truy vấn danh mục 
 
 
@@ -83,7 +78,7 @@
                 <table class="table table-hover">
                     <h4>Danh mục</h4>
                     <tbody>
-                        <?php foreach($Categories as $cate): ?>
+                        <?php foreach($CategoriesHome as $cate): ?>
                         <tr>
                             <td><?= $cate['cate_name'] ?></td>
                         </tr>
@@ -114,7 +109,7 @@
             <div class="col-xl-9">
                 <div class="row">
 
-                    <?php foreach($Products as $product): ?>
+                    <?php foreach($ProductsHome as $product): ?>
                     <div class="col-xl-3 col-sm-6">
                         <div class="product-gap" style="max-width:90%">
                             <div class="product-image">wishlist
