@@ -89,6 +89,31 @@
           </div>
         </div>
   <!-- end products -->
+  <!-- open page -->
+    <div class="text-center pages">
+      <a href=""><input type="text" class="btn btn-outline-info" value="<<"></a>
+      <a href=""><input type="text" class="btn btn-outline-info" value="1"></a>
+      <a href=""><input type="text" class="btn btn-outline-info" value="2"></a>
+      <a href=""><input type="text" class="btn btn-outline-info" value="3"></a>
+      <a href=""><input type="text" class="btn btn-outline-info" value=">>"></a>
+    </div>
+  <!-- end page -->
+  <!-- open accessory -->
+    <div class="accessory">
+      <div class="row">
+        <div class="col-xl-6">
+          <div class="accessory-gap" style="max-width:95%">
+            <a href=""><img src="" alt=""></a>
+          </div>
+        </div>
+        <div class="col-xl-6">
+          <div class="accessory-gap" style="max-width:95%">
+            <a href=""><img src="" alt=""></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- end accessory -->
     </div>
   <!-- end main -->
   </div>
