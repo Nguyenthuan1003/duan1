@@ -78,11 +78,17 @@
                 <table class="table table-hover">
                     <h4>Danh mục</h4>
                     <tbody>
-                        <?php foreach($CategoriesHome as $cate): ?>
-                        <tr>
-                            <td><?= $cate['cate_name'] ?></td>
-                        </tr>
-                        <?php endforeach ?>
+                        <?php if(is_array($CategoriesHome)) : ?>
+                            <?php foreach($CategoriesHome as $cate) : ?>
+                                <tr>
+                                    <td><?=$cate['cate_name']?></td>
+                                </tr>
+                            <?php endforeach ?>
+                        <?php else : ?>
+                            <tr>
+                                <td></td>
+                            </tr>
+                        <?php endif; ?>
                     </tbody>
                 </table>
                 <!-- end categories -->
