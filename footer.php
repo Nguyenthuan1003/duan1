@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <footer class="bg-dark">
     <div class="container">
         <div class="footer-top">
@@ -59,6 +60,5 @@
         </div>
     </div>
 </footer>
-
 </body>
 </html>
