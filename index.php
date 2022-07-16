@@ -1,5 +1,7 @@
 <?php
     session_start();
+    include './model/webSetting.php';
+    $wst = select_add_websetting();
     include './header.php';
     include './model/PDO.php';
     include './model/danhmuc.php';

@@ -31,11 +31,13 @@
   color:green;
 }
 </style>
-
+<?php 
+    extract($wst);
+?>
 <body>
  <div class="header">
        <div class="logo">
-        <a href=""><img src="" alt="" class="img"></a>
+        <a href=""><img src="./image/<?=$logo?>" alt="" class="img"></a>
        </div>
        <nav class="navbar navbar-expand-lg navbar-light">
          <div class="container-fluid">
