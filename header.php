@@ -35,7 +35,7 @@
 <body>
  <div class="header">
        <div class="logo">
-        <a href=""><img src="https://iweb.tatthanh.com.vn/pic/3/blog/images/logo-dien-thoai(1).jpg" alt="" class="img"></a>
+        <a href=""><img src="" alt="" class="img"></a>
        </div>
        <nav class="navbar navbar-expand-lg navbar-light">
          <div class="container-fluid">
@@ -71,5 +71,3 @@
        </form>
  </div>
 
-</body>
-</html>
