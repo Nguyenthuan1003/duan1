@@ -44,16 +44,16 @@
            <div class="collapse navbar-collapse" id="navbarNav">
              <ul class="navbar-nav" id="nav-bar">
                 <li class="nav-item">
-                  <a class="nav-link" href="#">HOME</a>
+                  <a class="nav-link" href="index.php">HOME</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">BLOG</a>
+                  <a class="nav-link" href="index.php?act=blog">BLOG</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">GIỚI THIỆU</a>
+                  <a class="nav-link" href="index.php?act=introduce">GIỚI THIỆU</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">LIÊN HỆ</a>
+                  <a class="nav-link" href="index.php?act=contact">LIÊN HỆ</a>
                 </li>
              </ul>
             </div>
@@ -64,7 +64,9 @@
         </div>
        <form class="form">
           <div class="login">
-            <button type="button" class="btn btn-outline-primary">Đăng nhập </button>
+            <a href="index.php?act=login">
+              <button type="button" class="btn btn-outline-primary">Đăng nhập </button>
+            </a>
           </div>
          <div class="register">
            <button type="button" class="btn btn-outline-danger">Đăng kí</button>
