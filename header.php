@@ -30,6 +30,9 @@
 #text{
   color:green;
 }
+#icon{
+  color:black;
+}
 </style>
 
 <body>
@@ -58,7 +61,7 @@
           </div>
         </nav>
         <div class="icon"> 
-          <a href=""><i class="fa-solid fa-cart-shopping"></i></a> 
+          <a href=""><i class="fa-solid fa-cart-shopping" id="icon"></i></a> 
         </div>
        <form class="form">
           <div class="login">
