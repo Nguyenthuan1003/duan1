@@ -33,6 +33,34 @@
                 }
                     include './view/client/login.php';
                 break;
+                case 'registe':
+                    if(isset($_POST['registe']) && $_POST['registe']){
+                        $name=$_POST['name'];
+                        $email=$_POST['email'];
+                        $password=$_POST['password'];
+                        $enterThePassword=$_POST['enterThePassword'];
+                        $error=[];
+                        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+                            $error['email']='email không đúng';
+                        }
+                        if(!preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[\!\@\#\$%\^\*\(\)-\+]).{8,30}$/',$password)){
+                            $error['password']='mật khẩu yếu';
+                        }
+                        if(!preg_match('/^[A-Z]+[A-Za-z0-9_\-\s]*$/u',$name)){
+                            $error['name'] ='bắt buộc bằng chữ cái inhoa';
+                        }
+                        if($password != $enterThePassword ){
+                            $error['enterThePassword']='mật khẩu nhập lại không đúng';
+                        }
+                        if(!array_filter($error)){
+                            insert_user($name,$email,$password);
+                            $message='đăng kí thành công';
+
+                        }
+                    }
+                    include './view/client/registe.php';
+                    break;
+                
             default:
                 include './main.php';
         }

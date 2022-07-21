@@ -7,4 +7,11 @@
         $user = pdo_query_one($sql);
         return $user;
     }
+    function insert_user($name,$email,$parrword){
+        $sql="INSERT INTO `user`(`user_name`,`email`,`password`) VALUES('$name','$email','$parrword')";
+        pdo_execute($sql);
+    }
+    
+
+   
 ?>

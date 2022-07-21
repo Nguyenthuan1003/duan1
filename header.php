@@ -72,7 +72,8 @@
             </a>
           </div>
          <div class="register">
-           <button type="button" class="btn btn-outline-danger">Đăng kí</button>
+            <a href="index.php?act=registe"> <button type="button" class="btn btn-outline-danger">Đăng kí</button></a>
+          
          </div>
          
        </form>
