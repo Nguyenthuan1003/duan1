@@ -60,7 +60,9 @@
                     }
                     include './view/client/registe.php';
                     break;
-                
+                case 'pay':
+                        include './view/client/pay.php';
+                    break;
             default:
                 include './main.php';
         }
