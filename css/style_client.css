@@ -1,51 +1,68 @@
+<<<<<<< HEAD
 
 *{
+=======
+<<<<<<< Updated upstream
+<<<<<<< HEAD=======<<<<<<< HEAD * {
+>>>>>>> 63190752b6101f40681e8c88eaecfae21108efbc
     box-sizing: border-box;
 }
-body{
+
+body {
     margin: 0;
     padding: 0;
     max-width: 100%;
 }
-.header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin:0px 50px;
-} 
-.form{
-display:flex;
-gap:20px;
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px 50px;
+}
+
+.form {
+    display: flex;
+    gap: 20px;
 
 }
-.img{
-width:100px;
+
+.img {
+    width: 100px;
 }
-#nav-bar{
-display:flex;
-gap:150px;
+
+#nav-bar {
+    display: flex;
+    gap: 150px;
 }
-#text{
-color:green;
+
+#text {
+    color: green;
 }
-#icon{
-color:black;
+
+#icon {
+    color: black;
 }
-.delivery-address h4{
+
+.delivery-address h4 {
     font-weight: normal;
 }
-img{
+
+img {
     max-width: 100%;
 }
-main{
+
+main {
     margin: 50px 0;
 }
-.row{
+
+.row {
     padding: 0;
 }
-.atHome{
+
+.atHome {
     background: #EBEBEB;
-    margin:10px 50px 10px 0;
+    margin: 10px 50px 10px 0;
     text-align: center;
     padding: 15px 0;
     border: 1px solid #cccccc;
@@ -53,37 +70,47 @@ main{
     font-size: 24px;
     color: #000000;
 }
-.input-pay{
+
+.input-pay {
     margin: 20px 30px 20px 0;
 }
-.input-pay input{
+
+.input-pay input {
     width: 95%;
     padding: 5px;
 }
-.input-pay p{
+
+.input-pay p {
     margin: 0;
 }
-.input-pay p>span{
+
+.input-pay p>span {
     color: #E95851;
 
 }
-.select-pay{
+
+.select-pay {
     margin: 20px 30px 20px 0;
 }
-.select-pay select{
+
+.select-pay select {
     width: 95%;
     padding: 5px;
 }
-.select-pay p{
+
+.select-pay p {
     margin: 0;
 }
-.select-pay p>span{
+
+.select-pay p>span {
     color: #E95851;
 }
-.pay{
+
+.pay {
     max-width: 95.3%;
 }
-.pay-gap{
+
+.pay-gap {
     border: 1px solid #cccccc;
     text-align: center;
     padding: 15px 40px;
@@ -91,36 +118,44 @@ main{
     color: #000000;
     width: 100%;
 }
-.pay input{
-    display:none;
+
+.pay input {
+    display: none;
 }
-.pay h4{
+
+.pay h4 {
     margin-top: 30px;
 }
-.agree{
+
+.agree {
     border: 1px solid #E95851;
     margin: 20px 0;
     width: 95%;
     padding: 10px;
 }
-.agree a{
+
+.agree a {
     text-decoration: none;
     color: #E95851;
 }
-.bull{
+
+.bull {
     border: 1px solid #cccccc;
     margin-bottom: 20px;
     width: 95%;
     padding: 10px;
 }
-.btn-pay{
-    display:flex;
+
+.btn-pay {
+    display: flex;
 }
-.btn-pay input{
+
+.btn-pay input {
     flex: 1;
     padding: 10px 0;
 }
-.price{
+
+.price {
     background: #ffffff;
     border: none;
     outline: none;
@@ -128,7 +163,8 @@ main{
     color: #cccccc;
     margin-bottom: 10px;
 }
-.sale{
+
+.sale {
     background: #ffffff;
     border: none;
     outline: none;
@@ -136,25 +172,37 @@ main{
     color: #E95851;
     margin-bottom: 10px;
 }
-.buttons_added{
+
+.buttons_added {
     display: flex;
 }
-.buttons_added input{
+
+.buttons_added input {
     max-width: 55%;
     padding: 5px 10px;
     border: 1px solid #cccccc;
 }
-.mg-bt{
+
+.mg-bt {
     margin-bottom: 50px;
 }
-.provisional{
+
+.provisional {
     background: #F3F5F7;
     padding: 15px 20px;
 }
-.sum{
+
+.sum {
     color: #E95851;
 }
+<<<<<<< HEAD
 .container{
+=======
+=======
+>>>>>>> Stashed changes
+
+.container {
+>>>>>>> 63190752b6101f40681e8c88eaecfae21108efbc
     padding-top: 30px;
     /* background-color: #fff; */
 
@@ -352,3 +400,88 @@ hr {
     background-color: dimgrey;
 }
 
+<<<<<<< HEAD
+}
+
+/*css file blog*/
+#img_blog_big {
+    width: 98%;
+    height: 100vh;
+}
+
+#banner-small-1 {
+    width: 98%;
+    height: 49.8vh;
+
+}
+
+.h4-1 {
+    position: absolute;
+    top: 600px;
+    text-align: center;
+    width: 900px;
+    text-align: center;
+    padding-left: 50px;
+}
+
+.h4-2 {
+    position: absolute;
+    top: 250px;
+    width: 460px;
+    padding-left: 5px;
+    text-align: center;
+}
+
+.h4-3 {
+    position: absolute;
+    top: 620px;
+    width: 450px;
+    padding-left: 5px;
+    text-align: center;
+}
+
+<<<<<<< Updated upstream
+#banner-big {
+    position: relative;
+}
+
+.h3-5 {
+    font-size: 18px;
+}
+
+.container-blog {
+    margin: auto;
+    margin-left: 50px;
+}
+
+=======>>>>>>>fa834b00d6774eeaeb03a9d3102a8fec6c62e91f
+=======
+}
+
+/* header */
+
+
+
+/* css info - user */
+
+.li_info_user{
+    text-decoration: none;
+    color : black ;
+}
+.li_info_user:hover{
+    color : red ;
+}
+.logout_info_user{
+    border : none ;
+    border-radius: 4px;
+}
+
+.change_pass_menu_user{
+    width : 100%;
+    height : 300px ;
+}
+.wrap_info_user{
+    padding-left: 28px;
+    padding-right: 28px;
+}
+>>>>>>> Stashed changes
