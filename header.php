@@ -13,7 +13,7 @@
     extract($wst);
 ?>
 <body>
- <div class="header">
+ <div class="header border w-100 m-0 px-3">
        <div class="logo">
         <a href=""><img src="./image/<?=$logo?>" alt="" class="img"></a>
        </div>
