@@ -3,7 +3,7 @@
             <section class="wrap_main_banner_blog  p-0 col-8 d-block" id="banner-big">
                 <div class="w-100">
                     <img src="./image/banner_blogs1.png" width="100%" class="img-fluid" id="img_blog_big" alt="...">
-                    <div class="w-100" id="text-banner-blog-big">
+                    <div class="w-100" id="text-banner-blog-big">git 
                         <h4 class="h4-1" id="banner"><a href="">Bánh bèo chính hiệu' không thể bỏ qua bộ hình nền iPhone
                                 siêu cute dưới
                                 đây! Rinh ngay một tấm hình về
@@ -47,7 +47,7 @@
 
         <section class="mt-5">
             <?php foreach($blog as $b): ?>
-            <article class="row" id="row">
+            <article class="row" id="row row-blog">
                 <div class="col-3"><img src="./image/<?= $b['thumnails'] ?>" alt=""></div>
                 <div class="col-8 mt-4">
                     <h3 class="h3-5"><a href="index.php/act=chi_tiet_blog&id=<?= $b['id_news'] ?>">
