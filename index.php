@@ -64,18 +64,12 @@
                 case 'pay':
                         include './view/client/pay.php';
                     break;
-<<<<<<< Updated upstream
-                case 'blog':
-                    $blog = select_all_blog() ;
-                    include './view/client/blogs.php';
-=======
                     case 'blog':
                         $blog = select_all_blog() ;
                         include './view/client/blogs.php';
                     break;
                 case 'info-user':
                         include './view/client/info_user.php';
->>>>>>> Stashed changes
                     break;
             default:
                 include './main.php';
