@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *{
     box-sizing: border-box;
 }
@@ -153,3 +154,201 @@ main{
 .sum{
     color: #E95851;
 }
+.container {
+    padding-top: 30px;
+    background-color: #fff;
+
+}
+
+.img-product-1 {
+    width: 500px;
+    height: 500px;
+}
+
+.price_old {
+    text-decoration: line-through;
+
+}
+
+.img-detail-1 {
+    width: 70px;
+    height: 70px;
+}
+
+.img-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px 60px;
+}
+
+.GB {
+    background-color: dimgray;
+    width: 200px;
+    height: 200px;
+    border: 1px solid #fff;
+    border-radius: 20%;
+
+}
+
+.color-background {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #cccc;
+    border-radius: 30%;
+
+}
+
+.color {
+    display: flex;
+    gap: 7px;
+}
+
+.color-1 {
+    background-color: azure;
+}
+
+.color-2 {
+    background-color: aqua;
+}
+
+.color-3 {
+    background-color: cornflowerblue;
+}
+
+.color-4 {
+    background-color: darkgray;
+}
+
+.color-5 {
+    background-color: darksalmon;
+}
+
+.tex-bank {
+    color: grey;
+}
+
+.img-bank {
+    width: 100px;
+    height: 30px;
+}
+
+.margin {
+    margin-right: 100px;
+}
+
+.con #bank-row {
+    background-color: #fff;
+    width: 300px;
+    gap: 20px;
+    padding: 5px 5px;
+    border-radius: 10px;
+}
+
+#button {
+    margin: 30px 0px;
+}
+
+.img-product {
+    width: 200px;
+    height: 250px;
+}
+
+.product {
+    margin: 30px 0px;
+}
+
+.title-product {
+    font-size: 18px;
+    text-align: center;
+}
+
+.price-product {
+    text-align: center;
+}
+
+.img {
+    text-align: center;
+    padding: 20px 0px;
+
+}
+
+.img :hover img {
+    transform: scale(1.1);
+}
+
+.price-product {
+    gap: 5px;
+}
+
+.price-old-product {
+    text-decoration: line-through;
+}
+
+.product {
+    background-color: #fff;
+    padding: 50px 0px;
+}
+
+.text-1 {
+    color: #fff;
+}
+
+h4 {
+    font-size: 14px;
+}
+
+h3 {
+    font-size: 14px;
+}
+
+.icon {
+    color: black;
+}
+
+.icon-one {
+    background-color: darkgray;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 12px 0px 5px 5px;
+    position: absolute;
+    top: 250px;
+    left: 18%;
+
+
+}
+
+.text-icon {
+    color: #fff;
+}
+
+.icon-tow {
+    background-color: darkgrey;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 12px 0px 5px 5px;
+    position: absolute;
+    top: 250px;
+    left: 680px;
+
+}
+
+.colum-one {
+    position: relative;
+}
+
+.img-details-1 :hover img {
+    transform: scale(1.1);
+}
+
+hr {
+    color: #fff;
+    font-size: 3px;
+}
+
+#row {
+    background-color: dimgrey;
+}
+
