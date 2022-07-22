@@ -1,6 +1,7 @@
 <?php
     session_start();
     include './model/PDO.php';
+    include './model/blog.php';
     include './model/webSetting.php';
     $wst = select_all_websetting();
     include './header.php';
