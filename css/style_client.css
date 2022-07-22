@@ -1,0 +1,155 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+}
+.header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin:0px 50px;
+} 
+.form{
+display:flex;
+gap:20px;
+
+}
+.img{
+width:100px;
+}
+#nav-bar{
+display:flex;
+gap:150px;
+}
+#text{
+color:green;
+}
+#icon{
+color:black;
+}
+.delivery-address h4{
+    font-weight: normal;
+}
+img{
+    max-width: 100%;
+}
+main{
+    margin: 50px 0;
+}
+.row{
+    padding: 0;
+}
+.atHome{
+    background: #EBEBEB;
+    margin:10px 50px 10px 0;
+    text-align: center;
+    padding: 15px 0;
+    border: 1px solid #cccccc;
+    width: 90%;
+    font-size: 24px;
+    color: #000000;
+}
+.input-pay{
+    margin: 20px 30px 20px 0;
+}
+.input-pay input{
+    width: 95%;
+    padding: 5px;
+}
+.input-pay p{
+    margin: 0;
+}
+.input-pay p>span{
+    color: #E95851;
+
+}
+.select-pay{
+    margin: 20px 30px 20px 0;
+}
+.select-pay select{
+    width: 95%;
+    padding: 5px;
+}
+.select-pay p{
+    margin: 0;
+}
+.select-pay p>span{
+    color: #E95851;
+}
+.pay{
+    max-width: 95.3%;
+}
+.pay-gap{
+    border: 1px solid #cccccc;
+    text-align: center;
+    padding: 15px 40px;
+    font-size: 16px;
+    color: #000000;
+    width: 100%;
+}
+.pay input{
+    display:none;
+}
+.pay h4{
+    margin-top: 30px;
+}
+.agree{
+    border: 1px solid #E95851;
+    margin: 20px 0;
+    width: 95%;
+    padding: 10px;
+}
+.agree a{
+    text-decoration: none;
+    color: #E95851;
+}
+.bull{
+    border: 1px solid #cccccc;
+    margin-bottom: 20px;
+    width: 95%;
+    padding: 10px;
+}
+.btn-pay{
+    display:flex;
+}
+.btn-pay input{
+    flex: 1;
+    padding: 10px 0;
+}
+.price{
+    background: #ffffff;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    color: #cccccc;
+    margin-bottom: 10px;
+}
+.sale{
+    background: #ffffff;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    color: #E95851;
+    margin-bottom: 10px;
+}
+.buttons_added{
+    display: flex;
+}
+.buttons_added input{
+    max-width: 55%;
+    padding: 5px 10px;
+    border: 1px solid #cccccc;
+}
+.mg-bt{
+    margin-bottom: 50px;
+}
+.provisional{
+    background: #F3F5F7;
+    padding: 15px 20px;
+}
+.sum{
+    color: #E95851;
+}
