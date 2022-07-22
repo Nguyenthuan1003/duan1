@@ -1,5 +1,4 @@
-<<<<<<< Updated upstream
-<<<<<<< HEAD=======<<<<<<< HEAD * {
+* {
     box-sizing: border-box;
 }
 
@@ -190,8 +189,6 @@ main {
 .sum {
     color: #E95851;
 }
-=======
->>>>>>> Stashed changes
 
 .container {
     padding-top: 30px;
@@ -391,9 +388,6 @@ hr {
     background-color: dimgrey;
 }
 
-<<<<<<< HEAD
-}
-
 /*css file blog*/
 #img_blog_big {
     width: 98%;
@@ -431,7 +425,6 @@ hr {
     text-align: center;
 }
 
-<<<<<<< Updated upstream
 #banner-big {
     position: relative;
 }
@@ -443,10 +436,6 @@ hr {
 .container-blog {
     margin: auto;
     margin-left: 50px;
-}
-
-=======>>>>>>>fa834b00d6774eeaeb03a9d3102a8fec6c62e91f
-=======
 }
 
 /* header */
@@ -475,4 +464,3 @@ hr {
     padding-left: 28px;
     padding-right: 28px;
 }
->>>>>>> Stashed changes
