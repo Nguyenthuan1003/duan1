@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 22, 2022 lúc 05:30 AM
+-- Thời gian đã tạo: Th7 21, 2022 lúc 03:56 PM
 -- Phiên bản máy phục vụ: 10.4.22-MariaDB
--- Phiên bản PHP: 7.4.28
+-- Phiên bản PHP: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,11 +38,7 @@ CREATE TABLE `categories` (
 
 INSERT INTO `categories` (`id_cate`, `cate_name`) VALUES
 (1, 'Iphone'),
-(2, 'Samsung'),
-(3, 'Oppo'),
-(4, 'Xiaomi'),
-(5, 'Vivo'),
-(6, 'Realme');
+(2, 'SamSung');
 
 -- --------------------------------------------------------
 
@@ -52,8 +48,8 @@ INSERT INTO `categories` (`id_cate`, `cate_name`) VALUES
 
 CREATE TABLE `cate_contact` (
   `id_cate_contact` int(10) NOT NULL,
-  `id_web_setting` int(11) NOT NULL,
-  `cate_contact_name` varchar(150) NOT NULL
+  `cata_contact_name` varchar(50) NOT NULL,
+  `id_websetting` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -83,7 +79,22 @@ CREATE TABLE `e-vorcher` (
   `expiration_date` varchar(20) NOT NULL,
   `id_pro` int(10) NOT NULL,
   `coupon_value` int(10) NOT NULL,
-  `status` bit(1) NOT NULL
+  `status_vorcher` bit(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `id_feedback` int(10) NOT NULL,
+  `id_order` int(10) NOT NULL,
+  `rate_feedback` varchar(255) NOT NULL,
+  `image_feedback` varchar(255) NOT NULL,
+  `full_name` varchar(50) NOT NULL,
+  `content_feedback` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -101,12 +112,12 @@ CREATE TABLE `images_products_attribute` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `img_news`
+-- Cấu trúc bảng cho bảng `image_news`
 --
 
-CREATE TABLE `img_news` (
-  `id_news` int(11) NOT NULL,
-  `img_news` varchar(300) NOT NULL
+CREATE TABLE `image_news` (
+  `id_news` int(10) NOT NULL,
+  `image_new` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -116,9 +127,9 @@ CREATE TABLE `img_news` (
 --
 
 CREATE TABLE `info_contact` (
-  `id_info_contact` int(11) NOT NULL,
-  `description` varchar(2000) NOT NULL,
-  `id_cate_contact` int(11) NOT NULL
+  `id_info_contact` int(10) NOT NULL,
+  `id_cate_contact` int(10) NOT NULL,
+  `description_info_contact` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -129,19 +140,9 @@ CREATE TABLE `info_contact` (
 
 CREATE TABLE `news` (
   `id_news` int(10) NOT NULL,
-  `title_news` varchar(2000) NOT NULL,
-  `description_news` varchar(10000) NOT NULL,
-  `thumnails` varchar(200) NOT NULL
+  `title_new` varchar(255) NOT NULL,
+  `description_news` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `news`
---
-
-INSERT INTO `news` (`id_news`, `title_news`, `description_news`, `thumnails`) VALUES
-(1, 'Bánh bèo chính hiệu\' không thể bỏ qua bộ hình nền iPhone siêu cute dưới đây! Rinh ngay một tấm hình về thôi nào', '', 'post1.png'),
-(2, 'Tháng 7 deal ngon hết sảy: iPhone SE giảm đậm đến 2 triệu đồng và đi kèm nhiều ưu đãi HOT, quá là đáng sắm luôn', '', 'post2.png'),
-(3, 'Cách phát hiện ứng dụng theo dõi trên iPhone hay ho giúp việc bảo mật thông tin cá nhân an toàn, bạn đã biết chưa?', '', 'post3.png');
 
 -- --------------------------------------------------------
 
@@ -156,7 +157,8 @@ CREATE TABLE `orders` (
   `created_date_order` varchar(20) NOT NULL,
   `status_order` bit(1) NOT NULL,
   `total_price` int(20) NOT NULL,
-  `sdt` int(12) NOT NULL
+  `id_user` int(10) NOT NULL,
+  `full_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -170,7 +172,8 @@ CREATE TABLE `order_details` (
   `id_pro` int(10) NOT NULL,
   `quantity_order` int(20) NOT NULL,
   `price_order` int(20) NOT NULL,
-  `unit_price` varchar(10) NOT NULL
+  `unit_price` varchar(10) NOT NULL,
+  `name_vorcher` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -189,22 +192,6 @@ CREATE TABLE `products` (
   `price_default` float NOT NULL,
   `images_default` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `products`
---
-
-INSERT INTO `products` (`id_pro`, `pro_name`, `created_date`, `description`, `status`, `id_cate`, `price_default`, `images_default`) VALUES
-(1, 'Iphone 13 promax Gold', '15/7/2022', 'Iphone 13 promax Gold', b'0', 1, 15000000, 'shopping (1).png'),
-(2, 'Iphone 13 promax Gold', '15/7/2022', 'Iphone 13 promax Gold', b'0', 1, 15000000, 'shopping (2).png'),
-(3, 'Iphone 13 promax Gold', '15/7/2022', 'Iphone 13 promax Gold', b'0', 1, 15000000, 'shopping (3).png'),
-(4, 'Iphone 13 promax Gold', '15/7/2022', 'Iphone 13 promax Gold', b'0', 1, 15000000, 'shopping (4).png'),
-(5, 'Iphone 13 promax Gold', '15/7/2022', 'Iphone 13 promax Gold', b'0', 1, 15000000, 'shopping (5).png'),
-(6, 'Iphone 13 promax Gold', '15/7/2022', 'Iphone 13 promax Gold', b'0', 1, 15000000, 'shopping (6).png'),
-(7, 'Iphone 13 promax Gold', '15/7/2022', 'Iphone 13 promax Gold', b'0', 1, 15000000, 'shopping (7).png'),
-(8, 'Iphone 13 promax Gold', '15/7/2022', 'Iphone 13 promax Gold', b'0', 1, 15000000, 'shopping (8).png'),
-(9, 'Iphone 13 promax Gold', '15/7/2022', 'Iphone 13 promax Gold', b'0', 1, 15000000, 'shopping (9).png'),
-(10, 'Iphone 13 promax Gold', '15/7/2022', 'Iphone 13 promax Gold', b'0', 1, 15000000, 'shopping.png');
 
 -- --------------------------------------------------------
 
@@ -235,7 +222,8 @@ CREATE TABLE `user` (
   `password` varchar(50) NOT NULL,
   `accont_balance` int(20) NOT NULL,
   `role` bit(1) NOT NULL,
-  `created_date_user` varchar(20) NOT NULL
+  `created_date_user` varchar(20) NOT NULL,
+  `image_user` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -247,7 +235,6 @@ CREATE TABLE `user` (
 CREATE TABLE `variant` (
   `id_variant` int(10) NOT NULL,
   `name_variant` varchar(50) NOT NULL,
-  `id_pro` int(10) NOT NULL,
   `images_variant` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -258,9 +245,21 @@ CREATE TABLE `variant` (
 --
 
 CREATE TABLE `websetting` (
-  `id` int(10) NOT NULL,
+  `id_websetting` int(10) NOT NULL,
   `site_title` varchar(50) NOT NULL COMMENT 'Tên website',
   `logo` varchar(250) NOT NULL COMMENT 'logo website'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `wishlist`
+--
+
+CREATE TABLE `wishlist` (
+  `id_wishlist` int(10) NOT NULL,
+  `id_pro` int(10) NOT NULL,
+  `id_user` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -278,7 +277,7 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `cate_contact`
   ADD PRIMARY KEY (`id_cate_contact`),
-  ADD KEY `foreg_key` (`id_web_setting`);
+  ADD KEY `lk_webseting_contact` (`id_websetting`);
 
 --
 -- Chỉ mục cho bảng `comment`
@@ -296,6 +295,13 @@ ALTER TABLE `e-vorcher`
   ADD KEY `lk_vorcher_pro` (`id_pro`);
 
 --
+-- Chỉ mục cho bảng `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`id_feedback`),
+  ADD KEY `lk_feedback_order` (`id_order`);
+
+--
 -- Chỉ mục cho bảng `images_products_attribute`
 --
 ALTER TABLE `images_products_attribute`
@@ -303,18 +309,17 @@ ALTER TABLE `images_products_attribute`
   ADD KEY `lk_img_attri` (`id_variant`);
 
 --
--- Chỉ mục cho bảng `img_news`
+-- Chỉ mục cho bảng `image_news`
 --
-ALTER TABLE `img_news`
-  ADD PRIMARY KEY (`id_news`,`img_news`),
-  ADD KEY `foreg_key` (`img_news`,`id_news`);
+ALTER TABLE `image_news`
+  ADD PRIMARY KEY (`id_news`,`image_new`);
 
 --
 -- Chỉ mục cho bảng `info_contact`
 --
 ALTER TABLE `info_contact`
   ADD PRIMARY KEY (`id_info_contact`),
-  ADD UNIQUE KEY `foreg_key` (`id_cate_contact`);
+  ADD KEY `lk_info_cate` (`id_cate_contact`);
 
 --
 -- Chỉ mục cho bảng `news`
@@ -332,8 +337,8 @@ ALTER TABLE `orders`
 -- Chỉ mục cho bảng `order_details`
 --
 ALTER TABLE `order_details`
-  ADD KEY `lk_orders_datail_pro` (`id_pro`),
-  ADD KEY `lk_order_datail_orders` (`id_order`);
+  ADD PRIMARY KEY (`id_order`,`id_pro`),
+  ADD KEY `lk_orders_datail_pro` (`id_pro`);
 
 --
 -- Chỉ mục cho bảng `products`
@@ -359,14 +364,21 @@ ALTER TABLE `user`
 -- Chỉ mục cho bảng `variant`
 --
 ALTER TABLE `variant`
-  ADD PRIMARY KEY (`id_variant`),
-  ADD KEY `lk_variant_attri` (`id_pro`);
+  ADD PRIMARY KEY (`id_variant`);
 
 --
 -- Chỉ mục cho bảng `websetting`
 --
 ALTER TABLE `websetting`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_websetting`);
+
+--
+-- Chỉ mục cho bảng `wishlist`
+--
+ALTER TABLE `wishlist`
+  ADD PRIMARY KEY (`id_wishlist`),
+  ADD KEY `lk_wishlish_pro` (`id_pro`),
+  ADD KEY `lk_wishlist_user` (`id_user`);
 
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
@@ -376,7 +388,7 @@ ALTER TABLE `websetting`
 -- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id_cate` int(10) NOT NULL AUTO_INCREMENT COMMENT 'mã danh mục', AUTO_INCREMENT=7;
+  MODIFY `id_cate` int(10) NOT NULL AUTO_INCREMENT COMMENT 'mã danh mục', AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `cate_contact`
@@ -397,16 +409,22 @@ ALTER TABLE `e-vorcher`
   MODIFY `id_vorcher` int(10) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT cho bảng `feedback`
+--
+ALTER TABLE `feedback`
+  MODIFY `id_feedback` int(10) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT cho bảng `info_contact`
 --
 ALTER TABLE `info_contact`
-  MODIFY `id_info_contact` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_info_contact` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `news`
 --
 ALTER TABLE `news`
-  MODIFY `id_news` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_news` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `orders`
@@ -418,7 +436,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `id_pro` int(10) NOT NULL AUTO_INCREMENT COMMENT 'mã sản phẩm', AUTO_INCREMENT=11;
+  MODIFY `id_pro` int(10) NOT NULL AUTO_INCREMENT COMMENT 'mã sản phẩm';
 
 --
 -- AUTO_INCREMENT cho bảng `user`
@@ -436,7 +454,13 @@ ALTER TABLE `variant`
 -- AUTO_INCREMENT cho bảng `websetting`
 --
 ALTER TABLE `websetting`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_websetting` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `wishlist`
+--
+ALTER TABLE `wishlist`
+  MODIFY `id_wishlist` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -446,8 +470,7 @@ ALTER TABLE `websetting`
 -- Các ràng buộc cho bảng `cate_contact`
 --
 ALTER TABLE `cate_contact`
-  ADD CONSTRAINT `cate_contact_ibfk_1` FOREIGN KEY (`id_web_setting`) REFERENCES `websetting` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `cate_contact_ibfk_2` FOREIGN KEY (`id_web_setting`) REFERENCES `websetting` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `lk_webseting_contact` FOREIGN KEY (`id_websetting`) REFERENCES `websetting` (`id_websetting`);
 
 --
 -- Các ràng buộc cho bảng `comment`
@@ -463,6 +486,12 @@ ALTER TABLE `e-vorcher`
   ADD CONSTRAINT `lk_vorcher_pro` FOREIGN KEY (`id_pro`) REFERENCES `products` (`id_pro`);
 
 --
+-- Các ràng buộc cho bảng `feedback`
+--
+ALTER TABLE `feedback`
+  ADD CONSTRAINT `lk_feedback_order` FOREIGN KEY (`id_order`) REFERENCES `order_details` (`id_order`);
+
+--
 -- Các ràng buộc cho bảng `images_products_attribute`
 --
 ALTER TABLE `images_products_attribute`
@@ -470,16 +499,16 @@ ALTER TABLE `images_products_attribute`
   ADD CONSTRAINT `lk_img_pro` FOREIGN KEY (`id_pro`) REFERENCES `products` (`id_pro`);
 
 --
--- Các ràng buộc cho bảng `img_news`
+-- Các ràng buộc cho bảng `image_news`
 --
-ALTER TABLE `img_news`
-  ADD CONSTRAINT `img_news_ibfk_1` FOREIGN KEY (`id_news`) REFERENCES `news` (`id_news`);
+ALTER TABLE `image_news`
+  ADD CONSTRAINT `lk_img_new` FOREIGN KEY (`id_news`) REFERENCES `news` (`id_news`);
 
 --
 -- Các ràng buộc cho bảng `info_contact`
 --
 ALTER TABLE `info_contact`
-  ADD CONSTRAINT `info_contact_ibfk_1` FOREIGN KEY (`id_cate_contact`) REFERENCES `cate_contact` (`id_cate_contact`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `lk_info_cate` FOREIGN KEY (`id_cate_contact`) REFERENCES `cate_contact` (`id_cate_contact`);
 
 --
 -- Các ràng buộc cho bảng `order_details`
@@ -502,10 +531,11 @@ ALTER TABLE `products_attribute`
   ADD CONSTRAINT `lk_pro_pro_attri` FOREIGN KEY (`id_pro`) REFERENCES `products` (`id_pro`);
 
 --
--- Các ràng buộc cho bảng `websetting`
+-- Các ràng buộc cho bảng `wishlist`
 --
-ALTER TABLE `websetting`
-  ADD CONSTRAINT `websetting_ibfk_1` FOREIGN KEY (`id`) REFERENCES `cate_contact` (`id_web_setting`);
+ALTER TABLE `wishlist`
+  ADD CONSTRAINT `lk_wishlish_pro` FOREIGN KEY (`id_pro`) REFERENCES `products` (`id_pro`),
+  ADD CONSTRAINT `lk_wishlist_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

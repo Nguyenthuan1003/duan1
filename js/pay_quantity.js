@@ -17,20 +17,25 @@ $('input.input-qty').each(function() {
   })
 });
 let sum;
+<<<<<<< HEAD
 let money = $("#price_pro").val();
 let quantity = $("#sum").val();
 console.log(money);
 document.querySelector("#sum").onchange = function(){
   console.log(quantity);
   document.querySelector("#provisional").innerHTML = `Tạm tính: ${Number(money)*Number(quantity)}`;
+=======
+document.querySelector("#sum").onchange = function(){
+  document.querySelector("#provisional").innerHTML = `Tạm tính: ${$("#price_pro").val()*$("#sum").val()}`;
+>>>>>>> 3d630c34e2194e44319b714d5c9310a15be53a80
   document.querySelector("#sale").innerHTML = `Khuyến mãi: ${$("#sale_pro").val()}`;
   document.querySelector("#transport_fee").innerHTML = `Phí vận chuyển: 0đ`;
   if($("#sale_pro").val() > 0){
-    sum = Number($("#sale_pro").val())*Number($("#sum").val());
-  }else{
-      sum = Number($("#price_pro").val())*Number($("#sum").val());
-  }
-  document.querySelector("#sumMonney").innerHTML = `Tổng tiền: <input type="text" value="${sum}" disabled>`;
+    sum = $("#sale_pro").val()*$("#sum").val();
+}else{
+    sum = $$("#price_pro").val()*$("#sum").val();
+}
+document.querySelector("#sumMonney").innerHTML = `Tổng tiền: <input type="text" value="${sum}" disabled>`;
 }
 
 
