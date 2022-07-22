@@ -1,4 +1,4 @@
-<<<<<<< HEAD=======<<<<<<< HEAD * {
+* {
     box-sizing: border-box;
 }
 
@@ -388,8 +388,6 @@ hr {
     background-color: dimgrey;
 }
 
-<<<<<<< HEAD
-}
 
 /*css file blog*/
 #img_blog_big {
@@ -434,6 +432,8 @@ hr {
 
 .h3-5 {
     font-size: 18px;
+    padding-top: 20px;
+    width: 600px;
 }
 
 .container-blog {
@@ -441,4 +441,6 @@ hr {
     margin-left: 50px;
 }
 
-=======>>>>>>>fa834b00d6774eeaeb03a9d3102a8fec6c62e91f
+#row-blog {
+    padding: 20px 0px;
+}
