@@ -1,6 +1,7 @@
 <?php
     session_start();
     include './model/PDO.php';
+    include './model/blog.php';
     include './model/webSetting.php';
     $wst = select_all_websetting();
     include './header.php';
@@ -60,7 +61,9 @@
                     }
                     include './view/client/registe.php';
                     break;
-                
+                case 'pay':
+                        include './view/client/pay.php';
+                    break;
             default:
                 include './main.php';
         }
