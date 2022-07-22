@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 *{
     box-sizing: border-box;
 }
@@ -154,9 +154,9 @@ main{
 .sum{
     color: #E95851;
 }
-.container {
+.container{
     padding-top: 30px;
-    background-color: #fff;
+    /* background-color: #fff; */
 
 }
 

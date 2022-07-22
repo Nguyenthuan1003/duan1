@@ -64,12 +64,16 @@
                 case 'pay':
                         include './view/client/pay.php';
                     break;
+                case 'blog':
+                        $blog = select_all_blog();
+                        include './view/client/blogs.php';
+                    break;
             default:
                 include './main.php';
         }
     }else{
         include './main.php';
-    }
+    };
     include './footer.php';
     
 ?>

@@ -119,8 +119,8 @@
                             <label for="">Tên sản phẩm</label>
                         </div>
                         <div class="col-sm-4">
-                            <input class="price" id="price_pro" value="10000đ" disabled>
-                            <input class="sale" id="sale_pro" value="20000đ" disabled>
+                            <input class="price" id="price_pro" value="10000" disabled>
+                            <input class="sale" id="sale_pro" value="20000" disabled>
                             <div class="buttons_added">
                                 <input class="minus is-form" type="button" value="-">
                                 <input aria-label="quantity" class="input-qty" max="100000" min="1" name="" type="number" value="1" id="sum">

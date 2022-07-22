@@ -17,16 +17,18 @@ $('input.input-qty').each(function() {
   })
 });
 let sum;
+let money = $("#price_pro").val();
 document.querySelector("#sum").onchange = function(){
-  document.querySelector("#provisional").innerHTML = `Tạm tính: ${$("#price_pro").val()*$("#sum").val()}`;
+  let quantity = $("#sum").val();
+  document.querySelector("#provisional").innerHTML = `Tạm tính: ${Number(money)*Number(quantity)}`;
   document.querySelector("#sale").innerHTML = `Khuyến mãi: ${$("#sale_pro").val()}`;
   document.querySelector("#transport_fee").innerHTML = `Phí vận chuyển: 0đ`;
   if($("#sale_pro").val() > 0){
-    sum = $("#sale_pro").val()*$("#sum").val();
-}else{
-    sum = $$("#price_pro").val()*$("#sum").val();
-}
-document.querySelector("#sumMonney").innerHTML = `Tổng tiền: <input type="text" value="${sum}" disabled>`;
+    sum = Number($("#sale_pro").val())*Number($("#sum").val());
+  }else{
+      sum = Number($("#price_pro").val())*Number($("#sum").val());
+  }
+  document.querySelector("#sumMonney").innerHTML = `Tổng tiền: <input type="text" value="${sum}" disabled>`;
 }
 
 
