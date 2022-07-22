@@ -64,26 +64,17 @@
                 case 'pay':
                         include './view/client/pay.php';
                     break;
-<<<<<<< HEAD
                 case 'blog':
-                        $blog = select_all_blog();
+                        $blog = select_all_blog() ;
                         include './view/client/blogs.php';
                     break;
-=======
-<<<<<<< Updated upstream
-                case 'blog':
-                    $blog = select_all_blog() ;
-                    include './view/client/blogs.php';
-=======
                     case 'blog':
                         $blog = select_all_blog() ;
                         include './view/client/blogs.php';
                     break;
                 case 'info-user':
                         include './view/client/info_user.php';
->>>>>>> Stashed changes
                     break;
->>>>>>> 63190752b6101f40681e8c88eaecfae21108efbc
             default:
                 include './main.php';
         }

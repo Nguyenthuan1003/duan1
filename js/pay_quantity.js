@@ -18,8 +18,10 @@ $('input.input-qty').each(function() {
 });
 let sum;
 let money = $("#price_pro").val();
+let quantity = $("#sum").val();
+console.log(money);
 document.querySelector("#sum").onchange = function(){
-  let quantity = $("#sum").val();
+  console.log(quantity);
   document.querySelector("#provisional").innerHTML = `Tạm tính: ${Number(money)*Number(quantity)}`;
   document.querySelector("#sale").innerHTML = `Khuyến mãi: ${$("#sale_pro").val()}`;
   document.querySelector("#transport_fee").innerHTML = `Phí vận chuyển: 0đ`;

@@ -1,45 +1,6 @@
-<?php
-    //  $Sql = "SELECT count(id_pro) as sl_sp FROM products" ;
-    //  $Total_Sp = pdo_query_one($Sql);
-    //  // tổng sản phẩm trong bảng sản phẩm 
-    //  $Total_Product_On_Page = 12;
-    //  // số lượng sản phẩm trên page
-    //  $Total_Page = ceil($Total_Sp['sl_sp']/$Total_Product_On_Page) ;
-    //  // tổng lượng page sản phẩm hiển thị lên website 
-
- 
-
-    //  $Curent_Page = 1 ;
-    //  // page hiện tại 
-
-    //  if(isset($_GET['curent_page'])){
-    //  $Curent_Page = $_GET['curent_page'];
-    //  }
-    //  else { $Curent_Page = 1 ;} ;
-    //  // bắt sự kiện next trang 
-
-    //  $Limit_Start = ($Total_Product_On_Page - 1)*($Curent_Page-1) ;
-
-    //  // lấy sản phẩm bắt đầu từ $limit_start 
-
-   
-    //  $sql = "SELECT * FROM products LIMIT $Limit_Start,$Total_Product_On_Page";
-    //  $Products = pdo_query($sql) ;
-     // truy vấn sản phẩm 
-
-     
-    //  $sql_dm = "SELECT * FROM categories";
-    //  $Categories = pdo_query($sql_dm) ;
-     // truy vấn danh mục 
-
-
-
-?>
-
-
 <main>
     <!-- banner -->
-    <div class="container-fluid">
+    <div class="slider">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -57,26 +18,35 @@
     <!-- end banner -->
     <div class="container">
         <!-- filter -->
-        <form class="text-start" action="index.php?" method="post">
-            <label for="">Sắp xếp theo: </label>
-            <select name="filter">
-                <option value="moiNhat">Mới nhất</option>
-                <option value="cuNhat">Cũ nhất</option>
-                <option value="giaCaoThap">Giá từ cao đến thấp</option>
-                <option value="giaThapCao">Giá từ thấp đến cao</option>
-            </select>
-        </form>
-        <form class="text-end" action="" method="post">
-            <input type="text" name="searchHome" placeholder="Tìm kiếm">
-            <input type="submit" class="btn btn-primary" value="search">
-        </form>
+        <div class="head-filter">
+            <div class="row" style="width: 100%;">
+                <div class="col-md-4">
+                    <form class="d-inline-flex form-filter" action="index.php?" method="post">
+                        <label for="">Sắp xếp theo: </label>
+                        <select name="filter" class="filter">
+                            <option value="moiNhat">Mới nhất</option>
+                            <option value="cuNhat">Cũ nhất</option>
+                            <option value="giaCaoThap">Giá từ cao đến thấp</option>
+                            <option value="giaThapCao">Giá từ thấp đến cao</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <form class="d-inline-flex end" role="search"  method="post">
+                        <input class="me-2" type="search" placeholder="Tìm kiếm">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
         <!-- end filter -->
         <!-- main -->
         <!-- open categories -->
         <div class="row">
             <div class="col-xl-3">
+                <h3 class="category">Danh mục</h3>
                 <table class="table table-hover">
-                    <h4>Danh mục</h4>
                     <tbody>
                         <?php if(is_array($CategoriesHome)) : ?>
                             <?php foreach($CategoriesHome as $cate) : ?>
@@ -118,8 +88,8 @@
                     <?php foreach($ProductsHome as $product): ?>
                     <div class="col-xl-3 col-sm-6">
                         <div class="product-gap" style="max-width:90%">
-                            <div class="product-image">wishlist
-                                <a href=""><img src="<?= $product['images_default'] ?>" alt=""></a>
+                            <div class="product-image">
+                                <a href=""><img src="<?= $product['images_default'] ?>" alt="img"></a>
                             </div>
                             <div class="product-title">
                                 <a href="">

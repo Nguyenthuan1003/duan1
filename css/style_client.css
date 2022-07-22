@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-
 *{
-=======
-<<<<<<< Updated upstream
-<<<<<<< HEAD=======<<<<<<< HEAD * {
->>>>>>> 63190752b6101f40681e8c88eaecfae21108efbc
     box-sizing: border-box;
 }
 
@@ -53,7 +47,8 @@ img {
 }
 
 main {
-    margin: 50px 0;
+    padding-bottom: 50px;
+    background: #E4E5E7;
 }
 
 .row {
@@ -195,19 +190,10 @@ main {
 .sum {
     color: #E95851;
 }
-<<<<<<< HEAD
 .container{
-=======
-=======
->>>>>>> Stashed changes
-
-.container {
->>>>>>> 63190752b6101f40681e8c88eaecfae21108efbc
     padding-top: 30px;
     /* background-color: #fff; */
-
 }
-
 .img-product-1 {
     width: 500px;
     height: 500px;
@@ -399,10 +385,6 @@ hr {
 #row {
     background-color: dimgrey;
 }
-
-<<<<<<< HEAD
-}
-
 /*css file blog*/
 #img_blog_big {
     width: 98%;
@@ -439,8 +421,6 @@ hr {
     padding-left: 5px;
     text-align: center;
 }
-
-<<<<<<< Updated upstream
 #banner-big {
     position: relative;
 }
@@ -453,35 +433,40 @@ hr {
     margin: auto;
     margin-left: 50px;
 }
-
-=======>>>>>>>fa834b00d6774eeaeb03a9d3102a8fec6c62e91f
-=======
+/* css main */
+.head-filter{
+    padding: 10px 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    margin-bottom: 50px;
 }
-
-/* header */
-
-
-
-/* css info - user */
-
-.li_info_user{
-    text-decoration: none;
-    color : black ;
+.head-filter form{
+    padding: 8px 30px;
 }
-.li_info_user:hover{
-    color : red ;
+.filter{
+    border: none;
+    outline: none;
+    padding-left: 10px;
 }
-.logout_info_user{
-    border : none ;
-    border-radius: 4px;
+.form-filter{
+    margin-top: 6px;
 }
-
-.change_pass_menu_user{
-    width : 100%;
-    height : 300px ;
+.end input{
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    outline: none;
 }
-.wrap_info_user{
-    padding-left: 28px;
-    padding-right: 28px;
+.end button{
+    border-radius: 10px;
+    outline: none;
 }
->>>>>>> Stashed changes
+.table{
+    background: #ffffff;
+}
+.category{
+    background: #ffffff;
+    margin: 0;
+    font-size: 24px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
