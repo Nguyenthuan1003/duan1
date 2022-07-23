@@ -64,20 +64,6 @@
                 case 'pay':
                         include './view/client/pay.php';
                     break;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-                case 'blog':
-                        $blog = select_all_blog();
-                        include './view/client/blogs.php';
-                    break;
-=======
-<<<<<<< Updated upstream
-                case 'blog':
-                    $blog = select_all_blog() ;
-                    include './view/client/blogs.php';
-=======
->>>>>>> fa2aaa7006102fe53337ff7af25b55ae4976ae97
                     case 'blog':
                         $blog = select_all_blog() ;
                         include './view/client/blogs.php';
@@ -85,13 +71,12 @@
                 case 'info-user':
                         include './view/client/info_user.php';
                     break;
->>>>>>> 63190752b6101f40681e8c88eaecfae21108efbc
             default:
                 include './main.php';
         }
     }else{
         include './main.php';
-    };
+    }
     include './footer.php';
     
 ?>
