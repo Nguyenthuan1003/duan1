@@ -1,7 +1,9 @@
 *{
     box-sizing: border-box;
 }
-
+footer>div>div>div>div>a{
+    text-decoration: none;
+}
 body {
     margin: 0;
     padding: 0;
@@ -477,4 +479,13 @@ hr {
     font-size: 24px;
     padding: 10px;
     border-bottom: 1px solid #ccc;
+}
+
+/* info user */
+.li_info_user{
+    text-decoration: none;
+    color:black ;
+}
+.li_info_user:hover{
+    color:red ;
 }
