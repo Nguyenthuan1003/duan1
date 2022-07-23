@@ -129,18 +129,15 @@
                 <div class="row gy-5">
 
                     <?php foreach($ProductsHome as $product): ?>
-<<<<<<< HEAD
                     <div class="col-xl-3 col-sm-6 ">
                         <div class="product-gap product_ bg-white rounded-3 p-3" style="max-width:90% ; height:350px;">
                             <div class="product-image">
                                 <a href=""><img class="d-block m-auto" style="height:170px;"
                                         src="./image/<?= $product['images_default'] ?>" alt=""></a>
-=======
                     <div class="col-xl-3 col-sm-6">
                         <div class="product-gap" style="max-width:90%">
                             <div class="product-image">
                                 <a href=""><img src="<?= $product['images_default'] ?>" alt="img"></a>
->>>>>>> 326ce3ca6c8368a6fc22f3fb1af5e10c0ad13644
                             </div>
                             <div class="product-title">
                                 <a href="" style="text-decoration:none ;" class="product_name">
