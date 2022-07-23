@@ -464,3 +464,12 @@ hr {
     padding-left: 28px;
     padding-right: 28px;
 }
+
+/* css sản phẩm main */
+
+.product-image:hover{
+    scale: 1.2;
+}
+.product_name{
+    text-decoration: none;
+}
