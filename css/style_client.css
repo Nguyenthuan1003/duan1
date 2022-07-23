@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+*{
+=======
 * {
+>>>>>>> 3d630c34e2194e44319b714d5c9310a15be53a80
     box-sizing: border-box;
 }
 
@@ -47,7 +51,8 @@ img {
 }
 
 main {
-    margin: 50px 0;
+    padding-bottom: 50px;
+    background: #E4E5E7;
 }
 
 .row {
@@ -189,13 +194,18 @@ main {
 .sum {
     color: #E95851;
 }
+<<<<<<< HEAD
+.container{
+    padding-top: 30px;
+    /* background-color: #fff; */
+=======
 
 .container {
     padding-top: 30px;
     background-color: #fff;
 
+>>>>>>> 3d630c34e2194e44319b714d5c9310a15be53a80
 }
-
 .img-product-1 {
     width: 500px;
     height: 500px;
@@ -387,7 +397,10 @@ hr {
 #row {
     background-color: dimgrey;
 }
+<<<<<<< HEAD
+=======
 
+>>>>>>> 3d630c34e2194e44319b714d5c9310a15be53a80
 /*css file blog*/
 #img_blog_big {
     width: 98%;
@@ -424,7 +437,10 @@ hr {
     padding-left: 5px;
     text-align: center;
 }
+<<<<<<< HEAD
+=======
 
+>>>>>>> 3d630c34e2194e44319b714d5c9310a15be53a80
 #banner-big {
     position: relative;
 }
@@ -437,6 +453,17 @@ hr {
     margin: auto;
     margin-left: 50px;
 }
+<<<<<<< HEAD
+/* css main */
+.head-filter{
+    padding: 10px 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+.head-filter form{
+    padding: 8px 30px;
+=======
 
 /* header */
 
@@ -447,23 +474,26 @@ hr {
 .li_info_user{
     text-decoration: none;
     color : black ;
+>>>>>>> 3d630c34e2194e44319b714d5c9310a15be53a80
 }
-.li_info_user:hover{
-    color : red ;
+.filter{
+    border: none;
+    outline: none;
+    padding-left: 10px;
 }
-.logout_info_user{
-    border : none ;
-    border-radius: 4px;
+.form-filter{
+    margin-top: 6px;
 }
-
-.change_pass_menu_user{
-    width : 100%;
-    height : 300px ;
+.end input{
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    outline: none;
 }
-.wrap_info_user{
-    padding-left: 28px;
-    padding-right: 28px;
+.end button{
+    border-radius: 10px;
+    outline: none;
 }
+<<<<<<< HEAD
 
 /* css sản phẩm main */
 
@@ -473,3 +503,18 @@ hr {
 .product_name{
     text-decoration: none;
 }
+=======
+<<<<<<< HEAD
+.table{
+    background: #ffffff;
+}
+.category{
+    background: #ffffff;
+    margin: 0;
+    font-size: 24px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+=======
+>>>>>>> 3d630c34e2194e44319b714d5c9310a15be53a80
+>>>>>>> 326ce3ca6c8368a6fc22f3fb1af5e10c0ad13644
