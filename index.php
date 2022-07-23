@@ -64,29 +64,14 @@
                 case 'pay':
                         include './view/client/pay.php';
                     break;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 3d630c34e2194e44319b714d5c9310a15be53a80
+
                 case 'blog':
                         $blog = select_all_blog() ;
                         include './view/client/blogs.php';
                     break;
-<<<<<<< HEAD
-=======
-=======
-<<<<<<< Updated upstream
                 case 'blog':
                     $blog = select_all_blog() ;
                     include './view/client/blogs.php';
-=======
->>>>>>> fa2aaa7006102fe53337ff7af25b55ae4976ae97
->>>>>>> 3d630c34e2194e44319b714d5c9310a15be53a80
->>>>>>> 326ce3ca6c8368a6fc22f3fb1af5e10c0ad13644
                     case 'blog':
                         $blog = select_all_blog() ;
                         include './view/client/blogs.php';
