@@ -132,7 +132,7 @@
                     <div class="col-xl-3 col-sm-6 ">
                         <div class="product-gap product_ bg-white rounded-3 p-3" style="max-width:100% ; height:350px;">
                             <div class="product-image">
-                                <a href="index.php?act=chitiet"><img src="<?= $product['images_default'] ?>" alt="img"></a>
+                                <a href="index.php?act=chitiet"><img src="./image/<?= $product['images_default'] ?>" alt="img"></a>
                             </div>
                             <div class="product-title">
                                 <a href="index.php?act=chitiet">
