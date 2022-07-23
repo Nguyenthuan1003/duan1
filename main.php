@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
     //  $Sql = "SELECT count(id_pro) as sl_sp FROM products" ;
     //  $Total_Sp = pdo_query_one($Sql);
@@ -38,8 +39,11 @@
 
 
 <main class="main_index">
+=======
+<main>
+>>>>>>> 326ce3ca6c8368a6fc22f3fb1af5e10c0ad13644
     <!-- banner -->
-    <div class="container-fluid">
+    <div class="slider">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -57,26 +61,35 @@
     <!-- end banner -->
     <div class="container">
         <!-- filter -->
-        <form class="text-start" action="index.php?" method="post">
-            <label for="">Sắp xếp theo: </label>
-            <select name="filter">
-                <option value="moiNhat">Mới nhất</option>
-                <option value="cuNhat">Cũ nhất</option>
-                <option value="giaCaoThap">Giá từ cao đến thấp</option>
-                <option value="giaThapCao">Giá từ thấp đến cao</option>
-            </select>
-        </form>
-        <form class="text-end" action="" method="post">
-            <input type="text" name="searchHome" placeholder="Tìm kiếm">
-            <input type="submit" class="btn btn-primary" value="search">
-        </form>
+        <div class="head-filter">
+            <div class="row" style="width: 100%;">
+                <div class="col-md-4">
+                    <form class="d-inline-flex form-filter" action="index.php?" method="post">
+                        <label for="">Sắp xếp theo: </label>
+                        <select name="filter" class="filter">
+                            <option value="moiNhat">Mới nhất</option>
+                            <option value="cuNhat">Cũ nhất</option>
+                            <option value="giaCaoThap">Giá từ cao đến thấp</option>
+                            <option value="giaThapCao">Giá từ thấp đến cao</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <form class="d-inline-flex end" role="search"  method="post">
+                        <input class="me-2" type="search" placeholder="Tìm kiếm">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
         <!-- end filter -->
         <!-- main -->
         <!-- open categories -->
         <div class="row">
             <div class="col-xl-3">
+                <h3 class="category">Danh mục</h3>
                 <table class="table table-hover">
-                    <h4>Danh mục</h4>
                     <tbody>
                         <?php if(is_array($CategoriesHome)) : ?>
                         <?php foreach($CategoriesHome as $cate) : ?>
@@ -116,11 +129,18 @@
                 <div class="row gy-5">
 
                     <?php foreach($ProductsHome as $product): ?>
+<<<<<<< HEAD
                     <div class="col-xl-3 col-sm-6 ">
                         <div class="product-gap product_ bg-white rounded-3 p-3" style="max-width:90% ; height:350px;">
                             <div class="product-image">
                                 <a href=""><img class="d-block m-auto" style="height:170px;"
                                         src="./image/<?= $product['images_default'] ?>" alt=""></a>
+=======
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="product-gap" style="max-width:90%">
+                            <div class="product-image">
+                                <a href=""><img src="<?= $product['images_default'] ?>" alt="img"></a>
+>>>>>>> 326ce3ca6c8368a6fc22f3fb1af5e10c0ad13644
                             </div>
                             <div class="product-title">
                                 <a href="" style="text-decoration:none ;" class="product_name">
