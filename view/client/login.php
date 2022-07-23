@@ -2,7 +2,7 @@
     <div class="container p-5">
         <div class="row">
             <div class="col-md-6">
-                <img src="../../../duan1/image/banner_login.jpg" alt="ảnh" style="max-width:100%">
+                <img src="./image/banner_login.jpg" alt="ảnh" style="max-width:100%">
             </div>
             <div class="col-md-6 text-center">
                 <h3 class="text-primary">Chào mừng trở lại</h3>

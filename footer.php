@@ -1,46 +1,46 @@
 <footer class="bg-dark p-5">
-    <div class="container-footer">
+    <div class="container-fluid">
         <div class="footer-top">
             <div class="row">
                 <div class="col-md-3">
                     <h4 class="text-light p-1">Tổng đài</h4>
-                    <a href="">
+                    <a href="" class="link-ft">
                         <p class="text-light p-1">Mua hàng: 1900.9696.42 (7:30 - 22:00)</p>
-                    </a><a href="">
+                    </a><a href="" class="link-ft">
                         <p class="text-light p-1">CSKH: 1900.9868.43 (8:00 - 21:30)</p>
-                    </a><a href="">
+                    </a><a href="" class="link-ft">
                         <p class="text-light p-1">Kỹ thuật: 1900.8668.54 (7:30 - 22:00)</p>
                     </a>
                 </div>
                 <div class="col-md-3">
                     <h4 class="text-light p-1">Hệ thống cửa hàng</h4>
-                    <a href="">
+                    <a href="" class="link-ft">
                         <p class="text-light p-1">Nội quy cửa hàng</p>
-                    </a><a href="">
+                    </a><a href="" class="link-ft">
                         <p class="text-light p-1">Chất lượng phục vụ</p>
-                    </a><a href="">
+                    </a><a href="" class="link-ft">
                         <p class="text-light p-1">Chính sách bảo hành & đổi trả</p>
                     </a>
                 </div>
                 <div class="col-md-3">
                     <h4 class="text-light p-1">Hỗ trợ khách hàng</h4>
-                    <a href="">
+                    <a href="" class="link-ft">
                         <p class="text-light p-1">Điều kiện giao dịch chung</p>
-                    </a><a href="">
+                    </a><a href="" class="link-ft">
                         <p class="text-light p-1">Hướng dẫn mua hàng online</p>
-                    </a><a href="">
+                    </a><a href="" class="link-ft">
                         <p class="text-light p-1">Chính sách giao hàng</p>
-                    </a><a href="">
+                    </a><a href="" class="link-ft">
                         <p class="text-light p-1">Hướng dẫn thanh toán</p>
                     </a>
                 </div>
                 <div class="col-md-3">
                     <h4 class="text-light p-1">Thương hiệu</h4>
-                    <a href="">
+                    <a href="" class="link-ft">
                         <p class="text-light p-1">Hướng dẫn mua hàng online</p>
-                    </a><a href="">
+                    </a><a href="" class="link-ft">
                         <p class="text-light p-1">Chính sách giao hàng</p>
-                    </a><a href="">
+                    </a><a href="" class="link-ft">
                         <p class="text-light p-1">Hướng dẫn thanh toán</p>
                     </a>
                 </div>

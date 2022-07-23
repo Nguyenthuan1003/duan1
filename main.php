@@ -89,10 +89,10 @@
                     <div class="col-xl-3 col-sm-6">
                         <div class="product-gap" style="max-width:90%">
                             <div class="product-image">
-                                <a href=""><img src="<?= $product['images_default'] ?>" alt="img"></a>
+                                <a href="index.php?act=chitiet"><img src="<?= $product['images_default'] ?>" alt="img"></a>
                             </div>
                             <div class="product-title">
-                                <a href="">
+                                <a href="index.php?act=chitiet">
                                     <h3 class="product-name"><?= $product['pro_name'] ?></h3>
                                 </a>
                                 <div class="products-price">
@@ -160,3 +160,4 @@
         </div>
         <!-- end main -->
     </div>
+</main>

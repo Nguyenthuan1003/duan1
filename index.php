@@ -64,35 +64,19 @@
                 case 'pay':
                         include './view/client/pay.php';
                     break;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 3d630c34e2194e44319b714d5c9310a15be53a80
                 case 'blog':
-                        $blog = select_all_blog() ;
-                        include './view/client/blogs.php';
-                    break;
-<<<<<<< HEAD
-=======
-=======
-<<<<<<< Updated upstream
-                case 'blog':
-                    $blog = select_all_blog() ;
-                    include './view/client/blogs.php';
-=======
->>>>>>> fa2aaa7006102fe53337ff7af25b55ae4976ae97
->>>>>>> 3d630c34e2194e44319b714d5c9310a15be53a80
-                    case 'blog':
                         $blog = select_all_blog() ;
                         include './view/client/blogs.php';
                     break;
                 case 'info-user':
                         include './view/client/info_user.php';
                     break;
+                case 'chitiet':
+                        include './view/client/detail_product.php';
+                    break;
             default:
                 include './main.php';
+                break;
         }
     }else{
         include './main.php';

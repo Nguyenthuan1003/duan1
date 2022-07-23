@@ -1,30 +1,22 @@
-<<<<<<< HEAD
-*{
-=======
 * {
->>>>>>> 3d630c34e2194e44319b714d5c9310a15be53a80
     box-sizing: border-box;
 }
-
 body {
     margin: 0;
     padding: 0;
     max-width: 100%;
 }
-
 .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin: 0px 50px;
 }
-
 .form {
     display: flex;
     gap: 20px;
 
 }
-
 .img {
     width: 100px;
 }
@@ -194,17 +186,9 @@ main {
 .sum {
     color: #E95851;
 }
-<<<<<<< HEAD
 .container{
     padding-top: 30px;
     /* background-color: #fff; */
-=======
-
-.container {
-    padding-top: 30px;
-    background-color: #fff;
-
->>>>>>> 3d630c34e2194e44319b714d5c9310a15be53a80
 }
 .img-product-1 {
     width: 500px;
@@ -397,10 +381,6 @@ hr {
 #row {
     background-color: dimgrey;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 3d630c34e2194e44319b714d5c9310a15be53a80
 /*css file blog*/
 #img_blog_big {
     width: 98%;
@@ -437,10 +417,6 @@ hr {
     padding-left: 5px;
     text-align: center;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 3d630c34e2194e44319b714d5c9310a15be53a80
 #banner-big {
     position: relative;
 }
@@ -453,7 +429,6 @@ hr {
     margin: auto;
     margin-left: 50px;
 }
-<<<<<<< HEAD
 /* css main */
 .head-filter{
     padding: 10px 20px;
@@ -463,18 +438,6 @@ hr {
 }
 .head-filter form{
     padding: 8px 30px;
-=======
-
-/* header */
-
-
-
-/* css info - user */
-
-.li_info_user{
-    text-decoration: none;
-    color : black ;
->>>>>>> 3d630c34e2194e44319b714d5c9310a15be53a80
 }
 .filter{
     border: none;
@@ -493,7 +456,6 @@ hr {
     border-radius: 10px;
     outline: none;
 }
-<<<<<<< HEAD
 .table{
     background: #ffffff;
 }
@@ -504,5 +466,6 @@ hr {
     padding: 10px;
     border-bottom: 1px solid #ccc;
 }
-=======
->>>>>>> 3d630c34e2194e44319b714d5c9310a15be53a80
+.link-ft{
+    text-decoration: none;
+}
