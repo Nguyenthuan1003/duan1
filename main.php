@@ -72,7 +72,7 @@
                 </div>
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
-                    <form class="d-inline-flex end" role="search"  method="post">
+                    <form class="d-inline-flex end" role="search" method="post">
                         <input class="me-2" type="search" placeholder="Tìm kiếm">
                         <button class="btn btn-primary" type="submit">Search</button>
                     </form>
@@ -102,26 +102,67 @@
                 </table>
                 <!-- end categories -->
                 <!-- open filter -->
-                <h3>Lọc sản phẩm theo</h3>
-                <form class="table table-hover" action="">
-                <tbody>
-                    <tr><td>
-                    <h4>Bộ nhớ</h4></td></tr>
-                    <input type="checkbox" name="ram" id="">32GB
-                    <input type="checkbox" name="ram" id="">64GB
-                    <input type="checkbox" name="ram" id="">128GB
-                    <input type="checkbox" name="ram" id="">256GB
-                    <h4>Màu sắc</h4>
-                    <input type="checkbox" name="colors" id="">Trắng
-                    <input type="checkbox" name="colors" id="">Đen
-                    <input type="checkbox" name="colors" id="">Vàng
-                    <h4>Kích thước màn hình</h4>
-                    <input type="checkbox" name="screenSize" id="">Nhỏ hơn 5 inch
-                    <input type="checkbox" name="screenSize" id="">Nhỏ hơn 6 inch
-                    <input type="checkbox" name="screenSize" id="">lớn hơn 6 inch
-                    </tbody>
+                <h3 class="category ">Lọc sản phẩm theo</h3>
+                <form action="">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h4 class="text-success">Bộ nhớ</h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <P>
+                                        <input type="checkbox" name="ram" id="">32GB
+                                    </P>
+                                    <p>
+                                        <input type="checkbox" name="ram" id="">64GB
+                                    </p>
+                                    <p>
+                                        <input type="checkbox" name="ram" id="">128GB
+                                    </p>
+                                    <p>
+                                        <input type="checkbox" name="ram" id="">256GB
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4 class="text-success">Màu sắc</h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="colors" id="">Trắng
+                                    <input type="checkbox" name="colors" id="">Đen
+                                    <input type="checkbox" name="colors" id="">Vàng
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4 class="text-success">Kích thước màn hình</h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>
+                                    <input type="checkbox" name="screenSize" id="">Nhỏ hơn 5 inch
+                                    </p>
+                                    <p>
+                                    <input type="checkbox" name="screenSize" id="">Nhỏ hơn 6 inch
+                                    </p>
+                                    <p>
+                                    <input type="checkbox" name="screenSize" id="">lớn hơn 6 inch
+                                    </p>
+                                   
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
                 </form>
-               
+
                 <!-- end filter -->
             </div>
             <!-- open products -->
@@ -137,10 +178,12 @@
                             </div>
                             <div class="product-title">
                                 <a href="" style="text-decoration:none ;" class="product_name">
-                                    <h3 class="product-name mb-2 m-auto mt-2 ms-1 " style="font-size:14px; font-weight:bold; color:black ;"><?= $product['pro_name'] ?></h3>
+                                    <h3 class="product-name mb-2 m-auto mt-2 ms-3 "
+                                        style="font-size:14px; font-weight:bold; color:black ;">
+                                        <?= $product['pro_name'] ?></h3>
                                 </a>
-                                
-                                <div class="products-price ms-2">
+
+                                <div class="products-price ms-4">
                                     <span class="text-start text-danger"><?= $product['price_default'] ?></span>
                                     <strike class="text-end"><?= $product['price_default'] ?></strike>
                                 </div>
@@ -155,7 +198,7 @@
                                         </svg></a>
                                 </div>
                                 <div class="d-grid d-md-block" style="margin-top:15px">
-                                <a href="" class="btn btn-danger btn-sm w-100">Xem Chi Tiết</a>
+                                    <a href="" class="btn btn-danger btn-sm w-100">Xem Chi Tiết</a>
                                 </div>
                             </div>
                         </div>
