@@ -153,7 +153,7 @@
                                         </svg></a>
                                 </div>
                                 <div class="d-grid d-md-block" style="margin-top:15px">
-                                <a href="" class="btn btn-danger btn-sm w-100">Xem Chi Tiết</a>
+                                <a href="index.php?act=chitiet" class="btn btn-danger btn-sm w-100">Xem Chi Tiết</a>
                                 </div>
                             </div>
                         </div>

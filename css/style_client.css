@@ -6,6 +6,9 @@ body {
     padding: 0;
     max-width: 100%;
 }
+img{
+    max-width: 100%;
+}
 .header {
     display: flex;
     align-items: center;
@@ -41,7 +44,9 @@ body {
 img {
     max-width: 100%;
 }
-
+#margin{
+    width: 100%;
+}
 main {
     padding-bottom: 50px;
     background: #E4E5E7;

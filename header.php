@@ -31,7 +31,7 @@
                   <a class="nav-link" href="index.php?act=introduce">GIỚI THIỆU</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="index.php?act=pay">LIÊN HỆ</a>
+                  <a class="nav-link" href="index.php?act=contact">LIÊN HỆ</a>
                 </li>
              </ul>
             </div>
