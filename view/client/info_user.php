@@ -2,7 +2,7 @@
     <section class=" wrap_change_pass_menu_user mt-3">
         <div class="row   p-3 mb-0 bg-body rounded">
             <article class="col-6">
-                <article style="" class="border shadow p-3 mb-2 bg-body rounded change_pass_menu_user h-70 d-block  ">
+                <article style="height:310px;" class="border shadow p-3 mb-2 bg-body rounded change_pass_menu_user  d-block  ">
                     <h4 style="font-size:20px" class="title_wrap_info_user text-primary mb-4 ">Chức năng</h4>
                     <ul class="" style="list-style-type:none">
                         <li class=""><a href="" class="li_info_user"><i class="fa fa-house me-2"></i>Trang chủ</a></li>
@@ -25,7 +25,7 @@
                 </article>
             </article>
             <article class="col-6">
-                <article class="border shadow p-3 mb-2 bg-body rounded h-70 change_pass_menu_user ">
+                <article style="height:310px;" class="border shadow p-3 mb-2 bg-body rounded  change_pass_menu_user ">
                     <h4 style="font-size:20px" class="title_wrap_info_user text-primary mb-4">Đổi Mật Khẩu</h4>
                     <form>
                         <div class="row mb-3">
@@ -52,7 +52,7 @@
             </article>
         </div>
     </section>
-    <section class="row wrap_info_user">
+    <section class="row wrap_info_user " style="padding-left:28px; padding-right:28px;">
         <div class=" row border shadow p-3 mb-5 bg-body rounded m-auto">
             <article class="col-6">
                 <article style="" class=" h-70 d-block  ">
@@ -61,7 +61,7 @@
                         <div class="row mb-3">
                             <label for="inputEmail3" class="col-sm-3 col-form-label">Email :</label>
                             <div class="col-sm-9 m-auto">
-                                <strong>duan1_team4</strong>
+                                <strong>duan1_team4@fpt.edu.vn</strong>
                             </div>
                         </div>
                         <div class="row mb-3">
