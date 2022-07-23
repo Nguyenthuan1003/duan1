@@ -80,7 +80,7 @@
         }
     }else{
         include './main.php';
-    };
+    }
     include './footer.php';
     
 ?>
