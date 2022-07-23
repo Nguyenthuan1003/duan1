@@ -37,7 +37,7 @@
 ?>
 
 
-<main>
+<main class="main_index">
     <!-- banner -->
     <div class="container-fluid">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
@@ -79,15 +79,15 @@
                     <h4>Danh mục</h4>
                     <tbody>
                         <?php if(is_array($CategoriesHome)) : ?>
-                            <?php foreach($CategoriesHome as $cate) : ?>
-                                <tr>
-                                    <td><?=$cate['cate_name']?></td>
-                                </tr>
-                            <?php endforeach ?>
+                        <?php foreach($CategoriesHome as $cate) : ?>
+                        <tr>
+                            <td><?=$cate['cate_name']?></td>
+                        </tr>
+                        <?php endforeach ?>
                         <?php else : ?>
-                            <tr>
-                                <td></td>
-                            </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
                         <?php endif; ?>
                     </tbody>
                 </table>
@@ -112,25 +112,38 @@
                 <!-- end filter -->
             </div>
             <!-- open products -->
-            <div class="col-xl-9">
-                <div class="row">
+            <div class="col-xl-9 contain_product mt-4">
+                <div class="row gy-5">
 
                     <?php foreach($ProductsHome as $product): ?>
-                    <div class="col-xl-3 col-sm-6">
-                        <div class="product-gap" style="max-width:90%">
-                            <div class="product-image">wishlist
-                                <a href=""><img src="<?= $product['images_default'] ?>" alt=""></a>
+                    <div class="col-xl-3 col-sm-6 ">
+                        <div class="product-gap product_ bg-white rounded-3 p-3" style="max-width:90% ; height:350px;">
+                            <div class="product-image">
+                                <a href=""><img class="d-block m-auto" style="height:170px;"
+                                        src="./image/<?= $product['images_default'] ?>" alt=""></a>
                             </div>
                             <div class="product-title">
-                                <a href="">
-                                    <h3 class="product-name"><?= $product['pro_name'] ?></h3>
+                                <a href="" style="text-decoration:none ;" class="product_name">
+                                    <h3 class="product-name mb-2 m-auto mt-2 ms-1 " style="font-size:14px; font-weight:bold; color:black ;"><?= $product['pro_name'] ?></h3>
                                 </a>
-                                <div class="products-price">
-                                    <span class="text-start"><?= $product['price_default'] ?></span>
-                                    <span class="text-end"><?= $product['price_default'] ?></span>
+                                
+                                <div class="products-price ms-2">
+                                    <span class="text-start text-danger"><?= $product['price_default'] ?></span>
+                                    <strike class="text-end"><?= $product['price_default'] ?></strike>
                                 </div>
-                                <a href=""><input type="submit" value="Thêm vào giỏ hàng"></a>
-                                <a href=""><input type="submit" value="Thêm vào wishlist"></a>
+                                <div class="d-grid gap-2 d-md-block mt-3">
+                                    <a href="" class="btn btn-success btn-sm">Thêm vào giỏ hàng</a>
+                                    <a href=""><svg data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                            data-bs-title="Thêm Vào Wishlist" xmlns="http://www.w3.org/2000/svg"
+                                            width="24" height="24" fill="currentColor" class="bi bi-heart"
+                                            viewBox="0 0 17 17">
+                                            <path
+                                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                                        </svg></a>
+                                </div>
+                                <div class="d-grid d-md-block" style="margin-top:15px">
+                                <a href="" class="btn btn-danger btn-sm w-100">Xem Chi Tiết</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -149,7 +162,7 @@
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                             <?php else : ?>
-                             
+
                             <?php endif ?>
                         </li>
                         <?php for($i=1 ; $i <= $Total_Page ; $i++) : ?>
@@ -190,3 +203,4 @@
         </div>
         <!-- end main -->
     </div>
+</main>
