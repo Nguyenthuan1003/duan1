@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
     //  $Sql = "SELECT count(id_pro) as sl_sp FROM products" ;
     //  $Total_Sp = pdo_query_one($Sql);
@@ -39,9 +38,6 @@
 
 
 <main class="main_index">
-=======
-<main>
->>>>>>> 326ce3ca6c8368a6fc22f3fb1af5e10c0ad13644
     <!-- banner -->
     <div class="slider">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
@@ -107,8 +103,10 @@
                 <!-- end categories -->
                 <!-- open filter -->
                 <h3>Lọc sản phẩm theo</h3>
-                <form action="">
-                    <h4>Bộ nhớ</h4>
+                <form class="table table-hover" action="">
+                <tbody>
+                    <tr><td>
+                    <h4>Bộ nhớ</h4></td></tr>
                     <input type="checkbox" name="ram" id="">32GB
                     <input type="checkbox" name="ram" id="">64GB
                     <input type="checkbox" name="ram" id="">128GB
@@ -121,23 +119,21 @@
                     <input type="checkbox" name="screenSize" id="">Nhỏ hơn 5 inch
                     <input type="checkbox" name="screenSize" id="">Nhỏ hơn 6 inch
                     <input type="checkbox" name="screenSize" id="">lớn hơn 6 inch
+                    </tbody>
                 </form>
+               
                 <!-- end filter -->
             </div>
             <!-- open products -->
-            <div class="col-xl-9 contain_product mt-4">
-                <div class="row gy-5">
+            <div class="col-xl-9 contain_product">
+                <div class="row gy-4">
 
                     <?php foreach($ProductsHome as $product): ?>
                     <div class="col-xl-3 col-sm-6 ">
-                        <div class="product-gap product_ bg-white rounded-3 p-3" style="max-width:90% ; height:350px;">
+                        <div class="product-gap product_ bg-white rounded-3 p-3" style="max-width:100% ; height:350px;">
                             <div class="product-image">
                                 <a href=""><img class="d-block m-auto" style="height:170px;"
                                         src="./image/<?= $product['images_default'] ?>" alt=""></a>
-                    <div class="col-xl-3 col-sm-6">
-                        <div class="product-gap" style="max-width:90%">
-                            <div class="product-image">
-                                <a href=""><img src="<?= $product['images_default'] ?>" alt="img"></a>
                             </div>
                             <div class="product-title">
                                 <a href="" style="text-decoration:none ;" class="product_name">
@@ -150,7 +146,7 @@
                                 </div>
                                 <div class="d-grid gap-2 d-md-block mt-3">
                                     <a href="" class="btn btn-success btn-sm">Thêm vào giỏ hàng</a>
-                                    <a href=""><svg data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                    <a href="" class="ms-3"><svg data-bs-toggle="tooltip" data-bs-placement="bottom"
                                             data-bs-title="Thêm Vào Wishlist" xmlns="http://www.w3.org/2000/svg"
                                             width="24" height="24" fill="currentColor" class="bi bi-heart"
                                             viewBox="0 0 17 17">
@@ -169,7 +165,7 @@
             </div>
             <!-- end products -->
             <!-- open page -->
-            <div class="text-center pages">
+            <div class="text-center pages mt-5">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
                         <li class="page-item">
