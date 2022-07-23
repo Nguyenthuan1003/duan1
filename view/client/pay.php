@@ -119,8 +119,8 @@
                             <label for="">Tên sản phẩm</label>
                         </div>
                         <div class="col-sm-4">
-                            <input class="price" id="price_pro" value="10000đ" disabled>
-                            <input class="sale" id="sale_pro" value="20000đ" disabled>
+                            <input class="price" id="price_pro" value="10000" disabled>
+                            <input class="sale" id="sale_pro" value="20000" disabled>
                             <div class="buttons_added">
                                 <input class="minus is-form" type="button" value="-">
                                 <input aria-label="quantity" class="input-qty" max="100000" min="1" name="" type="number" value="1" id="sum">
@@ -147,6 +147,6 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="../../../duan1/js/pay.js"></script>
-    <script src="../../../duan1/js/pay_quantity.js"></script>
+    <script src="./js/pay.js"></script>
+    <script src="./js/pay_quantity.js"></script>
 </main>
