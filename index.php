@@ -71,8 +71,12 @@
                 case 'info-user':
                         include './view/client/info_user.php';
                     break;
+                case 'chitiet':
+                        include './view/client/detail_product.php';
+                    break;
             default:
                 include './main.php';
+                break;
         }
     }else{
         include './main.php';

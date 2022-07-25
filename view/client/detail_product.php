@@ -138,8 +138,10 @@
 
 
               </div>
-              <div class="d-grid gap-2 col-6 mx-auto " id="button">
-                <button class="btn btn-primary" id="margin" type="button">Mua ngay</button>
+              <div class="d-grid gap-2 col-6" id="button">
+                <a href="index.php?act=pay">
+                  <button class="btn btn-primary" id="margin" type="button">Mua ngay</button>
+                </a>
               </div>
               <div class="text">
                 <p class="text-1">Bộ sản phẩm gồm: Hộp, Sách hướng dẫn, Cây lấy sim, Cáp Lightning - Type C</p>

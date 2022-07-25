@@ -9,20 +9,20 @@ body {
     padding: 0;
     max-width: 100%;
 }
-
+img{
+    max-width: 100%;
+}
 .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin: 0px 50px;
 }
-
 .form {
     display: flex;
     gap: 20px;
 
 }
-
 .img {
     width: 100px;
 }
@@ -47,7 +47,9 @@ body {
 img {
     max-width: 100%;
 }
-
+#margin{
+    width: 100%;
+}
 main {
     padding-bottom: 50px;
     background: #E4E5E7;
@@ -303,7 +305,7 @@ main {
     text-align: center;
 }
 
-.img {
+.img_details_product {
     text-align: center;
     padding: 20px 0px;
 
@@ -312,7 +314,14 @@ main {
 .img :hover img {
     transform: scale(1.1);
 }
-
+.product-title a{
+    text-decoration: none;
+}
+.product-name{
+    color: #000000;
+    font-size: 18px;
+    padding: 8px 0;
+}
 .price-product {
     gap: 5px;
 }
@@ -349,8 +358,8 @@ h3 {
     border-radius: 50%;
     padding: 12px 0px 5px 5px;
     position: absolute;
-    top: 250px;
-    left: 18%;
+    top: 340px;
+    left: 4%;
 
 
 }
@@ -366,8 +375,8 @@ h3 {
     border-radius: 50%;
     padding: 12px 0px 5px 5px;
     position: absolute;
-    top: 250px;
-    left: 680px;
+    top: 340px;
+    left: 630px;
 
 }
 
@@ -462,14 +471,6 @@ hr {
     border-radius: 10px;
     outline: none;
 }
-
-/* css sản phẩm main */
-
-
-.product_name{
-    text-decoration: none;
-}
-
 .table{
     background: #ffffff;
 }

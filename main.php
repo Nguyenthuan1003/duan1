@@ -173,8 +173,7 @@
                     <div class="col-xl-3 col-sm-6 ">
                         <div class="product-gap product_ bg-white rounded-3 p-3" style="max-width:100% ; height:350px;">
                             <div class="product-image">
-                                <a href=""><img class="d-block m-auto" style="height:170px;"
-                                        src="./image/<?= $product['images_default'] ?>" alt=""></a>
+                                <a href="index.php?act=chitiet"><img style="height:150px ; display:block ; margin:auto" src="./image/<?= $product['images_default'] ?>" alt="img"></a>
                             </div>
                             <div class="product-title">
                                 <a href="" style="text-decoration:none ;" class="product_name">
@@ -197,8 +196,8 @@
                                                 d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                                         </svg></a>
                                 </div>
-                                <div class="d-grid d-md-block" style="margin-top:15px">
-                                    <a href="" class="btn btn-danger btn-sm w-100">Xem Chi Tiết</a>
+                                <div class="d-grid d-md-block" style="margin-top:10px">
+                                    <a href="index.php?act=chitiet" class="btn btn-danger btn-sm w-100">Xem Chi Tiết</a>
                                 </div>
                             </div>
                         </div>
