@@ -74,6 +74,9 @@
                 case 'chitiet':
                         include './view/client/detail_product.php';
                     break;
+                    case 'quen_mat_khau':
+                        include './view/client/forgot_password.php';
+                    break;
             default:
                 include './main.php';
                 break;
