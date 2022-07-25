@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row" id="row">
       <div class="col-md-6" id="colum-one">
-        <div class="img">
+        <div class="img_details_product">
           <img src="https://cf.shopee.vn/file/7e07f670fe59ab60d9342f737202f026" alt="" class="img-product-1">
           <div class="icon-one">
             <a href=""><i class="fa-solid fa-arrow-left-long icon text-icon "></i></a>
