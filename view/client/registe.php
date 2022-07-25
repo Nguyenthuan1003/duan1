@@ -1,6 +1,6 @@
-<main>
-    <div class="container">
-    <div class="row p-5">
+<main class="bg-body">
+    <div class="container p-5">
+        <div class="row shadow-lg p-3 mb-5 bg-body rounded">
             <div class="col-md-6">
                 <img src="./image/banner_login.jpg" alt="ảnh" style="max-width:100%">
             </div>
