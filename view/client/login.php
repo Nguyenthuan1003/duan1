@@ -16,13 +16,13 @@
                         <p class="text-primary text-start">Mật khẩu</p>
                         <input type="text"  class="form-control" name="password" placeholder="Nhập mật khẩu để đăng nhập">
                     </div>
-                    <input type="submit" value="Đăng nhập" class="btn btn-primary" name="login">
+                    <input type="submit" value="Đăng nhập" class="btn btn-primary mt-4" name="login">
                 </form>
                 <div class="btn-login">
-                    <p class="text-secondary p-5">hoặc</p>
+                    <p class="text-secondary mt-3">hoặc</p>
                     <a href=""><input type="submit" value="Đăng ký" class="btn btn-outline-primary"></a>
                     <div class="p-3">
-                        <a href="index.php" class="text-start"><span>Quay về trang chủ</span></a>
+                        <a href="index.php" class="text-start me-2"><span>Quay về trang chủ</span></a>
                         <a href=""><span class="text-end">Quên mật khẩu</span></a>
                     </div>
                 </div>
