@@ -16,40 +16,26 @@ $('input.input-qty').each(function() {
     $this.attr('value', d).val(d)
   })
 });
-<<<<<<< HEAD
 
-  /* mai làm nốt */
-  var sum;
-  var money = $("#price_pro").val();
-  console.log(money);
-  var quantity = document.querySelector("#sum").value;
-  console.log(quantity);
-  document.querySelector("#provisional").innerHTML = `Tạm tính: ${Number(money)*Number(quantity)}`;
-=======
-let sum;
-<<<<<<< HEAD
-let money = $("#price_pro").val();
-let quantity = $("#sum").val();
-console.log(money);
-document.querySelector("#sum").onchange = function(){
-  console.log(quantity);
-  document.querySelector("#provisional").innerHTML = `Tạm tính: ${Number(money)*Number(quantity)}`;
-=======
-document.querySelector("#sum").onchange = function(){
-  document.querySelector("#provisional").innerHTML = `Tạm tính: ${$("#price_pro").val()*$("#sum").val()}`;
->>>>>>> 3d630c34e2194e44319b714d5c9310a15be53a80
->>>>>>> 326ce3ca6c8368a6fc22f3fb1af5e10c0ad13644
-  document.querySelector("#sale").innerHTML = `Khuyến mãi: ${$("#sale_pro").val()}`;
-  document.querySelector("#transport_fee").innerHTML = `Phí vận chuyển: 0đ`;
-
-  if($("#sale_pro").val() > 0){
-    sum = Number($("#sale_pro").val())*Number($("#sum").val());
-  }else{
-      sum = Number($("#price_pro").val())*Number($("#sum").val());
-  }
-  document.querySelector("#sumMonney").innerHTML = `Tổng tiền: <input type="text" value="${sum}" disabled>`;
-
-
-
-
-
+// Đổ dữ liệu ra client
+let quantity = document.querySelector('#sum');
+let price = document.querySelector('#price_pro').value;
+let sale_pro = document.querySelector('#sale_pro').value;
+let provisional = document.querySelector('#provisional');
+let sale = document.querySelector('#sale');
+let transport_fee = document.querySelector('#transport_fee');
+document.querySelector('#plus').onclick = function(){
+  console.log(quantity.value);
+  provisional.innerHTML =`Tạm tính:  ${Number(quantity.value) * Number(price)} đ`;
+  sale.innerHTML = `Khuyến mãi: ${Number(sale_pro) * Number(quantity.value)} đ`;
+}
+document.querySelector('#Subtraction').onclick = function(){
+  console.log(quantity.value);
+  provisional.innerHTML =`Tạm tính:  ${Number(quantity.value) * Number(price)} đ`;
+  sale.innerHTML = `Khuyến mãi: ${Number(sale_pro) * Number(quantity.value)} đ`;
+}
+document.querySelector('#sum').onchange = function(){
+  console.log(quantity.value);
+  provisional.innerHTML =`Tạm tính:  ${Number(quantity.value) * Number(price)} đ`;
+  sale.innerHTML = `Khuyến mãi: ${Number(sale_pro) * Number(quantity.value)} đ`;
+}

@@ -119,19 +119,19 @@
                             <label for="">Tên sản phẩm</label>
                         </div>
                         <div class="col-sm-4">
-                            <input class="price" id="price_pro" value="10000" disabled>
-                            <input class="sale" id="sale_pro" value="20000" disabled>
+                            <input class="price" id="price_pro" value="10000" disabled>đ
+                            <input class="sale" id="sale_pro" value="5000" disabled>đ
                             <div class="buttons_added">
-                                <input class="minus is-form" type="button" value="-">
+                                <input class="minus is-form" type="button" value="-" id="Subtraction">
                                 <input aria-label="quantity" class="input-qty" max="100000" min="1" name="" type="number" value="1" id="sum">
-                                <input class="plus is-form" type="button" value="+">
+                                <input class="plus is-form" type="button" value="+" id="plus">
                             </div>
                         </div>
                     </div>
                     <div class="provisional">
-                        <p id="provisional"></p>
-                        <p id="sale"></p>
-                        <p id="transport_fee"></p>
+                        <p id="provisional">Tạm tính: </p>
+                        <p id="sale">Khuyến mãi: </p>
+                        <p id="transport_fee">Phí vận chuyển: </p>
                     </div>
                     <div class="sum" >
                         <p id="sumMonney"></p>
