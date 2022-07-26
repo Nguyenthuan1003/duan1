@@ -408,22 +408,25 @@ hr {
     width: 900px;
     text-align: center;
     padding-left: 50px;
+    font-size: 18px;
 }
 
 .h4-2 {
     position: absolute;
-    top: 250px;
+    top: 280px;
     width: 460px;
     padding-left: 5px;
     text-align: center;
+    font-size: 18px;
 }
 
 .h4-3 {
     position: absolute;
-    top: 620px;
+    top: 680px;
     width: 450px;
     padding-left: 5px;
     text-align: center;
+    font-size: 18px;
 }
 
 #banner-big {
@@ -433,7 +436,7 @@ hr {
 .h3-5 {
     font-size: 18px;
     padding-top: 20px;
-    width: 600px;
+    width: 700px;
 }
 
 .container-blog {
@@ -443,4 +446,146 @@ hr {
 
 #row-blog {
     padding: 20px 0px;
+}
+
+/* css admin*/
+/* * {
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+} */
+
+.logo_img_admin {
+    width: 200px;
+    height: 50px;
+}
+
+.user {
+    background-color: darkgray;
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    border-radius: 50%;
+    padding: 10px 10px 10px 18px;
+}
+
+.name_user_text {
+    font-size: 16px;
+
+}
+
+#user_addmin {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.container-admin {
+    margin-top: 50px;
+
+}
+
+.input_header_admin {
+    padding: 5px 20px;
+    border-radius: 10px;
+}
+
+.icon-search {
+    position: absolute;
+    top: 8px;
+    right: 195px;
+    color: #ccc;
+}
+
+#bell {
+    font-size: 20px;
+    position: absolute;
+    top: 8px;
+    right: 90px;
+}
+
+#setting_header {
+    font-size: 20px;
+    position: absolute;
+    top: 8px;
+    right: 30px;
+}
+
+.meu-ul-li {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.menu-admin {
+    margin: 20px 0px;
+}
+
+#show-number {
+    width: 25px;
+
+}
+
+.show-main-top {
+    display: flex;
+    gap: 20px;
+    height: 50px;
+}
+
+.seach-main-top {
+    width: 400px;
+}
+
+#add-row {
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+#update {
+    color: #fff;
+}
+
+#icon-header {
+    position: relative;
+}
+
+.next-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+/* header filer*/
+.head-filter {
+    padding: 10px 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+.head-filter form {
+    padding: 8px 30px;
+}
+
+.filter {
+    border: none;
+    outline: none;
+    padding-left: 10px;
+}
+
+.form-filter {
+    margin-top: 6px;
+}
+
+.end input {
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    outline: none;
+}
+
+.end button {
+    border-radius: 10px;
+    outline: none;
 }

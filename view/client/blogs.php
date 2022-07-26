@@ -1,3 +1,4 @@
+<main>
 <div class="container-blog">
         <section class="banner_blogs w-100 row mt-3 mb-3 ">
             <section class="wrap_main_banner_blog  p-0 col-8 d-block" id="banner-big">
@@ -60,3 +61,5 @@
         </section>
     </div>
 
+
+</main>

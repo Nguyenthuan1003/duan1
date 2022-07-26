@@ -57,19 +57,28 @@
     <!-- end banner -->
     <div class="container">
         <!-- filter -->
-        <form class="text-start" action="index.php?" method="post">
-            <label for="">Sắp xếp theo: </label>
-            <select name="filter">
-                <option value="moiNhat">Mới nhất</option>
-                <option value="cuNhat">Cũ nhất</option>
-                <option value="giaCaoThap">Giá từ cao đến thấp</option>
-                <option value="giaThapCao">Giá từ thấp đến cao</option>
-            </select>
-        </form>
-        <form class="text-end" action="" method="post">
-            <input type="text" name="searchHome" placeholder="Tìm kiếm">
-            <input type="submit" class="btn btn-primary" value="search">
-        </form>
+        <div class="head-filter">
+            <div class="row" style="width: 100%;">
+                <div class="col-md-4">
+                    <form class="d-inline-flex form-filter" action="index.php?" method="post">
+                        <label for="">Sắp xếp theo: </label>
+                        <select name="filter" class="filter">
+                            <option value="moiNhat">Mới nhất</option>
+                            <option value="cuNhat">Cũ nhất</option>
+                            <option value="giaCaoThap">Giá từ cao đến thấp</option>
+                            <option value="giaThapCao">Giá từ thấp đến cao</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <form class="d-inline-flex end" role="search"  method="post">
+                        <input class="me-2" type="search" placeholder="Tìm kiếm">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
         <!-- end filter -->
         <!-- main -->
         <!-- open categories -->
@@ -119,7 +128,7 @@
                     <div class="col-xl-3 col-sm-6">
                         <div class="product-gap" style="max-width:90%">
                             <div class="product-image">wishlist
-                                <a href=""><img src="<?= $product['images_default'] ?>" alt=""></a>
+                                <a href=""><img src="./image/<?= $product['images_default'] ?>" alt=""></a>
                             </div>
                             <div class="product-title">
                                 <a href="">
