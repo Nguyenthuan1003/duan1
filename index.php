@@ -77,6 +77,9 @@
                     case 'quen_mat_khau':
                         include './view/client/forgot_password.php';
                     break;
+                    case 'cart':
+                        include './view/client/cart.php';
+                    break;
             default:
                 include './main.php';
                 break;
