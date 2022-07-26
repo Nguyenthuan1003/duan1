@@ -1,4 +1,4 @@
-<main>
+<main style="background:#696969;">
 <div class="container">
     <div class="row" id="row">
       <div class="col-md-6" id="colum-one">
@@ -169,10 +169,10 @@
       <h2>Phụ kiện gợi ý cho iPhone</h2>
       <div class="row">
         <div class="col-md-3">
-          <div class="img">
-            <a href="">
+          <div class="img" style="">
+            <a href="" >
               <img src="https://img.websosanh.vn/v2/users/review/images/g0uimocg53p63.jpg?compress=85" alt=""
-                class="img-product">
+                class="img-product ">
             </a>
           </div>
           <h3 class="title-product">Ốp lưng Nhựa dẻo iPhone 13 Pro Max Sạc MagSafe</h3>
