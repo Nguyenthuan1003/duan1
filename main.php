@@ -37,9 +37,9 @@
 ?>
 
 
-<main>
+<main class="main_index">
     <!-- banner -->
-    <div class="container-fluid">
+    <div class="slider">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -72,7 +72,7 @@
                 </div>
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
-                    <form class="d-inline-flex end" role="search"  method="post">
+                    <form class="d-inline-flex end" role="search" method="post">
                         <input class="me-2" type="search" placeholder="Tìm kiếm">
                         <button class="btn btn-primary" type="submit">Search</button>
                     </form>
@@ -84,62 +84,121 @@
         <!-- open categories -->
         <div class="row">
             <div class="col-xl-3">
+                <h3 class="category">Danh mục</h3>
                 <table class="table table-hover">
-                    <h4>Danh mục</h4>
                     <tbody>
                         <?php if(is_array($CategoriesHome)) : ?>
-                            <?php foreach($CategoriesHome as $cate) : ?>
-                                <tr>
-                                    <td><?=$cate['cate_name']?></td>
-                                </tr>
-                            <?php endforeach ?>
+                        <?php foreach($CategoriesHome as $cate) : ?>
+                        <tr>
+                            <td><?=$cate['cate_name']?></td>
+                        </tr>
+                        <?php endforeach ?>
                         <?php else : ?>
-                            <tr>
-                                <td></td>
-                            </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
                         <?php endif; ?>
                     </tbody>
                 </table>
                 <!-- end categories -->
                 <!-- open filter -->
-                <h3>Lọc sản phẩm theo</h3>
+                <h3 class="category ">Lọc sản phẩm theo</h3>
                 <form action="">
-                    <h4>Bộ nhớ</h4>
-                    <input type="checkbox" name="ram" id="">32GB
-                    <input type="checkbox" name="ram" id="">64GB
-                    <input type="checkbox" name="ram" id="">128GB
-                    <input type="checkbox" name="ram" id="">256GB
-                    <h4>Màu sắc</h4>
-                    <input type="checkbox" name="colors" id="">Trắng
-                    <input type="checkbox" name="colors" id="">Đen
-                    <input type="checkbox" name="colors" id="">Vàng
-                    <h4>Kích thước màn hình</h4>
-                    <input type="checkbox" name="screenSize" id="">Nhỏ hơn 5 inch
-                    <input type="checkbox" name="screenSize" id="">Nhỏ hơn 6 inch
-                    <input type="checkbox" name="screenSize" id="">lớn hơn 6 inch
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h4 class="text-success">Bộ nhớ</h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <P>
+                                        <input type="checkbox" name="ram" id="">32GB
+                                    </P>
+                                    <p>
+                                        <input type="checkbox" name="ram" id="">64GB
+                                    </p>
+                                    <p>
+                                        <input type="checkbox" name="ram" id="">128GB
+                                    </p>
+                                    <p>
+                                        <input type="checkbox" name="ram" id="">256GB
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4 class="text-success">Màu sắc</h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="colors" id="">Trắng
+                                    <input type="checkbox" name="colors" id="">Đen
+                                    <input type="checkbox" name="colors" id="">Vàng
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4 class="text-success">Kích thước màn hình</h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>
+                                    <input type="checkbox" name="screenSize" id="">Nhỏ hơn 5 inch
+                                    </p>
+                                    <p>
+                                    <input type="checkbox" name="screenSize" id="">Nhỏ hơn 6 inch
+                                    </p>
+                                    <p>
+                                    <input type="checkbox" name="screenSize" id="">lớn hơn 6 inch
+                                    </p>
+                                   
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
                 </form>
+
                 <!-- end filter -->
             </div>
             <!-- open products -->
-            <div class="col-xl-9">
-                <div class="row">
+            <div class="col-xl-9 contain_product">
+                <div class="row gy-4">
 
                     <?php foreach($ProductsHome as $product): ?>
-                    <div class="col-xl-3 col-sm-6">
-                        <div class="product-gap" style="max-width:90%">
-                            <div class="product-image">wishlist
-                                <a href=""><img src="./image/<?= $product['images_default'] ?>" alt=""></a>
+                    <div class="col-xl-3 col-sm-6 ">
+                        <div class="product-gap product_ bg-white rounded-3 p-3" style="max-width:100% ;">
+                            <div class="product-image">
+                                <a href="index.php?act=chitiet"><img style="height:150px ; display:block ; margin:auto" src="./image/<?= $product['images_default'] ?>" alt="img"></a>
                             </div>
                             <div class="product-title">
-                                <a href="">
-                                    <h3 class="product-name"><?= $product['pro_name'] ?></h3>
+                                <a href="" style="text-decoration:none ;" class="product_name">
+                                    <h3 class="product-name mb-2 m-auto mt-2 ms-3 "
+                                        style="font-size:14px; font-weight:bold; color:black ;">
+                                        <?= $product['pro_name'] ?></h3>
                                 </a>
-                                <div class="products-price">
-                                    <span class="text-start"><?= $product['price_default'] ?></span>
-                                    <span class="text-end"><?= $product['price_default'] ?></span>
+
+                                <div class="products-price ms-4">
+                                    <span class="text-start text-danger"><?= $product['price_default'] ?></span>
+                                    <strike class="text-end"><?= $product['price_default'] ?></strike>
                                 </div>
-                                <a href=""><input type="submit" value="Thêm vào giỏ hàng"></a>
-                                <a href=""><input type="submit" value="Thêm vào wishlist"></a>
+                                <div class="d-grid gap-2 d-md-block mt-3">
+                                    <a href="" class="btn btn-success btn-sm">Thêm vào giỏ hàng</a>
+                                    <a href="" class="ms-3"><svg data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                            data-bs-title="Thêm Vào Wishlist" xmlns="http://www.w3.org/2000/svg"
+                                            width="24" height="24" fill="currentColor" class="bi bi-heart"
+                                            viewBox="0 0 17 17">
+                                            <path
+                                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                                        </svg></a>
+                                </div>
+                                <div class="d-grid d-md-block" style="margin-top:10px">
+                                    <a href="index.php?act=chitiet" class="btn btn-danger btn-sm w-100">Xem Chi Tiết</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -148,7 +207,7 @@
             </div>
             <!-- end products -->
             <!-- open page -->
-            <div class="text-center pages">
+            <div class="text-center pages mt-5">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
                         <li class="page-item">
@@ -158,7 +217,7 @@
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                             <?php else : ?>
-                             
+
                             <?php endif ?>
                         </li>
                         <?php for($i=1 ; $i <= $Total_Page ; $i++) : ?>
@@ -199,3 +258,4 @@
         </div>
         <!-- end main -->
     </div>
+</main>

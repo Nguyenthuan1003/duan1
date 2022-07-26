@@ -2,9 +2,17 @@
     box-sizing: border-box;
 }
 
+footer>div>div>div>div>a {
+    text-decoration: none;
+}
+
 body {
     margin: 0;
     padding: 0;
+    max-width: 100%;
+}
+
+img {
     max-width: 100%;
 }
 
@@ -22,7 +30,9 @@ body {
 }
 
 .img {
-    width: 100px;
+    text-align: center;
+    width: 100%;
+
 }
 
 #nav-bar {
@@ -46,8 +56,12 @@ img {
     max-width: 100%;
 }
 
+#margin {
+    width: 100%;
+}
+
 main {
-    margin: 50px 0;
+    padding-bottom: 50px;
 }
 
 .row {
@@ -107,7 +121,7 @@ main {
 .pay-gap {
     border: 1px solid #cccccc;
     text-align: center;
-    padding: 15px 40px;
+    padding: 15px 25px;
     font-size: 16px;
     color: #000000;
     width: 100%;
@@ -192,8 +206,7 @@ main {
 
 .container {
     padding-top: 30px;
-    background-color: #fff;
-
+    /* background-color: #fff; */
 }
 
 .img-product-1 {
@@ -286,8 +299,8 @@ main {
 }
 
 .img-product {
-    width: 200px;
-    height: 250px;
+    width: 150px;
+    height: 150px;
 }
 
 .product {
@@ -303,14 +316,25 @@ main {
     text-align: center;
 }
 
-.img {
+.img_details_product {
     text-align: center;
     padding: 20px 0px;
 
 }
 
+
 .img :hover img {
     transform: scale(1.1);
+}
+
+.product-title a {
+    text-decoration: none;
+}
+
+.product-name {
+    color: #000000;
+    font-size: 18px;
+    padding: 8px 0;
 }
 
 .price-product {
@@ -328,6 +352,15 @@ main {
 
 .text-1 {
     color: #fff;
+}
+
+.product-image {
+    height: 200px;
+    text-align: center;
+}
+
+.product-image img {
+    max-height: 100%;
 }
 
 h4 {
@@ -349,8 +382,8 @@ h3 {
     border-radius: 50%;
     padding: 12px 0px 5px 5px;
     position: absolute;
-    top: 250px;
-    left: 18%;
+    top: 340px;
+    left: 4%;
 
 
 }
@@ -366,8 +399,8 @@ h3 {
     border-radius: 50%;
     padding: 12px 0px 5px 5px;
     position: absolute;
-    top: 250px;
-    left: 680px;
+    top: 340px;
+    left: 630px;
 
 }
 
@@ -388,6 +421,9 @@ hr {
     background-color: dimgrey;
 }
 
+.wrap_suggestions_detail_product {
+    text-align: center;
+}
 
 /*css file blog*/
 #img_blog_big {
@@ -444,120 +480,7 @@ hr {
     margin-left: 50px;
 }
 
-#row-blog {
-    padding: 20px 0px;
-}
-
-/* css admin*/
-/* * {
-    box-sizing: border-box;
-    text-decoration: none;
-    list-style: none;
-} */
-
-.logo_img_admin {
-    width: 200px;
-    height: 50px;
-}
-
-.user {
-    background-color: darkgray;
-    width: 50px;
-    height: 50px;
-    color: #fff;
-    border-radius: 50%;
-    padding: 10px 10px 10px 18px;
-}
-
-.name_user_text {
-    font-size: 16px;
-
-}
-
-#user_addmin {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.container-admin {
-    margin-top: 50px;
-
-}
-
-.input_header_admin {
-    padding: 5px 20px;
-    border-radius: 10px;
-}
-
-.icon-search {
-    position: absolute;
-    top: 8px;
-    right: 195px;
-    color: #ccc;
-}
-
-#bell {
-    font-size: 20px;
-    position: absolute;
-    top: 8px;
-    right: 90px;
-}
-
-#setting_header {
-    font-size: 20px;
-    position: absolute;
-    top: 8px;
-    right: 30px;
-}
-
-.meu-ul-li {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.menu-admin {
-    margin: 20px 0px;
-}
-
-#show-number {
-    width: 25px;
-
-}
-
-.show-main-top {
-    display: flex;
-    gap: 20px;
-    height: 50px;
-}
-
-.seach-main-top {
-    width: 400px;
-}
-
-#add-row {
-    display: flex;
-    justify-content: flex-end;
-
-}
-
-#update {
-    color: #fff;
-}
-
-#icon-header {
-    position: relative;
-}
-
-.next-page {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 50px;
-}
-
-/* header filer*/
+/* css main */
 .head-filter {
     padding: 10px 20px;
     background: #ffffff;
@@ -588,4 +511,75 @@ hr {
 .end button {
     border-radius: 10px;
     outline: none;
+}
+
+.table {
+    background: #ffffff;
+}
+
+.category {
+    background: #ffffff;
+    margin: 0;
+    font-size: 24px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+/* info user */
+.li_info_user {
+    text-decoration: none;
+    color: black;
+}
+
+.li_info_user:hover {
+    color: red;
+}
+
+.mySlides {
+    display: none;
+}
+
+/*Tra cứu đơn hàng*/
+.form-card {
+    margin: 50px auto;
+    max-width: 40%;
+    padding: 100px 50px;
+    text-align: center;
+    border-radius: 35px;
+    box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form-card h3 {
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: 500;
+    margin-bottom: 60px;
+}
+
+.form-card p {
+    margin: 5px 0;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.status-card {
+    margin-bottom: 50px;
+}
+
+.status-card input {
+    width: 100%;
+    border: 1px solid #2196F3;
+    border-radius: 25px;
+    outline: none;
+    padding: 8px;
+}
+
+.form-card button {
+    background: #2196F3;
+    border-radius: 20px;
+    border: none;
+    width: 100%;
+    color: #fff;
+    padding: 10px 0;
 }

@@ -6,7 +6,7 @@ $('input.input-qty').each(function() {
   if (min == 0) {
     var d = 0
   } else d = min
-  $(qty).on('click', function() {
+  $(qty).on('click', function(){
     if ($(this).hasClass('minus')) {
       if (d > min) d += -1
     } else if ($(this).hasClass('plus')) {
@@ -16,19 +16,26 @@ $('input.input-qty').each(function() {
     $this.attr('value', d).val(d)
   })
 });
-let sum;
-document.querySelector("#sum").onchange = function(){
-  document.querySelector("#provisional").innerHTML = `Tạm tính: ${$("#price_pro").val()*$("#sum").val()}`;
-  document.querySelector("#sale").innerHTML = `Khuyến mãi: ${$("#sale_pro").val()}`;
-  document.querySelector("#transport_fee").innerHTML = `Phí vận chuyển: 0đ`;
-  if($("#sale_pro").val() > 0){
-    sum = $("#sale_pro").val()*$("#sum").val();
-}else{
-    sum = $$("#price_pro").val()*$("#sum").val();
+
+// Đổ dữ liệu ra client
+let quantity = document.querySelector('#sum');
+let price = document.querySelector('#price_pro').value;
+let sale_pro = document.querySelector('#sale_pro').value;
+let provisional = document.querySelector('#provisional');
+let sale = document.querySelector('#sale');
+let transport_fee = document.querySelector('#transport_fee');
+document.querySelector('#plus').onclick = function(){
+  console.log(quantity.value);
+  provisional.innerHTML =`Tạm tính:  ${Number(quantity.value) * Number(price)} đ`;
+  sale.innerHTML = `Khuyến mãi: ${Number(sale_pro) * Number(quantity.value)} đ`;
 }
-document.querySelector("#sumMonney").innerHTML = `Tổng tiền: <input type="text" value="${sum}" disabled>`;
+document.querySelector('#Subtraction').onclick = function(){
+  console.log(quantity.value);
+  provisional.innerHTML =`Tạm tính:  ${Number(quantity.value) * Number(price)} đ`;
+  sale.innerHTML = `Khuyến mãi: ${Number(sale_pro) * Number(quantity.value)} đ`;
 }
-
-
-
-
+document.querySelector('#sum').onchange = function(){
+  console.log(quantity.value);
+  provisional.innerHTML =`Tạm tính:  ${Number(quantity.value) * Number(price)} đ`;
+  sale.innerHTML = `Khuyến mãi: ${Number(sale_pro) * Number(quantity.value)} đ`;
+}

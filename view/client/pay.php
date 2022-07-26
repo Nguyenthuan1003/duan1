@@ -119,19 +119,19 @@
                             <label for="">Tên sản phẩm</label>
                         </div>
                         <div class="col-sm-4">
-                            <input class="price" id="price_pro" value="10000đ" disabled>
-                            <input class="sale" id="sale_pro" value="20000đ" disabled>
+                            <input class="price" id="price_pro" value="10000" disabled>đ
+                            <input class="sale" id="sale_pro" value="5000" disabled>đ
                             <div class="buttons_added">
-                                <input class="minus is-form" type="button" value="-">
+                                <input class="minus is-form" type="button" value="-" id="Subtraction">
                                 <input aria-label="quantity" class="input-qty" max="100000" min="1" name="" type="number" value="1" id="sum">
-                                <input class="plus is-form" type="button" value="+">
+                                <input class="plus is-form" type="button" value="+" id="plus">
                             </div>
                         </div>
                     </div>
                     <div class="provisional">
-                        <p id="provisional"></p>
-                        <p id="sale"></p>
-                        <p id="transport_fee"></p>
+                        <p id="provisional">Tạm tính: </p>
+                        <p id="sale">Khuyến mãi: </p>
+                        <p id="transport_fee">Phí vận chuyển: </p>
                     </div>
                     <div class="sum" >
                         <p id="sumMonney"></p>
@@ -147,6 +147,6 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="../../../duan1/js/pay.js"></script>
-    <script src="../../../duan1/js/pay_quantity.js"></script>
+    <script src="./js/pay.js"></script>
+    <script src="./js/pay_quantity.js"></script>
 </main>

@@ -1,8 +1,8 @@
-<main>
+<main style="background:#696969;">
 <div class="container">
     <div class="row" id="row">
       <div class="col-md-6" id="colum-one">
-        <div class="img">
+        <div class="img_details_product">
           <img src="https://cf.shopee.vn/file/7e07f670fe59ab60d9342f737202f026" alt="" class="img-product-1">
           <div class="icon-one">
             <a href=""><i class="fa-solid fa-arrow-left-long icon text-icon "></i></a>
@@ -50,9 +50,50 @@
           </div>
 
 
+          <div class="w3-content" style="max-width:800px">
+  <img class="mySlides" src="img_nature_wide.jpg" style="width:100%">
+  <img class="mySlides" src="img_snow_wide.jpg" style="width:100%">
+  <img class="mySlides" src="img_mountains_wide.jpg" style="width:100%">
+</div>
 
+<div class="w3-center">
+  <div class="w3-section">
+    <button class="w3-button w3-light-grey" onclick="plusDivs(-1)">❮ Prev</button>
+    <button class="w3-button w3-light-grey" onclick="plusDivs(1)">Next ❯</button>
+  </div>
+  <button class="w3-button demo" onclick="currentDiv(1)">1</button> 
+  <button class="w3-button demo" onclick="currentDiv(2)">2</button> 
+  <button class="w3-button demo" onclick="currentDiv(3)">3</button> 
+</div>
 
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
 
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  if (n > x.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" w3-red", "");
+  }
+  x[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " w3-red";
+}
+</script>
 
 
         </div>
@@ -138,8 +179,10 @@
 
 
               </div>
-              <div class="d-grid gap-2 col-6 mx-auto " id="button">
-                <button class="btn btn-primary" id="margin" type="button">Mua ngay</button>
+              <div class="d-grid gap-2 col-6 " id="button">
+                <a href="index.php?act=pay">
+                  <button class="btn btn-primary" id="margin" type="button">Mua ngay</button>
+                </a>
               </div>
               <div class="text">
                 <p class="text-1">Bộ sản phẩm gồm: Hộp, Sách hướng dẫn, Cây lấy sim, Cáp Lightning - Type C</p>
@@ -167,10 +210,10 @@
       <h2>Phụ kiện gợi ý cho iPhone</h2>
       <div class="row">
         <div class="col-md-3">
-          <div class="img">
+          <div class="img" style="text-align: center; width:100%">
             <a href="">
               <img src="https://img.websosanh.vn/v2/users/review/images/g0uimocg53p63.jpg?compress=85" alt=""
-                class="img-product">
+                class="img-product ">
             </a>
           </div>
           <h3 class="title-product">Ốp lưng Nhựa dẻo iPhone 13 Pro Max Sạc MagSafe</h3>
