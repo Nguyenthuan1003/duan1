@@ -173,7 +173,7 @@
                     <div class="col-xl-3 col-sm-6 ">
                         <div class="product-gap product_ bg-white rounded-3 p-3" style="max-width:100% ;">
                             <div class="product-image">
-                                <a href="index.php?act=chitiet"><img style="height:150px ; display:block ; margin:auto" src="./image/<?= $product['images_default'] ?>" alt="img"></a>
+                                <a href="index.php?act=chitiet&id_pro=<?=$product['id_pro']?>"><img style="height:150px ; display:block ; margin:auto" src="./image/<?= $product['images_default'] ?>" alt="img"></a>
                             </div>
                             <div class="product-title">
                                 <a href="" style="text-decoration:none ;" class="product_name">
@@ -197,7 +197,7 @@
                                         </svg></a>
                                 </div>
                                 <div class="d-grid d-md-block" style="margin-top:10px">
-                                    <a href="index.php?act=chitiet" class="btn btn-danger btn-sm w-100">Xem Chi Tiết</a>
+                                    <a href="index.php?act=chitiet&id_pro=<?=$product['id_pro']?>" class="btn btn-danger btn-sm w-100">Xem Chi Tiết</a>
                                 </div>
                             </div>
                         </div>

@@ -28,4 +28,8 @@
         $Products = pdo_query($sql) ;
         return $Products;
     }
+    function load_one_pro($id){
+        $sql = "SELECT * FROM products WHERE id_pro=".$id;
+        return pdo_query($sql);
+    }
 ?>

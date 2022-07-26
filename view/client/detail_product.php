@@ -50,7 +50,7 @@
           </div>
 
 
-          <div class="w3-content" style="max-width:800px">
+          <!-- <div class="w3-content" style="max-width:800px">
   <img class="mySlides" src="img_nature_wide.jpg" style="width:100%">
   <img class="mySlides" src="img_snow_wide.jpg" style="width:100%">
   <img class="mySlides" src="img_mountains_wide.jpg" style="width:100%">
@@ -93,11 +93,24 @@ function showDivs(n) {
   x[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " w3-red";
 }
-</script>
+</script> -->
 
 
         </div>
-
+        <?php
+      extract($pro);
+    ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function(){
+                        $("#comments").load("./view/client/comment/comment_form.php", {idproduct:<?=$id?>});
+                    });
+                </script>
+                <div class="mg-top">
+                <div class="comment" id="comments">
+                   
+                </div>
+                </div>
 
       </div>
       <div class="col-md-6">
@@ -204,7 +217,7 @@ function showDivs(n) {
           </div>
         </div>
       </div>
-
+      
     </div>
     <div class="product">
       <h2>Phụ kiện gợi ý cho iPhone</h2>
@@ -276,4 +289,5 @@ function showDivs(n) {
       </div>
     </div>
   </div>
+  
 </main>
