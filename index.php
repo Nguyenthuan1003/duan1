@@ -64,7 +64,7 @@
                 case 'pay':
                         include './view/client/pay.php';
                     break;
-                case 'blog':
+                    case 'blog':
                         $blog = select_all_blog() ;
                         include './view/client/blogs.php';
                     break;
@@ -73,6 +73,9 @@
                     break;
                 case 'chitiet':
                         include './view/client/detail_product.php';
+                    break;
+                    case 'quen_mat_khau':
+                        include './view/client/forgot_password.php';
                     break;
             default:
                 include './main.php';

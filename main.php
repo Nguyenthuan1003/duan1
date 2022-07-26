@@ -72,7 +72,7 @@
                 </div>
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
-                    <form class="d-inline-flex end" role="search"  method="post">
+                    <form class="d-inline-flex end" role="search" method="post">
                         <input class="me-2" type="search" placeholder="Tìm kiếm">
                         <button class="btn btn-primary" type="submit">Search</button>
                     </form>
@@ -102,26 +102,67 @@
                 </table>
                 <!-- end categories -->
                 <!-- open filter -->
-                <h3>Lọc sản phẩm theo</h3>
-                <form class="table table-hover" action="">
-                <tbody>
-                    <tr><td>
-                    <h4>Bộ nhớ</h4></td></tr>
-                    <input type="checkbox" name="ram" id="">32GB
-                    <input type="checkbox" name="ram" id="">64GB
-                    <input type="checkbox" name="ram" id="">128GB
-                    <input type="checkbox" name="ram" id="">256GB
-                    <h4>Màu sắc</h4>
-                    <input type="checkbox" name="colors" id="">Trắng
-                    <input type="checkbox" name="colors" id="">Đen
-                    <input type="checkbox" name="colors" id="">Vàng
-                    <h4>Kích thước màn hình</h4>
-                    <input type="checkbox" name="screenSize" id="">Nhỏ hơn 5 inch
-                    <input type="checkbox" name="screenSize" id="">Nhỏ hơn 6 inch
-                    <input type="checkbox" name="screenSize" id="">lớn hơn 6 inch
-                    </tbody>
+                <h3 class="category ">Lọc sản phẩm theo</h3>
+                <form action="">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h4 class="text-success">Bộ nhớ</h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <P>
+                                        <input type="checkbox" name="ram" id="">32GB
+                                    </P>
+                                    <p>
+                                        <input type="checkbox" name="ram" id="">64GB
+                                    </p>
+                                    <p>
+                                        <input type="checkbox" name="ram" id="">128GB
+                                    </p>
+                                    <p>
+                                        <input type="checkbox" name="ram" id="">256GB
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4 class="text-success">Màu sắc</h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="colors" id="">Trắng
+                                    <input type="checkbox" name="colors" id="">Đen
+                                    <input type="checkbox" name="colors" id="">Vàng
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4 class="text-success">Kích thước màn hình</h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>
+                                    <input type="checkbox" name="screenSize" id="">Nhỏ hơn 5 inch
+                                    </p>
+                                    <p>
+                                    <input type="checkbox" name="screenSize" id="">Nhỏ hơn 6 inch
+                                    </p>
+                                    <p>
+                                    <input type="checkbox" name="screenSize" id="">lớn hơn 6 inch
+                                    </p>
+                                   
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
                 </form>
-               
+
                 <!-- end filter -->
             </div>
             <!-- open products -->
@@ -132,13 +173,16 @@
                     <div class="col-xl-3 col-sm-6 ">
                         <div class="product-gap product_ bg-white rounded-3 p-3" style="max-width:100% ;">
                             <div class="product-image">
-                                <a href="index.php?act=chitiet"><img src="./image/<?= $product['images_default'] ?>" alt="img"></a>
+                                <a href="index.php?act=chitiet"><img style="height:150px ; display:block ; margin:auto" src="./image/<?= $product['images_default'] ?>" alt="img"></a>
                             </div>
                             <div class="product-title">
-                                <a href="index.php?act=chitiet">
-                                    <h3 class="product-name"><?= $product['pro_name'] ?></h3>
+                                <a href="" style="text-decoration:none ;" class="product_name">
+                                    <h3 class="product-name mb-2 m-auto mt-2 ms-3 "
+                                        style="font-size:14px; font-weight:bold; color:black ;">
+                                        <?= $product['pro_name'] ?></h3>
                                 </a>
-                                <div class="products-price ms-2">
+
+                                <div class="products-price ms-4">
                                     <span class="text-start text-danger"><?= $product['price_default'] ?></span>
                                     <strike class="text-end"><?= $product['price_default'] ?></strike>
                                 </div>
@@ -152,8 +196,8 @@
                                                 d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                                         </svg></a>
                                 </div>
-                                <div class="d-grid d-md-block" style="margin-top:15px">
-                                <a href="index.php?act=chitiet" class="btn btn-danger btn-sm w-100">Xem Chi Tiết</a>
+                                <div class="d-grid d-md-block" style="margin-top:10px">
+                                    <a href="index.php?act=chitiet" class="btn btn-danger btn-sm w-100">Xem Chi Tiết</a>
                                 </div>
                             </div>
                         </div>

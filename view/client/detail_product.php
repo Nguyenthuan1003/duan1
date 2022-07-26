@@ -1,8 +1,8 @@
-<main>
+<main style="background:#696969;">
 <div class="container">
     <div class="row" id="row">
       <div class="col-md-6" id="colum-one">
-        <div class="img">
+        <div class="img_details_product">
           <img src="https://cf.shopee.vn/file/7e07f670fe59ab60d9342f737202f026" alt="" class="img-product-1">
           <div class="icon-one">
             <a href=""><i class="fa-solid fa-arrow-left-long icon text-icon "></i></a>
@@ -213,7 +213,7 @@ function showDivs(n) {
           <div class="img" style="text-align: center; width:100%">
             <a href="">
               <img src="https://img.websosanh.vn/v2/users/review/images/g0uimocg53p63.jpg?compress=85" alt=""
-                class="img-product">
+                class="img-product ">
             </a>
           </div>
           <h3 class="title-product">Ốp lưng Nhựa dẻo iPhone 13 Pro Max Sạc MagSafe</h3>
