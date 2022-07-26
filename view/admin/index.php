@@ -1,3 +1,5 @@
 <?php
-    include './product/add.php';
+    include_once './header.php';
+    include_once './categories/list.php';
+    include_once './footer.php';
 ?>
