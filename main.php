@@ -197,7 +197,7 @@
                                         </svg></a>
                                 </div>
                                 <div class="d-grid d-md-block" style="margin-top:10px">
-                                    <a href="index.php?act=chitiet&id_pro=<?=$product['id_pro']?>" class="btn btn-danger btn-sm w-100">Xem Chi Tiết</a>
+                                    <a href="index.php?act=chitiet&id_pro=<?= $product['id_pro'] ?>" class="btn btn-danger btn-sm w-100">Xem Chi Tiết</a>
                                 </div>
                             </div>
                         </div>
