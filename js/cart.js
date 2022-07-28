@@ -22,36 +22,68 @@ let quantity = document.querySelectorAll(".input-qty");
 let price = document.querySelectorAll(".price_product_default");
 let changes = document.querySelectorAll(".plus ");
 let inner = document.querySelectorAll(".price_product_on_cart");
-// for (let i = 0; i < quantity.length; i++) {
-//   arr[i] = quantity[i].value;
-// }
-// for (let i = 0; i < arr.length; i++) {
-//   console.log(arr[i]);
-// }
+let minus = document.querySelectorAll(".minus");
+let money = document.querySelector("#money");
+let showMoney = document.querySelector('#showMoney');
+for(let i = 0; i < inner.length; i++){
+  sum += Number(inner[i].textContent);
+  console.log(sum); 
+}
 for(let a = 0; a < changes.length; a++){
   changes[a].onclick = function() {
     let result = changes[a].parentElement.children
-    // console.log(result);
-    // console.log(result.length);
     for(let b = 0; b < result.length; b++){
-      // console.log(result[b].getAttribute("class") === 'input-qty')
-      // console.log(result[b].getAttribute("class"))
-      // console.log(result[a])
       for (let index = 0; index < inner.length; index++) {
         if((result[b].getAttribute("class") === 'input-qty')===true && index === a){
           inner[index].innerHTML = `${Number(result[b].value)*Number(price[index].value)}`;
           
         } 
       }   
-  } 
-  
-  
+  }
+  sum = 0;
+  for(let i = 0; i < inner.length; i++){
+      sum += Number(inner[i].textContent);
+      money.innerHTML = `Tiền hàng: ${sum} đ`;
+      showMoney.innerHTML = `Tạm tính: ${sum} đ`;
+  }
 }
 }
-
-// let inners = document.querySelectorAll(".price_product_on_cart");
-// for(let i = 0; i < inners.length; i++){
-//   sum += Number(inners[i].textContent);
-//   console.log(inners[i].textContent);
-//   console.log(sum);
-// }
+      
+for(let a = 0; a < minus.length; a++){
+  minus[a].onclick = function() {
+    let result = minus[a].parentElement.children
+    for(let b = 0; b < result.length; b++){
+      for (let index = 0; index < inner.length; index++) {
+        if((result[b].getAttribute("class") === 'input-qty')===true && index === a){
+          inner[index].innerHTML = `${Number(result[b].value)*Number(price[index].value)}`;
+          
+        } 
+      }   
+  }
+  sum = 0;
+  for(let i = 0; i < inner.length; i++){
+      sum += Number(inner[i].textContent);
+      money.innerHTML = `Tiền hàng: ${sum} đ`;
+      showMoney.innerHTML = `Tạm tính: ${sum} đ`;
+  }
+}
+}
+for(let a = 0; a < quantity.length; a++){
+  quantity[a].onchange = function() {
+    let result = quantity[a].parentElement.children
+    for(let b = 0; b < result.length; b++){
+      for (let index = 0; index < inner.length; index++) {
+        if((result[b].getAttribute("class") === 'input-qty')===true && index === a){
+          inner[index].innerHTML = `${Number(result[b].value)*Number(price[index].value)}`;
+          
+        } 
+      }   
+  }
+  sum = 0;
+  for(let i = 0; i < inner.length; i++){
+      sum += Number(inner[i].textContent);
+      money.innerHTML = `Tiền hàng: ${sum} đ`;
+      showMoney.innerHTML = `Tạm tính: ${sum} đ`; 
+  }
+}
+}

@@ -39,7 +39,7 @@
           </div>
         </nav>
         <div class="icon"> 
-          <a href=""><i class="fa-solid fa-cart-shopping" id="icon"></i></a> 
+          <a href="index.php?act=cart"><i class="fa-solid fa-cart-shopping" id="icon"></i></a> 
         </div>
        <form class="form">
           <div class="login">

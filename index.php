@@ -72,6 +72,8 @@
                         include './view/client/info_user.php';
                     break;
                 case 'chitiet':
+                        $id = $_GET['id_pro'];
+                        $pro = load_one_pro($id);
                         include './view/client/detail_product.php';
                     break;
                 case 'quen_mat_khau':
