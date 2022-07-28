@@ -37,7 +37,7 @@
 ?>
 
 
-<main class="main_index">
+<main class="main_index" style="background:#E4E5E7">
     <!-- banner -->
     <div class="slider">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
@@ -187,7 +187,7 @@
                                     <strike class="text-end"><?= $product['price_default'] ?></strike>
                                 </div>
                                 <div class="d-grid gap-2 d-md-block mt-3">
-                                    <a href="index.php?act=cart&id=<?= $product['id_pro']?>" class="btn btn-success btn-sm">Thêm vào giỏ hàng</a>
+                                    <a href="index.php?act=cart&id_pro=<?= $product['id_pro'] ?>" class="btn btn-success btn-sm">Thêm vào giỏ hàng</a>
                                     <a href="" class="ms-3"><svg data-bs-toggle="tooltip" data-bs-placement="bottom"
                                             data-bs-title="Thêm Vào Wishlist" xmlns="http://www.w3.org/2000/svg"
                                             width="24" height="24" fill="currentColor" class="bi bi-heart"

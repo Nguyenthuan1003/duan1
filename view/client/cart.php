@@ -27,8 +27,8 @@
                     <div class="total_price_product_on_cart col-6 d-flex">
 
                         <div class="buttons_added col-3   m-auto">
-                            <p class="price_product_on_cart text-danger mt-2 me-5"><?=$_SESSION['cart'][$i]['price_default']?></p>
-                            <input class="price_product_default" hidden value="<?=$_SESSION['cart'][$i]['price_default']?>">
+                            <p class="price_product_on_cart text-danger mt-2 me-5"><?=$_SESSION['cart'][$i][0]['price_default']?></p>
+                            <input class="price_product_default" hidden value="<?=$_SESSION['cart'][$i][0]['price_default']?>">
                             <div class="buttons_added">
                                 <input class="minus is-form" type="button" value="-" id="Subtraction">
                                 <input aria-label="quantity" class="input-qty" max="100000" min="1" name="" type="number" value="1" id="sum">
