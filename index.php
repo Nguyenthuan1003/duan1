@@ -62,6 +62,8 @@
                     include './view/client/registe.php';
                     break;
                 case 'pay':
+                    $sql = "SELECT * FROM products";
+                    $hanghoa = pdo_query($sql) ;
                         include './view/client/pay.php';
                     break;
                     case 'blog':
@@ -69,7 +71,7 @@
                         include './view/client/blogs.php';
                     break;
                 case 'info-user':
-                        include './view/client/info_user.php';
+                        include './view/client/user/info_user.php';
                     break;
                 case 'chitiet':
                         $id = $_GET['id_pro'];
@@ -80,10 +82,32 @@
                         include './view/client/forgot_password.php';
                     break;
                 case 'cart':
+                        $arr_cart = [];
+                        if(isset($_SESSION["cart"]))
+                        {
+                           $arr_cart = $_SESSION['cart'];
+                        }
+                        else
+                        {
+                            $arr_cart = [];
+                        };
+
+                        if(isset($_GET["id_pro"]))
+                        {
+                            $arr_cart[] = $_GET["id_pro"];
+                            $_SESSION["cart"] = $arr_cart ;
+                        };
+                       
+                         $sql = "SELECT * FROM products";
+                        $hanghoa = pdo_query($sql) ;
                         include './view/client/cart.php';
+                        
                     break;
                 case 'recharge':
                         include './view/client/recharge.php';
+                    break;
+                    case 'admin':
+                        include './view/admin/';
                     break;
             default:
                 include './main.php';
