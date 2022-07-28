@@ -16,7 +16,7 @@
                         </li>
                         <li class=""><a href="" class="li_info_user"><i class="fa fa-clock me-2"></i>Lịch sử mua
                                 hàng</a></li>
-                        <li class=""><a href="" class="li_info_user"><i class="fa fa-wallet me-2"></i>Nạp tiền vào tài
+                        <li class=""><a href="index.php?act=recharge" class="li_info_user"><i class="fa fa-wallet me-2"></i>Nạp tiền vào tài
                                 khoản</a>
                         </li>
                         <li class=""><a href="" class="li_info_user"><i class="fa fa-phone me-2"></i>Hỗ trợ</a></li>
