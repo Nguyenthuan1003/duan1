@@ -49,8 +49,8 @@
         <div class="footer-end">
             <div class="row">
                 <div class="col-md-9">
-                    <p class="text-light p-1">© 2018. Công ty cổ phần Thế Giới Alo. GPDKKD: 0303217354 do sở KH & ĐT TP.HCM cấp ngày 02/01/2022</p>
-                    <p class="text-light p-1">Địa chỉ: 128 Trần Quang Khải, P. Tân Định, Q.1, TP. Hồ Chí Minh. Điện thoại: 028 38125960.</p>
+                    <p class="text-light p-1">© 2018. Công ty cổ phần Thế Giới Alo. GPDKKD: 0303217354 do sở KH & ĐT TP.HN cấp ngày 02/01/2022</p>
+                    <p class="text-light p-1">Địa chỉ: 128 Thanh Xuân - Hà Nội . Điện thoại: 028 38125960.</p>
                 </div>
                 <div class="col-md-3">
                     <img src="./image/image 1.png" alt="">
