@@ -1,27 +1,62 @@
+<?php
+    if(isset($_SESSION['cart'])&&is_array($_SESSION['cart'])){
+        // print_r($_SESSION['cart']);
+        echo(count($_SESSION['cart']));
+        echo '<pre>';
+        print_r($_SESSION['cart']);
+    }
+?>
 <article>
     <div class="pe-4 ps-4 row m-auto ">
         <section class="main_cart col-8 border mt-4 mb-4">
             <h2 class="ms-4">Giỏ Hàng</h2>
             <hr class="text-secondary">
-            <article class="wrap_product_on_cart">
+            <?php for($i = 0; $i < count($_SESSION['cart']); $i++) : ?>
+            <form action="" method="post" class="wrap_product_on_cart">
                 <section class="product_on_cart row">
                     <div class="info_product_on_cart col-6 row">
                         <article class="img_product_on_cart  text-align-center d-flex col-5 ">
                             <img src="./image/shopping (1).png" width="100px" class="m-auto" alt="">
                         </article>
                         <article class="wrap_info_product_on_cart col-6">
-                            <p class="name_product_on_cart">iPhone 13 Pro 256GB Chính Hãng (VN/A)</p>
+
+                            <input class="name_product_on_cart" name="pro" value="<?=$_SESSION['cart'][$i]['pro_name']?>" disabled>
                             <p class="color_product_on_cart btn btn-outline-primary btn-sm rounder">màu xanh</p>
                             </article>
                     </div>
                     <div class="total_price_product_on_cart col-6 d-flex">
 
                         <div class="buttons_added col-3   m-auto">
+                            <p class="price_product_on_cart text-danger mt-2 me-5"><?=$_SESSION['cart'][$i]['price_default']?></p>
+                            <input class="price_product_default" hidden value="<?=$_SESSION['cart'][$i]['price_default']?>">
+                            <div class="buttons_added">
+                                <input class="minus is-form" type="button" value="-" id="Subtraction">
+                                <input aria-label="quantity" class="input-qty" max="100000" min="1" name="" type="number" value="1" id="sum">
+                                <input class="plus is-form" type="button" value="+" id="plus">
+                            </div>
+                            <a href="" class="text-danger ms-3 mt-2">xóa</a>
+                        </div>
+                    </div>
+                </section>
+            </form>
+            <hr class="text-secondary">
+            <?php endfor; ?>
+            <!-- <article class="wrap_product_on_cart">
+                <section class="product_on_cart row">
+                    <div class="info_product_on_cart col-6 row">
+                        <article class="img_product_on_cart  text-align-center d-flex col-5 ">
+                            <img src="./image/shopping (1).png" width="100px" class="m-auto" alt="">
+                        </article>
+                        <article class="wrap_info_product_on_cart col-6">
+                            <p class="name_product_on_cart">iPhone 13 Pro 256GB Chính Hãng (VN/A)</p>
+                            <p class="color_product_on_cart btn btn-outline-primary btn-sm rounder">màu xanh</p>
+                        </article>
+                    </div>
+                    <div class="total_price_product_on_cart col-6 d-flex">
+
+                        <div class="buttons_added col-3   m-auto">
                             <p class="price_product_on_cart text-danger mt-2 me-5">2</p>
                             <input class="price_product_default" hidden value="2">
-                            <!-- <input class="minus minus_product_on_cart" type="button" value="-" id="Subtraction">
-                            <input class="quantity_product_on_cart p-0 text-center" type="number" value="1">
-                            <input class="plus plus_product_on_cart" type="button" value="+" id="plus"> -->
                             <div class="buttons_added">
                                 <input class="minus is-form" type="button" value="-" id="Subtraction">
                                 <input aria-label="quantity" class="input-qty" max="100000" min="1" name="" type="number" value="1" id="sum">
@@ -49,39 +84,6 @@
                         <div class="buttons_added col-3   m-auto">
                             <p class="price_product_on_cart text-danger mt-2 me-5">2</p>
                             <input class="price_product_default" hidden value="2">
-                            <!-- <input class="minus minus_product_on_cart" type="button" value="-" id="Subtraction">
-                            <input class="quantity_product_on_cart p-0 text-center" type="number" value="1">
-                            <input class="plus plus_product_on_cart" type="button" value="+" id="plus"> -->
-                            <div class="buttons_added">
-                                <input class="minus is-form" type="button" value="-" id="Subtraction">
-                                <input aria-label="quantity" class="input-qty" max="100000" min="1" name="" type="number" value="1" id="sum">
-                                <input class="plus is-form" type="button" value="+" id="plus">
-                            </div>
-                            <a href="" class="text-danger ms-3 mt-2">xóa</a>
-                        </div>
-                    </div>
-                </section>
-            </article>
-            <hr class="text-secondary">
-            <article class="wrap_product_on_cart">
-                <section class="product_on_cart row">
-                    <div class="info_product_on_cart col-6 row">
-                        <article class="img_product_on_cart  text-align-center d-flex col-5 ">
-                            <img src="./image/shopping (1).png" width="100px" class="m-auto" alt="">
-                        </article>
-                        <article class="wrap_info_product_on_cart col-6">
-                            <p class="name_product_on_cart">iPhone 13 Pro 256GB Chính Hãng (VN/A)</p>
-                            <p class="color_product_on_cart btn btn-outline-primary btn-sm rounder">màu xanh</p>
-                        </article>
-                    </div>
-                    <div class="total_price_product_on_cart col-6 d-flex">
-
-                        <div class="buttons_added col-3   m-auto">
-                            <p class="price_product_on_cart text-danger mt-2 me-5">2</p>
-                            <input class="price_product_default" hidden value="2">
-                            <!-- <input class="minus minus_product_on_cart" type="button" value="-" id="Subtraction">
-                            <input class="quantity_product_on_cart p-0 text-center" type="number" value="1">
-                            <input class="plus plus_product_on_cart" type="button" value="+" id="plus"> -->
                             <div class="buttons_added">
                                 <input class="minus is-form Subtraction" type="button" value="-">
                                 <input aria-label="quantity" class="input-qty" max="100000" min="1" name="" type="number" value="1" id="sum">
@@ -92,7 +94,7 @@
                     </div>
                 </section>
             </article>
-            <hr class="text-secondary">
+            <hr class="text-secondary"> -->
 
         </section>
         <section class="col-3 border mt-4 mb-4 ms-5">
@@ -112,8 +114,8 @@
                 <span class="col-6" id="money">Tạm Tính :</span>
             </article>
             <article class="row mt-3 pe-2 ps-2">
-                <a href="" class="btn btn-outline-secondary col-12 btn-sm ">Tiếp Tục Mua Hàng</a>
-                <a href="" class="btn btn-danger col-12 btn-sm mt-2 ">Tiến Hành Đặt Hàng</a>
+                <a href="index.php" class="btn btn-outline-secondary col-12 btn-sm ">Tiếp Tục Mua Hàng</a>
+                <a href="index.php?act=pay" class="btn btn-danger col-12 btn-sm mt-2 ">Tiến Hành Đặt Hàng</a>
             </article>
         </section>
     </div>

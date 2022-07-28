@@ -32,7 +32,7 @@
                         include './view/client/login.php';
                     }
                 }
-                    include './view/client/login.php';
+                    include './view/client/user/login.php';
                 break;
                 case 'registe':
                     if(isset($_POST['registe']) && $_POST['registe']){
@@ -59,7 +59,7 @@
 
                         }
                     }
-                    include './view/client/registe.php';
+                    include './view/client/user/registe.php';
                     break;
                 case 'pay':
                         include './view/client/pay.php';
@@ -69,7 +69,7 @@
                         include './view/client/blogs.php';
                     break;
                 case 'info-user':
-                        include './view/client/info_user.php';
+                        include './view/client/user/info_user.php';
                     break;
                 case 'chitiet':
                         $id = $_GET['id_pro'];
@@ -80,6 +80,17 @@
                         include './view/client/forgot_password.php';
                     break;
                 case 'cart':
+                    if(isset($_GET['id'])&&$_GET['id']){
+                        $id = $_GET['id'];
+                        if(empty($_SESSION['cart'])){
+                            $_SESSION['cart'] = load_one_pro($id);
+                        }else{
+                            var_dump(load_one_pro($id));
+                            // $arr = load_one_pro($id);
+                            // array_push($_SESSION['cart'],$arr);
+                        }
+                    }
+                    
                         include './view/client/cart.php';
                     break;
                 case 'recharge':
