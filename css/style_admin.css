@@ -1,9 +1,84 @@
-*{
+* {
     box-sizing: border-box;
 }
-body{
+
+body {
     margin: 0;
     padding: 0;
     max-width: 100%;
 }
+
 /* list category*/
+/* css header addmin */
+.button-add-client-2 {
+    margin-top: 50px;
+    display: flex;
+    gap: 10px;
+}
+
+.add-client-1 {
+    margin-bottom: 50px;
+}
+
+.container-client {
+    margin: 20px 50px;
+}
+
+.logo_img_admin {
+    width: 250px;
+    height: 50px;
+}
+
+.user_icon_admin {
+    width: 50px;
+    height: 50px;
+    background-color: dimgray;
+    border-radius: 50%;
+    padding: 5px 5px;
+    text-align: center;
+}
+
+.user_icon_admin {
+    padding-top: 8px;
+    font-size: 20px;
+    color: #fff;
+}
+
+#user_addmin {
+    display: flex;
+    gap: 10px;
+}
+
+.input_header_admin {
+    padding: 10px 20px;
+}
+
+.icon-search-admin {
+    color: dimgray;
+    font-size: 20px;
+    position: absolute;
+    top: 30px;
+    right: 220px;
+}
+
+#bell_addmin {
+    font-size: 20px;
+    position: absolute;
+    top: 30px;
+    right: 150px;
+}
+
+#setting_header_addmin {
+    font-size: 20px;
+    position: absolute;
+    top: 30px;
+    right: 100px;
+}
+
+.meu-ul-li {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    align-self: center;
+    padding: 20PX 0PX;
+}
