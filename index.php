@@ -21,7 +21,7 @@
     if(isset($_GET['act'])){
             $act = $_GET['act'];
         switch ($act){
-            case 'login':
+                case 'login':
                 if(isset($_POST['login'])&&$_POST['login']){
                     $email = $_POST['email'];
                     $password = $_POST['password'];
@@ -74,11 +74,14 @@
                 case 'chitiet':
                         include './view/client/detail_product.php';
                     break;
-                    case 'quen_mat_khau':
+                case 'quen_mat_khau':
                         include './view/client/forgot_password.php';
                     break;
-                    case 'cart':
+                case 'cart':
                         include './view/client/cart.php';
+                    break;
+                case 'recharge':
+                        include './view/client/recharge.php';
                     break;
             default:
                 include './main.php';
