@@ -13,7 +13,7 @@
     <div class="row" id="row">
       <div class="col-md-6" id="colum-one">
         <div class="img_details_product">
-          <img src="https://cf.shopee.vn/file/7e07f670fe59ab60d9342f737202f026" alt="" class="img-product-1">
+          <img src="./image/<?= $product_detals['images_default'] ?>" alt="" class="img-product-1">
           <div class="icon-one">
             <a href=""><i class="fa-solid fa-arrow-left-long icon text-icon "></i></a>
           </div>
@@ -124,7 +124,7 @@ function showDivs(n) {
 
       </div>
       <div class="col-md-6">
-        <h2 class="text-1">iPhone 13 Pro Max</h2>
+        <!-- <h2 class="text-1">iPhone 13 Pro Max</h2>
         <div class="variant">
           <div class="variant-price">
             <span class="price_new text-1">27.790.000₫ </span>
@@ -268,7 +268,7 @@ function showDivs(n) {
                 </div>
 
 
-            </div>
+            </div> -->
             <div class="col-md-6">
                 <h2 class="text-1"><?= $product_detals['pro_name'] ?></h2>
                 <div class="variant">
@@ -449,75 +449,6 @@ function showDivs(n) {
         </div>
       </div>
       
-    </div>
-    <div class="product">
-      <h2>Phụ kiện gợi ý cho iPhone</h2>
-      <div class="row">
-        <div class="col-md-3">
-          <div class="img" style="text-align: center; width:100%">
-            <a href="">
-              <img src="https://img.websosanh.vn/v2/users/review/images/g0uimocg53p63.jpg?compress=85" alt=""
-                class="img-product ">
-            </a>
-          </div>
-          <h3 class="title-product">Ốp lưng Nhựa dẻo iPhone 13 Pro Max Sạc MagSafe</h3>
-          <div class="price-product">
-            <span class="price-new-product">950.000₫</span>
-            <span class="price-old-product">950.000₫</span>
-            <span class="discount-product">-40%</span>
-          </div>
-
-        </div>
-        <div class="col-md-3">
-          <div class="img">
-            <a href="">
-              <img src="https://img.websosanh.vn/v2/users/review/images/g0uimocg53p63.jpg?compress=85" alt=""
-                class="img-product">
-            </a>
-          </div>
-          <h3 class="title-product">Sạc không dây Apple MagSafe Duo Charger</h3>
-          <div class="price-product">
-            <span class="price-new-product">2.990.000₫</span>
-            <span class="price-old-product">3.990.000₫</span>
-            <span class="discount-product">-25%</span>
-          </div>
-
-        </div>
-        <div class="col-md-3">
-          <div class="img">
-            <a href="">
-              <img src="https://img.websosanh.vn/v2/users/review/images/g0uimocg53p63.jpg?compress=85" alt=""
-                class="img-product">
-            </a>
-          </div>
-
-          <h3 class="title-product">Pin sạc dự phòng Apple MagSafe Battery Pack</h3>
-          <div class="price-product">
-            <span class="price-new-product">2.390.000₫</span>
-            <span class="price-old-product">2.990.000₫</span>
-            <span class="discount-product">-20%</span>
-          </div>
-
-        </div>
-        <div class="col-md-3">
-          <div class="img">
-            <a href="">
-              <img src="https://img.websosanh.vn/v2/users/review/images/g0uimocg53p63.jpg?compress=85" alt=""
-                class="img-product">
-            </a>
-
-          </div>
-          <h3 class="title-product">Cáp Type C - Lightning MFI Belkin Duratex Plus F8J243 1.2m</h3>
-          <div class="price-product">
-            <span class="price-new-product">560.000₫</span>
-            <span class="price-old-product">800.000₫</span>
-            <span class="discount-product">-30%</span>
-          </div>
-
-        </div>
-
-
-      </div>
     </div>
   </div>
   
