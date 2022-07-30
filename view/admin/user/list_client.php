@@ -1,5 +1,6 @@
 
   <main>
+    <a href="index.php?id_menu=add_user" class="btn btn-primary" >add khách hàng</a>
     
     <div class="container-list-client">
       <table class="table">
@@ -37,7 +38,7 @@
               <?=$client['sdt']?>
             </td>
             <td>
-              <?=$client['pasword']?>
+              <?=$client['password']?>
             </td>
             <td>
               <?=$client['accont_balance']?>
