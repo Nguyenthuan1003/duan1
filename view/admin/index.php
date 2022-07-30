@@ -1,7 +1,8 @@
 <?php
-    include '../../model/PDO.php';
-    include  '../../model/users.php';
-    include './header.php';
+    include_once '../../model/PDO.php';
+    include_once '../../model/users.php';
+    include_once '../../model/danhmuc.php';
+    include_once './header.php';
     if(isset($_GET['id_menu'])){
         $id_menu=$_GET['id_menu'];
         switch ($id_menu) {

@@ -32,7 +32,7 @@
                         include './view/client/login.php';
                     }
                 }
-                    include './view/client/login.php';
+                    include './view/client/user/login.php';
                 break;
                 case 'registe':
                     if(isset($_POST['registe']) && $_POST['registe']){
@@ -59,7 +59,7 @@
 
                         }
                     }
-                    include './view/client/registe.php';
+                    include './view/client/user/registe.php';
                     break;
                 case 'pay':
                     $sql = "SELECT * FROM products";
@@ -83,17 +83,13 @@
                     break;
                 case 'cart':
                         $arr_cart = [];
-                        if(isset($_SESSION["cart"]))
-                        {
+                        if(isset($_SESSION["cart"])){
                            $arr_cart = $_SESSION['cart'];
-                        }
-                        else
-                        {
+                        }else{
                             $arr_cart = [];
                         };
 
-                        if(isset($_GET["id_pro"]))
-                        {
+                        if(isset($_GET["id_pro"])){
                             $arr_cart[] = $_GET["id_pro"];
                             $_SESSION["cart"] = $arr_cart ;
                         };

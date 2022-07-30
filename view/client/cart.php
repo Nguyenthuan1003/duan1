@@ -1,28 +1,27 @@
+<main>
 <article>
     <div class="pe-4 ps-4 row m-auto ">
         <section class="main_cart col-8 border mt-4 mb-4">
             <h2 class="ms-4">Giỏ Hàng</h2>
-            <?php foreach($hanghoa as $hangh): ?>
-            <?php for($i = 0 ; $i < sizeof($_SESSION['cart']) ; $i++) : ?>
-            <?php if(  $_SESSION['cart'][$i] === $hangh['id_pro'] ): ?>
+           
             <hr class="text-secondary">
             <article class="wrap_product_on_cart">
 
                 <section class="product_on_cart row">
                     <div class="info_product_on_cart col-6 row">
                         <article class="img_product_on_cart  text-align-center d-flex col-5 ">
-                            <img src="./image/<?= $hangh['images_default'] ?>" width="100px" class="m-auto" alt="">
+                            <img src="./image/" width="100px" class="m-auto" alt="">
                         </article>
                         <article class="wrap_info_product_on_cart col-6">
-                            <p class="name_product_on_cart"><?= $hangh['pro_name']  ?></p>
+                            <p class="name_product_on_cart"></p>
                             <p class="color_product_on_cart btn btn-outline-primary btn-sm rounder">màu xanh</p>
                         </article>
                     </div>
                     <div class="total_price_product_on_cart col-6 d-flex">
 
                         <div class="buttons_added col-3   m-auto">
-                            <p class="price_product_on_cart text-danger mt-2 me-5"><?= $hangh['price_default'] ?></p>
-                            <input class="price_product_default" hidden value="<?= $hangh['price_default'] ?>">
+                            <p class="price_product_on_cart text-danger mt-2 me-5"></p>
+                            <input class="price_product_default" hidden value="">
                             <!-- <input class="minus minus_product_on_cart" type="button" value="-" id="Subtraction">
                             <input class="quantity_product_on_cart p-0 text-center" type="number" value="1">
                             <input class="plus plus_product_on_cart" type="button" value="+" id="plus"> -->
@@ -32,15 +31,12 @@
                                     type="number" value="1" id="sum">
                                 <input class="plus is-form" type="button" value="+" id="plus">
                             </div>
-                            <a  href="" onclick="return confirm('Bạn có chắn chắn muôn xóa không')" class="text-danger ms-3 mt-2">xóa</a>
+                            <!-- <a  href="" onclick="return confirm('Bạn có chắn chắn muôn xóa không')" class="text-danger ms-3 mt-2">xóa</a> -->
                         </div>
                     </div>
                 </section>
                 <hr class="text-secondary">
-                <?php endif ?>
-                <?php endfor ?>
-                <?php endforeach ?>
-
+                
             </article>
         </section>
         <section class="col-3 border mt-4 mb-4 ms-5">
@@ -48,7 +44,7 @@
             <hr class="text-secondary">
             <div class="main_total_price">
                 <article class="row">
-                    <span class="col-6" id="showMoney">Tiền hàng:</span>
+                <span class="col-6" id="showMoney">Tiền hàng:</span>
                 </article>
                 <article class="row mt-2">
                     <span class="col-6">Giảm Giá:</span>
@@ -70,3 +66,4 @@
     integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="./js/cart.js"></script>
+</main>
