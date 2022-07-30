@@ -7,8 +7,14 @@
         $user = pdo_query_one($sql);
         return $user;
     }
-    function insert_user($name,$email,$parrword){
-        $sql="INSERT INTO `user`(`user_name`,`email`,`password`) VALUES('$name','$email','$parrword')";
+    function insert_user($name,$email,$parrword,$fullName,$phone,$role,$createDate){
+        if($fullName != "" && $phone != "" && $role != ""){
+            $sql = "INSERT INTO `user`(`user_name`, `full_name`, `email`, `sdt`, `password`, `role`, `created_date_user`) 
+            VALUES ('$name', $fullName', '$email', '$phone','$parrword', '$role', '$createDate')";
+        }else{
+            $sql="INSERT INTO `user`(`user_name`,`email`,`password`,`created_date_user`) 
+            VALUES('$name','$email','$parrword','$createDate')";
+        }
         pdo_execute($sql);
     }
     function select_all(){

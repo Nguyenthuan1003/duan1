@@ -48,6 +48,7 @@
                 <input type="submit" value="Thêm" name="add_pro">
                 <input type="reset" value="Nhập lại">
                 <a href=""><button>Danh sách</button></a>
+                <a href="index.php?id_menu=add_variant"><input type="submit" value="Thêm biến thể"></a>
             </div>
             <?php
                 if(isset($message)&&$message!=""){

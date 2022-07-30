@@ -2,6 +2,7 @@
     include_once '../../model/PDO.php';
     include_once '../../model/users.php';
     include_once '../../model/danhmuc.php';
+    include_once '../../model/sanpham.php';
     include_once './header.php';
     if(isset($_GET['id_menu'])){
         $id_menu=$_GET['id_menu'];
@@ -23,8 +24,12 @@
                     $dir = '../../upload/';
                     $targets =  $dir.$image['name'];
                     $imgs = ['jpg','jpeg','png'];
+                    $pro_one = select_pro_name($name);
                     $path = pathinfo($image['name'],PATHINFO_EXTENSION);
                     $er = [];
+                    if(is_array($pro_one)){
+                        $er['pro'] = $name.' đã tồn tại';
+                    }
                     if(!preg_match('/^[A-Z][\w\s][^_]+$/', $name)){
                         $er['name'] = $name.' tên sản phẩm Không hợp lệ';
                     }
@@ -73,6 +78,34 @@
             case 'type':
                 $cate = select_all_dm();
                     include_once './categories/list.php';
+                break;
+            case 'add_variant':
+                if(isset($_POST['add_variant']) && $_POST['add_variant']){
+                    $name = $_POST['name_variant'];
+                    $image = $_FILES["image_variant"];
+                    $dir = '../../upload/';
+                    $targets =  $dir.$image['name'];
+                    $imgs = ['jpg','jpeg','png'];
+                    $path = pathinfo($image['name'],PATHINFO_EXTENSION);
+                    $er = [];
+                    if(!preg_match('/^[A-Z][\w\s][^0-9_]+$/', $name)){
+                        $er['name'] = 'Tên biến thể không hợp lệ';
+                    }
+                    if($image['size'] <= 0){
+                        $er['img'] = ' Yêu cầu nhập ảnh';
+                    }
+                    if($image['size'] > 0){
+                        if(!in_array(strtolower($path),$imgs)){
+                            $er['img'] = ' Ảnh vừa nhập không đúng định dạng jpg, jpeg hoặc png';
+                        }
+                        move_uploaded_file($image['tmp_name'], $targets);
+                    }
+                    if(array_filter($er)){
+                        insert_variant($name, $targets);
+                        $message = "Biến thể đã được thêm mới";
+                    }
+                }
+                include_once './variant/add.php';
                 break;
             default:
                 # code...

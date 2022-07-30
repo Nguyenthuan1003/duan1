@@ -40,6 +40,7 @@
                         $email=$_POST['email'];
                         $password=$_POST['password'];
                         $enterThePassword=$_POST['enterThePassword'];
+                        $date = date('Y-m-d');
                         $error=[];
                         if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
                             $error['email']='email không đúng';
@@ -54,7 +55,7 @@
                             $error['enterThePassword']='mật khẩu nhập lại không đúng';
                         }
                         if(!array_filter($error)){
-                            insert_user($name,$email,$password);
+                            insert_user($name,$email,$parrword,"","","",$date);
                             $message='đăng kí thành công';
 
                         }

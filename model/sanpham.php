@@ -37,4 +37,9 @@
          VALUES ('$name','$date', '$des_pro', '$status', '$category', '$price', '$targets')";
         pdo_execute($sql);
     }
+    function select_pro_name($name){
+        $sql = "SELECT * FROM `products` WHERE pro_name='$name'";
+        // $sql = "SELECT * FROM `products` WHERE pro_name='aaa'";
+        return pdo_query_one($sql);
+    }
 ?>
