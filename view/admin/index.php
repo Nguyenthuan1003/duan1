@@ -53,10 +53,26 @@
                         insert_pro($name, $price, $status, $category, $date, $des_pro, $targets);
                         $message = 'Sản phẩm đã được thêm mới';
                     }
-                    
-
                 }
                 include_once './product/add.php';
+                break;
+            case 'add_cate':
+                if(isset($_POST['add_cate']) && $_POST['add_cate']){
+                    $cate_name = $_POST['cate_name'];
+                    $er = [];
+                    if(!preg_match('/^[A-Z][\w\s][^0-9_\s]+$/', $cate_name)){
+                        $er['name'] = 'Tên danh mục không hợp lệ';
+                    }
+                    if(!array_filter($er)){
+                        insert_cate($cate_name);
+                        $message = 'Danh mục đã được thêm mới';
+                    }
+                }
+                include_once './categories/add.php';
+                break;
+            case 'type':
+                $cate = select_all_dm();
+                    include_once './categories/list.php';
                 break;
             default:
                 # code...

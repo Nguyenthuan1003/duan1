@@ -1,13 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <title>Document</title>
-</head>
-<body>
 <main>
     <div class="container">
         <form action="" method="post" enctype="multipart/form-data">
@@ -51,7 +41,7 @@
                 </div>
                     <div class="col-md-6">
                         <p>Mô tả</p>
-                        <textarea name="des_pro" id="" cols="88" rows="8"></textarea>
+                        <textarea name="des_pro" id="" cols="65" rows="8"></textarea>
                     </div>
             </div>
             <div class="btn-form">
@@ -72,5 +62,4 @@
         </form>
     </div>
 </main>
-</body>
-</html>
+

@@ -23,7 +23,9 @@
 
                     <div class="col-md-6">
                         <div class="" id="add-row">
-                            <button type="button" class="btn btn-primary">+ add loại hàng</button>
+                            <a href="index.php?id_menu=add_cate">
+                                <button type="button" class="btn btn-primary">+ add loại hàng</button>
+                            </a>
                         </div>
 
                     </div>
@@ -41,19 +43,24 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach ($cate as $ct) : ?>
                         <tr>
-                            <th scope="row"></th>
-                            <td></td>
+                            <th scope="row"><?=$ct['id_cate']?></th>
+                            <td><?=$ct['cate_name']?></td>
                             <td>
-                                <button class="btn btn-danger" type="reset"><i class="fa-solid fa-pen"></i>
-                                </button>
-                                <button class="btn btn-danger" type="remove"><i
-                                        class="fa-solid fa-trash-can"></i></button>
-
+                                <a href="index.php?id_menu=edit_cate">
+                                    <button class="btn btn-danger" type="reset">
+                                        <i class="fa-solid fa-pen"></i>
+                                    </button>
+                                </a>
+                                <a href="index.php?id_menu=delete_cate">
+                                    <button class="btn btn-danger" type="remove">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </a>
                             </td>
-
                         </tr>
-
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
                 <div class="next-page">
