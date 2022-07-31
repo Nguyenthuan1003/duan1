@@ -34,7 +34,7 @@
                     if(!preg_match('/^[A-Z][\w\s][^_]+$/', $name)){
                         $er['name'] = $name.' tên sản phẩm Không hợp lệ';
                     }
-                    if(!preg_match('/^[\d]+$/', $price) || $price > 0){
+                    if(!preg_match('/^[\d]+$/', $price) || $price < 0){
                         $er['price'] = $price. ' giá vừa nhập không hợp lệ';
                     }
                     if(!preg_match('/^[\d]{1}$/', $status)){
@@ -53,6 +53,7 @@
                         if(!in_array(strtolower($path),$imgs)){
                             $er['img'] = ' Ảnh vừa nhập không đúng định dạng jpg, jpeg hoặc png';
                         }
+                        move_uploaded_file($image['tmp_name'],$targets);
                     }
                     if(!array_filter($er)){
                         insert_pro($name, $price, $status, $category, $date, $des_pro, $targets);
