@@ -1,8 +1,4 @@
 
-<?php
- require ('/../model/PDO.php');
- require ('/../model/client.php');
-?>
 
     <main>
         <div class="container-client">

@@ -8,13 +8,13 @@
         return $user;
     }
     function insert_user($name,$email,$parrword,$fullName,$phone,$role,$createDate){
-        if($fullName != "" && $phone != "" && $role != ""){
-            $sql = "INSERT INTO `user`(`user_name`, `full_name`, `email`, `sdt`, `password`, `role`, `created_date_user`) 
-            VALUES ('$name', $fullName', '$email', '$phone','$parrword', '$role', '$createDate')";
-        }else{
+        // if($fullName != "" && $phone != "" && $role != ""){
+        //     $sql = "INSERT INTO `user`(`user_name`, `full_name`, `email`, `sdt`, `password`, `role`, `created_date_user`) 
+        //     VALUES ('$name', $fullName', '$email', '$phone','$parrword', '$role', '$createDate')";
+        // }else{
             $sql="INSERT INTO `user`(`user_name`,`email`,`password`,`created_date_user`) 
             VALUES('$name','$email','$parrword','$createDate')";
-        }
+        // }
         pdo_execute($sql);
     }
     function select_all(){
@@ -30,6 +30,11 @@
         `sdt`='$sdt',`password`='$parrword',`accont_balance`='$accont_balance',`role`='$role',`created_date_user`='$created_data_user' WHERE id_user='$id'";
         pdo_execute($sql);
 
+    }
+    function insert_user_ad($name,$email,$parrword,$fullName,$phone,$role,$createDate){
+        $sql = "INSERT INTO `user`(`user_name`, `full_name`, `email`, `sdt`, `password`, `role`, `created_date_user`) 
+        VALUES ('$name', '$fullName', '$email', '$phone','$parrword', '$role', '$createDate')";
+        pdo_execute($sql);
     }
 
    

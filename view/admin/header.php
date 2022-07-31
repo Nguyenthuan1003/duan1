@@ -58,6 +58,7 @@
                         <li><a class="dropdown-item" href="index.php?id_menu=type">Quản Lý Loại Hàng </a></li>
                         <li><a class="dropdown-item" href="index.php?id_menu=product">Quản Lý Hàng Hóa </a></li>
                         <li><a class="dropdown-item" href="index.php?id_menu=user">Quản Lý Khách Hàng </a></li>
+                        <li><a class="dropdown-item" href="index.php?id_menu=variant">Quản Lý biến thể </a></li>
                         <li><a class="dropdown-item" href="index.php?id_menu=comment">Quản Lý Bình Luận </a></li>
                         <li><a class="dropdown-item" href="index.php?id_menu=statistic">Thống Kê </a></li>
                     </ul>
