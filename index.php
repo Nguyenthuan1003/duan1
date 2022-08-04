@@ -27,12 +27,14 @@
                     $password = $_POST['password'];
                     $user = select_one_user($email,$password);
                     if(is_array($user)){
+                        $_SESSION['user'] = $user;
                         include './main.php';
                     }else{
-                        include './view/client/login.php';
+                        include './view/client/user/login.php';
                     }
-                }
+                }else{
                     include './view/client/user/login.php';
+                }
                 break;
                 case 'registe':
                     if(isset($_POST['registe']) && $_POST['registe']){
@@ -49,7 +51,7 @@
                             $error['password']='mật khẩu yếu';
                         }
                         if(!preg_match('/^[A-Z]+[A-Za-z0-9_\-\s]*$/u',$name)){
-                            $error['name'] ='bắt buộc bằng chữ cái inhoa';
+                            $error['name'] ='bắt buộc bằng chữ cái in hoa';
                         }
                         if($password != $enterThePassword ){
                             $error['enterThePassword']='mật khẩu nhập lại không đúng';
@@ -72,6 +74,9 @@
                         include './view/client/blogs.php';
                     break;
                 case 'info-user':
+                    if(isset($_SESSION['user'])&&is_array($_SESSION['user'])){
+                        $user = $_SESSION['user'];
+                    }
                         include './view/client/user/info_user.php';
                     break;
                 case 'chitiet':
