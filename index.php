@@ -83,20 +83,100 @@
                         include './view/client/forgot_password.php';
                     break;
                 case 'cart':
-                        $arr_cart = [];
-                        if(isset($_SESSION["cart"])){
-                           $arr_cart = $_SESSION['cart'];
-                        }else{
-                            $arr_cart = [];
-                        };
 
-                        if(isset($_GET["id_pro"])){
-                            $arr_cart[] = $_GET["id_pro"];
-                            $_SESSION["cart"] = $arr_cart ;
-                        };
-                       
-                         $sql = "SELECT * FROM products";
-                        $hanghoa = pdo_query($sql) ;
+                        if(isset($_GET['id_pro']) && empty($_SESSION['id_cart'])){
+                
+                            $arr_cart = [
+                                'id' => $_GET['id_pro'],
+                                'quantity' => 1
+                                
+                            ];
+                            $_SESSION['id_cart'] = $arr_cart['id'] ;
+                            $_SESSION['quantity_pro_cart'] = $arr_cart['quantity'] ;  
+                        }
+                        else if(isset($_GET['id_pro']) && !empty($_SESSION["id_cart"])){
+                            $id_add_pro = $_GET['id_pro'];
+                            if(!is_array($_SESSION['id_cart'])){
+                                if($id_add_pro === $_SESSION['id_cart']){                 
+                                        $_SESSION["quantity_pro_cart"] += 1;
+                                }
+                                else{
+                                    $arr_cart_ = [
+                                        'id' => $id_add_pro,          
+                                    ];
+    
+                                    $arr_id_cart = array();
+                                    $arr_id_cart[] = $_SESSION['id_cart'];
+                                    $arr_id_cart [] = $arr_cart_['id'];
+                                    // push id product vào mảng
+                                    $arr_quantity_pro_cart = array();
+                                    $arr_quantity_pro_cart[] =  $_SESSION['quantity_pro_cart'];
+                                    $arr_quantity_pro_cart [] = 1 ;
+                                   
+                                    $_SESSION['id_cart'] = $arr_id_cart;
+                                    $_SESSION['quantity_pro_cart'] = $arr_quantity_pro_cart;
+                                }
+                            }else{
+                                 if(in_array($id_add_pro,$_SESSION['id_cart']))
+                                  {
+                                     for($i = 0 ; $i < count($_SESSION['id_cart']) ; $i++){
+                                      {
+                                         if($id_add_pro == $_SESSION["id_cart"][$i] )
+                                            {
+                                              $_SESSION["quantity_pro_cart"][$i] += 1 ;     
+                                            };
+                                      } 
+                                  }
+                                }
+                                  else if(!in_array($id_add_pro,$_SESSION['id_cart'])){
+                                
+                                    $arr_cart = [
+                                        'id' => $id_add_pro,
+                                        'quantity' => 1
+                                        
+                                    ];
+    
+                                    $arr_id_cart = array();
+                                    $arr_id_cart = $_SESSION['id_cart'] ;
+                                    $arr_id_cart[] = $arr_cart['id'];
+                                    // push id product vào mảng 
+    
+                                    $arr_quantity_pro_cart = array();
+                                    $arr_quantity_pro_cart =  $_SESSION['quantity_pro_cart'];
+                                    $arr_quantity_pro_cart[] = 1 ;
+                                   
+                                    $_SESSION['id_cart'] = $arr_id_cart;
+                                    $_SESSION['quantity_pro_cart'] = $arr_quantity_pro_cart;
+                                   
+    
+                                }
+                            }
+
+                            
+                        };   
+                        // lưu id product từ trang main vào session
+                        
+                        if(isset($_POST['edit_cart']) && isset($_SESSION['id_cart']) && is_array($_SESSION['id_cart']) )
+                        {
+                            $id_pro = $_POST['edit_idpro_cart'] ;
+                            $quantity_pro = $_POST['qantit_pro'];
+                            for( $i = 0 ; $i < count($_SESSION['id_cart']) ; $i++){
+                                if($_SESSION['id_cart'][$i] == $id_pro)
+                                {
+                                    $_SESSION["quantity_pro_cart"][$i] =  $quantity_pro ;
+                                }
+                            }
+                        }
+                        else if(isset($_POST['edit_cart']) && isset($_SESSION['id_cart']) && !is_array($_SESSION['id_cart']))
+                        {
+                            $id_pro = $_POST['edit_idpro_cart'] ;
+                            $quantity_pro = $_POST['qantit_pro'];
+                            $_SESSION["quantity_pro_cart"] =  $quantity_pro ;
+                        }
+                        // cập nhập số lượng trong trang cart                    
+                        
+
+                        $hanghoa = select_all_product() ;
                         include './view/client/cart.php';
                         
                     break;
@@ -111,6 +191,10 @@
                 break;
         }
     }else{
+        if(isset($_GET['id_cate']))
+        {
+            
+        }
         include './main.php';
     }
     include './footer.php';

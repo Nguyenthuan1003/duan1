@@ -9,6 +9,28 @@
         $id_menu=$_GET['id_menu'];
         switch ($id_menu) {
             case 'user':
+
+                if(isset($_POST['edit_user']))
+                {
+                    $fullname = $_POST['fullname_user'] ;
+                    $useName = $_POST['name-login'] ;
+                    $email_user = $_POST['email_user'] ;
+                    $phone =  $_POST['phone'] ;
+                    $password = $_POST['password'] ;
+                    $role =  $_POST['role'] ;
+                    $created_date_user = $_POST['created_date_user'] ;
+                    $acount_balance = $_POST['accont_balance'] ;
+                    $id =  $_POST['id_user'] ;
+                    edit_user($useName,$fullname,$email_user,$phone,$password,$acount_balance,$role,$created_date_user,$id);
+                    $mesage = "sửa khách hàng thành công";
+                };
+                if(isset($_GET['id_remove_user']))
+                {
+                    $id_remove = $_GET['id_remove_user'];
+                    delete_user($id_remove);
+                    $mesage = "xóa Khách hàng Thành công";
+                }
+
                 $user=select_all();
                 include 'user/list_client.php';
                 break;
@@ -180,6 +202,15 @@
                     }
                     include_once './user/add_client.php';
                     break;
+
+                    case "edit_user" :
+                            $id_user = $_GET['id_edit_user'];
+                            $client = select_one_user($id_user,'','');
+                            include "./user/edit_client.php" ;
+
+                    break ;
+                   
+
             default:
                 # code...
                 break;

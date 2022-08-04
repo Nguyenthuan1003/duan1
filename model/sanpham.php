@@ -32,6 +32,10 @@
         $sql = "SELECT * FROM products WHERE id_pro=".$id;
         return pdo_query($sql);
     }
+    function select_all_product(){
+        $sql = "SELECT * FROM products";
+        return pdo_query($sql);
+    }
     function insert_pro($name, $price, $status, $category, $date, $des_pro, $targets){
         $sql = "INSERT INTO `products`(`pro_name`, `created_date`, `description`, `status`, `id_cate`, `price_default`, `images_default`)
          VALUES ('$name','$date', '$des_pro', '$status', '$category', '$price', '$targets')";
