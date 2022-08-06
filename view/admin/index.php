@@ -60,6 +60,7 @@
                         }else{
                             move_uploaded_file($image['tmp_name'], $targets);
                         }
+                        move_uploaded_file($image['tmp_name'],$targets);
                     }
                     if(!array_filter($er)){
                         insert_pro($name, $price, $status, $category, $date, $des_pro, $targets);
