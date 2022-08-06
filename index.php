@@ -108,8 +108,19 @@
                 case 'recharge':
                         include './view/client/recharge.php';
                     break;
-                    case 'admin':
-                        include './view/admin/';
+                case 'search':
+                    if(isset($_GET['iddm'])){
+                        $iddm = $_GET['iddm'];
+                    }else{
+                        $iddm = '';
+                    };
+                    if(isset($_POST['btn_search'])){
+                        $key = $_POST['search'];
+                    }else{
+                        $key = '';
+                    }
+                    $ProductsHome = select_sp($key,$iddm);
+                    include './view/client/search.php';
                     break;
             default:
                 include './main.php';

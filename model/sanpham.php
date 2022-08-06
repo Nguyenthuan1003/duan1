@@ -100,7 +100,7 @@
         pdo_execute($sql);
     }
     function select_sp($keyword,$iddm){
-        $sql = "SELECT * FROM product where 1";
+        $sql = "SELECT * FROM products where 1";
         if($keyword!=""){
             $sql.=" and pro_name like '%".$keyword."%'";
         }
