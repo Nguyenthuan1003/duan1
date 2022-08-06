@@ -23,8 +23,8 @@
 
                     <div class="col-md-6">
                         <div class="" id="add-row">
-                            <a href="index.php?id_menu=add_cate">
-                                <button type="button" class="btn btn-primary">+ add loại hàng</button>
+                            <a href="index.php?id_menu=aad_product">
+                                <button type="button" class="btn btn-primary">+ add hàng hóa</button>
                             </a>
                         </div>
 
@@ -37,23 +37,33 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">ID Loai Hang</th>
-                            <th scope="col">Tên Loại Hàng</th>
+                            <th scope="col">Tên sản phẩm</th>
+                            <th scope="col">Màu sắc</th>
+                            <th scope="col">Phiên bản</th>
+                            <th scope="col">Giá</th>
+                            <th scope="col">Sale</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Tính năng đặc biệt</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($cate as $ct) : ?>
+                        <?php foreach ($var as $v) : ?>
                         <tr>
-                            <th scope="row"><?=$ct['id_cate']?></th>
-                            <td><?=$ct['cate_name']?></td>
+                            <td scope="row"><?=$v['pro_name']?></td>
+                            <td scope="row"><?=$v['color_variant']?></td>
+                            <td scope="row"><?=$v['version_variant']?></td>
+                            <td scope="row"><?=$v['price']?></td>
+                            <td scope="row"><?=$v['sale']?></td>
+                            <td scope="row"><?=$v['quantity']?></td>
+                            <td scope="row"><?=$v['special_features']?></td>
                             <td>
-                                <a href="index.php?id_menu=edit_cate&id=<?=$ct['id_cate']?>">
-                                    <button class="btn btn-danger" type="reset">
+                                <a href="index.php?id_menu=edit_pro_var&id=<?=$v['id_pro']?>&id_var=<?=$v['id_variant']?>">
+                                    <button class="btn btn-danger" type="submit">
                                         <i class="fa-solid fa-pen"></i>
                                     </button>
                                 </a>
-                                <a href="index.php?id_menu=delete_cate&id=<?=$ct['id_cate']?>">
+                                <a href="index.php?id_menu=delete_pro_var&id=<?=$v['id_pro']?>&id_var=<?=$v['id_variant']?>">
                                     <button class="btn btn-danger" type="remove">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </button>

@@ -20,6 +20,9 @@
                                 khoản</a>
                         </li>
                         <li class=""><a href="" class="li_info_user"><i class="fa fa-phone me-2"></i>Hỗ trợ</a></li>
+                        <?php if($user['role'] == 1) : ?>
+                            <li class=""><a href="./view/admin/index.php" class="li_info_user"><i class="fa-solid fa-user-tie"></i>Quản trị Admin</a></li>
+                        <?php endif; ?>
                     </ul>
                     <a href=""><button class="btn btn-primary">Đăng Xuất</button></a>
                 </article>

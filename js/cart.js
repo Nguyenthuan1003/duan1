@@ -2,7 +2,7 @@ $('input.input-qty').each(function() {
   var $this = $(this),
     qty = $this.parent().find('.is-form'),
     min = Number($this.attr('min')),
-    max = Number($this.attr('max'))
+    max = Number($this.attr('max')),
   if (min == 0) {
     var d = 0
   } else d = min
@@ -27,7 +27,7 @@ let money = document.querySelector("#money");
 let showMoney = document.querySelector('#showMoney');
 for(let i = 0; i < inner.length; i++){
   sum += Number(inner[i].textContent);
-  console.log(sum); 
+  // console.log(sum); 
 }
 for(let a = 0; a < changes.length; a++){
   changes[a].onclick = function() {

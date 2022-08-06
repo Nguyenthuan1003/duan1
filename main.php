@@ -90,7 +90,7 @@
                         <?php if(is_array($CategoriesHome)) : ?>
                         <?php foreach($CategoriesHome as $cate) : ?>
                         <tr>
-                            <td><?=$cate['cate_name']?></td>
+                            <a href="index.php?act=search&iddm=<?=$cate['id_cate']?>"><td><?=$cate['cate_name']?></td></a>
                         </tr>
                         <?php endforeach ?>
                         <?php else : ?>

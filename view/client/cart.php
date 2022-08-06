@@ -18,10 +18,9 @@
                         </article>
                     </div>
                     <div class="total_price_product_on_cart col-6 d-flex">
-
                         <div class="buttons_added col-3   m-auto">
                             <p class="price_product_on_cart text-danger mt-2 me-5"></p>
-                            <input class="price_product_default" hidden value="">
+                            <input class="price_product_default" hidden value="1">
                             <!-- <input class="minus minus_product_on_cart" type="button" value="-" id="Subtraction">
                             <input class="quantity_product_on_cart p-0 text-center" type="number" value="1">
                             <input class="plus plus_product_on_cart" type="button" value="+" id="plus"> -->

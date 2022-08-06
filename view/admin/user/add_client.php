@@ -71,7 +71,7 @@
                             <button type="button" class="btn btn-outline-primary">Nhập lại</button>
                         </a>
 
-                        <a href="">
+                        <a href="index.php?id_menu=user">
                             <button type="button" class="btn btn-outline-primary">Danh sách</button>
                         </a>
 

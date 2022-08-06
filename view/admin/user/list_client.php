@@ -44,16 +44,18 @@
               <?=$client['accont_balance']?>
             </td>
             <td>
-              <?=$client['role']?>
+              <?php if($client['role'] === 1) : ?>
+                <p>Nhân viên</p>
+              <?php else : ?>
+                <p>Khách hàng</p>
+              <?php endif; ?>
             </td>
             <td>
               <?=$client['created_date_user']?>
             </td>
-            <td><button type="button" class="btn btn-outline-success">Không</button></td>
             <td>
-              <a href="client.php?id=<?=$client['id_user']?>"><button type="button" class="btn btn-danger"><i class="fa-solid fa-pencil"></i></button></a>
-              <a href="client.php?id=<?=$client['id_user']?>"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button></a>
-
+              <a href="index.php?id_menu=edit_user&id=<?=$client['id_user']?>"><button type="button" class="btn btn-danger"><i class="fa-solid fa-pencil"></i></button></a>
+              <a href="index.php?id_menu=delete_user&id=<?=$client['id_user']?>"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button></a>
             </td>
           </tr>
           <?php endforeach;?>

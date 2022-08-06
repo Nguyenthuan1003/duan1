@@ -82,3 +82,7 @@ body {
     align-self: center;
     padding: 20PX 0PX;
 }
+.camuser{
+    user-select: none;
+    border: none;
+}

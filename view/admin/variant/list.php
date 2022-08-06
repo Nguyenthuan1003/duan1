@@ -23,8 +23,8 @@
 
                     <div class="col-md-6">
                         <div class="" id="add-row">
-                            <a href="index.php?id_menu=add_cate">
-                                <button type="button" class="btn btn-primary">+ add loại hàng</button>
+                            <a href="index.php?id_menu=aad_variant">
+                                <button type="button" class="btn btn-primary">+ Thêm Biến Thể</button>
                             </a>
                         </div>
 
@@ -37,23 +37,23 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">ID Loai Hang</th>
-                            <th scope="col">Tên Loại Hàng</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Biến thể</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($cate as $ct) : ?>
+                        <?php foreach ($variant as $var) : ?>
                         <tr>
-                            <th scope="row"><?=$ct['id_cate']?></th>
-                            <td><?=$ct['cate_name']?></td>
+                            <td scope="row"><?=$var['id_variant']?></td>
+                            <td scope="row"><?=$var['version_variant']?> <?=$var['color_variant']?></td>
                             <td>
-                                <a href="index.php?id_menu=edit_cate&id=<?=$ct['id_cate']?>">
-                                    <button class="btn btn-danger" type="reset">
+                                <a href="index.php?id_menu=edit_variant&id=<?=$var['id_variant']?>">
+                                    <button class="btn btn-danger" type="submit">
                                         <i class="fa-solid fa-pen"></i>
                                     </button>
                                 </a>
-                                <a href="index.php?id_menu=delete_cate&id=<?=$ct['id_cate']?>">
+                                <a href="index.php?id_menu=delete_variant&id=<?=$var['id_variant']?>">
                                     <button class="btn btn-danger" type="remove">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </button>
