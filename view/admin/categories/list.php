@@ -48,12 +48,12 @@
                             <th scope="row"><?=$ct['id_cate']?></th>
                             <td><?=$ct['cate_name']?></td>
                             <td>
-                                <a href="index.php?id_menu=edit_cate">
+                                <a href="index.php?id_menu=edit_cate&id=<?=$ct['id_cate']?>">
                                     <button class="btn btn-danger" type="reset">
                                         <i class="fa-solid fa-pen"></i>
                                     </button>
                                 </a>
-                                <a href="index.php?id_menu=delete_cate">
+                                <a href="index.php?id_menu=delete_cate&id=<?=$ct['id_cate']?>">
                                     <button class="btn btn-danger" type="remove">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </button>
