@@ -13,7 +13,7 @@
     <div class="row" id="row">
       <div class="col-md-6" id="colum-one">
         <div class="img_details_product">
-          <img src="./image/<?= $product_detals['images_default'] ?>" alt="" class="img-product-1">
+          <img src="./image/<?= $product_detals['images_default'] ?>" style="width:250px; height:330px;" alt="" class="img-product-1">
           <div class="icon-one">
             <a href=""><i class="fa-solid fa-arrow-left-long icon text-icon "></i></a>
           </div>
