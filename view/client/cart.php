@@ -7,9 +7,9 @@
 
                 <hr class="text-secondary">
                 <article class="wrap_product_on_cart">
-                    <?php if(isset($_SESSION['id_cart'])): ?>
+                    <?php if(isset($_SESSION['id_cart']) && !empty($_SESSION['id_cart'])): ?>
+                    <?php $a = is_array($_SESSION['id_cart'])?sizeof($_SESSION['id_cart']) : 1  ?>
                     <?php foreach($hanghoa as $hh): ?>
-                    <?php $a = is_array($_SESSION['id_cart'])?count($_SESSION['id_cart']): 1 ?>
                     <?php  for( $i = 0 ; $i < $a ; $i++): ?>
                     <?php if($_SESSION['id_cart'][$i] == $hh['id_pro']): ?>
                     <section class="product_on_cart row">
@@ -27,7 +27,8 @@
 
                                 <div class="buttons_added col-12   m-auto">
                                     <input type="hidden" name="edit_idpro_cart" value="<?= $hh['id_pro'] ?>">
-                                    <p class="price_product_on_cart text-danger mt-2 me-5"><?= $hh['price_default'] * $_SESSION['quantity_pro_cart'][$i] ?>
+                                    <input type="hidden" name="remove_idpro_cart" value="<?= $i ?>">
+                                    <p class="price_product_on_cart text-danger mt-2 me-5"><?= $hh['price_default'] * (is_array($_SESSION['quantity_pro_cart'])?$_SESSION['quantity_pro_cart'][$i] : $_SESSION['quantity_pro_cart'] ) ?>
                                     </p>
                                     <input class="price_product_default" hidden value="<?= $hh['price_default']?>">
                                     <!-- <input class="minus minus_product_on_cart" type="button" value="-" id="Subtraction">
@@ -35,12 +36,12 @@
                             <input class="plus plus_product_on_cart" type="button" value="+" id="plus"> -->
                                     <div class="buttons_added">
                                         <input class="minus is-form" type="button" value="-" id="Subtraction">
-                                        <input aria-label="quantity" class="input-qty" max="100000" min="1" name="qantit_pro"
-                                            type="number" value="<?= $_SESSION['quantity_pro_cart'][$i] ?>" >
+                                        <input  class="input-qty" max="100000" min="1" mix="<?= (is_array($_SESSION['quantity_pro_cart'])?$_SESSION['quantity_pro_cart'][$i] : $_SESSION['quantity_pro_cart'] ) ?>" name="qantit_pro"
+                                            type="number" value="<?= (is_array($_SESSION['quantity_pro_cart'])?$_SESSION['quantity_pro_cart'][$i] : $_SESSION['quantity_pro_cart'] ) ?>" >
                                         <input class="plus is-form" type="button" value="+" id="plus">
                                     </div>
                                     <input type="submit" name="edit_cart" class="btn btn-primary" value="cập nhập">
-                                    <button class="btn btn-danger ms-2" type="submit">xóa</button>
+                                    <input type="submit" name="remove_cart" class="btn btn-danger ms-2" value="xóa">
                                 </div>
                             </form>
                         </div>
@@ -68,12 +69,12 @@
                 </div>
                 <hr class="text-secondary">
                 <article class="row">
-                    <span class="col-6" id="money">Tạm Tính :</span>
+                    <span class="col-4" id="money">Tạm Tính :</span>
                 </article>
                 <article class="row mt-3 pe-2 ps-2">
                     <a href="index.php" class="btn btn-outline-secondary col-12 btn-sm ">Tiếp Tục Mua Hàng</a>
-                    <button type="submit" name="submit_pay_on_cart" class="btn btn-danger col-12 btn-sm mt-2 ">Tiến Hành
-                        Đặt Hàng</button>
+                    <a href="index.php?act=pay" name="submit_pay_on_cart" class="btn btn-danger col-12 btn-sm mt-2 ">Tiến Hành
+                        Đặt Hàng</a>
                 </article>
             </section>
         </div>
