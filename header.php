@@ -41,6 +41,17 @@
         <div class="icon"> 
           <a href="index.php?act=cart"><i class="fa-solid fa-cart-shopping" id="icon"></i></a> 
         </div>
+        <?php if(isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
+          <div class="mt-3 mb-2">
+            <section class="ms-2"><i class="fa fa-user"></i>
+            <span><?= $_SESSION['user']['user_name'] ?></span>
+           </section>
+            <section>
+              <a href="index.php?act=info-user" class="btn btn-outline-primary btn-sm">chi tiết tài khoản</a>
+              <a href="" class="btn btn-outline-danger btn-sm">log out</a>
+            </section>
+          </div>
+          <?php else :  ?>
        <form class="form">
           <div class="login">
             <a href="index.php?act=login">
@@ -53,5 +64,6 @@
          </div>
          
        </form>
+       <?php endif ?>
  </div>
 
