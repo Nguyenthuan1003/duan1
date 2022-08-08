@@ -22,12 +22,14 @@
         return pdo_query($sql);
     }
     function delete_user($id){
-        $sql="DELETE FROm user WHERE id_user=".$id;
+        $sql="DELETE FROM user WHERE id_user=".$id;
         pdo_execute($sql);
     }
     function edit_user($name,$full_name,$email,$sdt,$parrword,$accont_balance,$role,$created_data_user,$id){
-        $sql="UPDATE `user` SET `user_name`='$name',`full_name`='$full_name',`email`='$email',
-        `sdt`='$sdt',`password`='$parrword',`accont_balance`='$accont_balance',`role`='$role',`created_date_user`='$created_data_user' WHERE id_user='$id'";
+        $sql="UPDATE `user` SET `user_name`='".$name."',`full_name`='".$full_name."',`email`='".$email."',
+        `sdt`='".$sdt."',`password`='".$parrword."',`accont_balance`='".$accont_balance."',
+        `role`=".$role.",`created_date_user`='".$created_data_user."' WHERE id_user='".$id."'";
+        // echo $sql;die;
         pdo_execute($sql);
 
     }
@@ -35,6 +37,10 @@
         $sql = "INSERT INTO `user`(`user_name`, `full_name`, `email`, `sdt`, `password`, `role`, `created_date_user`) 
         VALUES ('$name', '$fullName', '$email', '$phone','$parrword', '$role', '$createDate')";
         pdo_execute($sql);
+    }
+    function select_one_ad($id){
+        $sql = "SELECT * FROM user WHERE id_user=".$id;
+        return pdo_query_one($sql);
     }
 
    
