@@ -43,7 +43,7 @@
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="./image/Rectangle 123.png" class="d-block w-100" alt="...">
+                    <img src="./image/namthuymobile-banner-01.png" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
                     <img src="./image/Rectangle 123.png" class="d-block w-100" alt="...">
@@ -55,7 +55,7 @@
         </div>
     </div>
     <!-- end banner -->
-    <div class="container">
+    <div class="containers">
         <!-- filter -->
         <div class="head-filter">
             <div class="row" style="width: 100%;">
@@ -72,9 +72,9 @@
                 </div>
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
-                    <form class="d-inline-flex end" role="search" method="post">
-                        <input class="me-2" type="search" placeholder="Tìm kiếm">
-                        <button class="btn btn-primary" type="submit">Search</button>
+                    <form action="index.php?act=search" class="d-inline-flex end" role="search" method="post">
+                        <input class="me-2" type="search" placeholder="Tìm kiếm" name="search">
+                        <button class="btn btn-primary" type="submit" name="btn_search">Search</button>
                     </form>
                 </div>
             </div>
@@ -90,7 +90,7 @@
                         <?php if(is_array($CategoriesHome)) : ?>
                         <?php foreach($CategoriesHome as $cate) : ?>
                         <tr>
-                            <td><a href="index.php?id_cate=<?= $cate['id_cate'] ?>"><?=$cate['cate_name']?></a></td>
+                            <td><a href="index.php?act=search&iddm=<?=$cate['id_cate']?>"><?=$cate['cate_name']?></a></td>
                         </tr>
                         <?php endforeach ?>
                         <?php else : ?>
@@ -168,7 +168,6 @@
             <!-- open products -->
             <div class="col-xl-9 contain_product">
                 <div class="row gy-4">
-
                     <?php foreach($ProductsHome as $product): ?>
                     <div class="col-xl-3 col-sm-6 ">
                         <div class="product-gap product_ bg-white rounded-3 p-3" style="max-width:100% ;">
