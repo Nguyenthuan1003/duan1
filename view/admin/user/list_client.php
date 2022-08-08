@@ -1,7 +1,6 @@
-
-  <main>
+<main>
     <a href="index.php?id_menu=add_user" class="btn btn-primary" >add khách hàng</a>
-    <p class="text-danger mt-3"><?= isset($mesage)? $mesage :""?></p>
+    
     <div class="container-list-client">
       <table class="table">
         <thead>
@@ -26,12 +25,11 @@
               <?=$client['id_user']?>
             </td>
             <td>
-              <?=$client['full_name']?>
-            </td>
-            <td>
               <?=$client['user_name']?>
             </td>
-            
+            <td>
+              <?=$client['full_name']?>
+            </td>
             <td>
               <?=$client['email']?>
             </td>
@@ -45,15 +43,18 @@
               <?=$client['accont_balance']?>
             </td>
             <td>
-              <?= ($client['role']== 1)?"Admin" : "khách hàng"?>
+              <?php if($client['role'] === 1) : ?>
+                <p>Nhân viên</p>
+              <?php else : ?>
+                <p>Khách hàng</p>
+              <?php endif; ?>
             </td>
             <td>
               <?=$client['created_date_user']?>
             </td>
             <td>
-              <a href="index.php?id_menu=edit_user&id_edit_user=<?=$client['id_user']?>"><button type="button" class="btn btn-danger btn-sm"><i class="fa-solid fa-pencil"></i></button></a>
-              <a href="index.php?id_menu=user&id_remove_user=<?=$client['id_user']?>"><button type="button" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-can"></i></button></a>
-
+              <a href="index.php?id_menu=edit_user&id=<?=$client['id_user']?>"><button type="button" class="btn btn-danger"><i class="fa-solid fa-pencil"></i></button></a>
+              <a href="index.php?id_menu=delete_user&id=<?=$client['id_user']?>"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button></a>
             </td>
           </tr>
           <?php endforeach;?>
