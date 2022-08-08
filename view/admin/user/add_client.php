@@ -1,5 +1,4 @@
-
-    <main>
+<main>
         <div class="container-client">
             
             <div class="add-client-1">
@@ -8,9 +7,9 @@
                 </a>
             </div>
             <div>
-                <p class="text-danger ">
+                <span>
                     <?= isset($mesages) ? $mesages : "" ?>
-                </p>
+                </span>
             </div>
             <form action="" method="post">
                 <div class="row">
@@ -71,7 +70,7 @@
                             <button type="button" class="btn btn-outline-primary">Nhập lại</button>
                         </a>
 
-                        <a href="">
+                        <a href="index.php?id_menu=user">
                             <button type="button" class="btn btn-outline-primary">Danh sách</button>
                         </a>
 
@@ -83,5 +82,3 @@
 
 
     </main>
-
-
