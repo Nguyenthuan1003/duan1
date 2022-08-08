@@ -53,16 +53,23 @@
           </div>
           <?php else :  ?>
        <form class="form">
-          <div class="login">
+          <?php if(isset($_SESSION['user'])&&is_array($_SESSION['user'])) : ?>
+            <div class="user">
+              <a href="index.php?act=info-user&id=<?=$_SESSION['user']['id_user']?>">
+                <span class="p-2">Xin chào</span>
+                <span><?=$_SESSION['user']['user_name']?></span>
+              </a>
+            </div>
+          <?php else : ?>
+          <div class="login">  
             <a href="index.php?act=login">
               <button type="button" class="btn btn-outline-primary">Đăng nhập </button>
             </a>
           </div>
          <div class="register">
             <a href="index.php?act=registe"> <button type="button" class="btn btn-outline-danger">Đăng kí</button></a>
-          
          </div>
-         
+         <?php endif; ?>
        </form>
        <?php endif ?>
  </div>

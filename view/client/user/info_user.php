@@ -5,7 +5,7 @@
                 <article style="height:310px;" class="border shadow p-3 mb-2 bg-body rounded change_pass_menu_user  d-block  ">
                     <h4 style="font-size:20px" class="title_wrap_info_user text-primary mb-4 ">Chức năng</h4>
                     <ul class="" style="list-style-type:none">
-                        <li class=""><a href="" class="li_info_user"><i class="fa fa-house me-2"></i>Trang chủ</a></li>
+                        <li class=""><a href="index.php" class="li_info_user"><i class="fa fa-house me-2"></i>Trang chủ</a></li>
                         <li class=""><a href="" class="li_info_user"><i class=" fa fa-heart me-2"></i>Sản phẩm yêu
                                 thích</a>
                         </li>
@@ -20,8 +20,11 @@
                                 khoản</a>
                         </li>
                         <li class=""><a href="" class="li_info_user"><i class="fa fa-phone me-2"></i>Hỗ trợ</a></li>
+                        <?php if($user['role'] == 1) : ?>
+                            <li class=""><a href="./view/admin/index.php" class="li_info_user"><i class="fa-solid fa-user-tie"></i>Quản trị Admin</a></li>
+                        <?php endif; ?>
                     </ul>
-                    <button class="btn btn-primary">Đăng Xuất</button>
+                    <a href=""><button class="btn btn-primary">Đăng Xuất</button></a>
                 </article>
             </article>
             <article class="col-6">
@@ -32,6 +35,7 @@
                             <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
                             <div class="col-sm-9">
                                 <input type="email" class="form-control" id="inputEmail3" disabled value="<?= $_SESSION['user']['email'] ?>">
+                                <input type="email" class="form-control" id="inputEmail3" value="<?=isset($user['email']) ? $user['email'] : ''?>">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -62,18 +66,21 @@
                             <label for="inputEmail3" class="col-sm-3 col-form-label">Email :</label>
                             <div class="col-sm-9 m-auto">
                                 <strong><?= $_SESSION['user']['email'] ?></strong>
+                                <strong><?=isset($user['email']) ? $user['email'] : ''?></strong>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputPassword3" class="col-sm-3 col-form-label">Số Dư :</label>
                             <div class="col-sm-9 m-auto">
                             <strong>0đ</strong>
+                            <strong><?=isset($user['accont_balance']) ? $user['accont_balance'] : ''?></strong>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputPassword3" class="col-sm-3 col-form-label">Ngày Tạo :</label>
                             <div class="col-sm-9 m-auto">
                             <strong><?= $_SESSION['user']['created_date_user'] ?></strong>
+                            <strong><?=isset($user['created_date_user']) ? $user['created_date_user'] : ''?></strong>
                             </div>
                         </div>
                         <div class="row mb-3">

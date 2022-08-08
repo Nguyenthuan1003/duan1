@@ -58,22 +58,22 @@ body {
     color: dimgray;
     font-size: 20px;
     position: absolute;
-    top: 30px;
-    right: 220px;
+    top: 20px;
+    right: 200px;
 }
 
 #bell_addmin {
     font-size: 20px;
     position: absolute;
-    top: 30px;
-    right: 150px;
+    top: 20px;
+    right: 120px;
 }
 
 #setting_header_addmin {
     font-size: 20px;
     position: absolute;
-    top: 30px;
-    right: 100px;
+    top: 20px;
+    right: 80px;
 }
 
 .meu-ul-li {
@@ -82,4 +82,8 @@ body {
     justify-content: space-around;
     align-self: center;
     padding: 20PX 0PX;
+}
+.camuser{
+    user-select: none;
+    border: none;
 }
