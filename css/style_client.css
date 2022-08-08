@@ -137,8 +137,8 @@ main {
 
 .agree {
     border: 1px solid #E95851;
-    margin: 20px 0;
-    width: 95%;
+    margin: 20px 11px;
+    width: 92.5%;
     padding: 10px;
 }
 
@@ -149,8 +149,9 @@ main {
 
 .bull {
     border: 1px solid #cccccc;
+    margin: 0px 11px;
     margin-bottom: 20px;
-    width: 95%;
+    width: 92.5%;
     padding: 10px;
 }
 
@@ -159,8 +160,10 @@ main {
 }
 
 .btn-pay input {
-    flex: 1;
-    padding: 10px 0;
+   
+    margin-bottom: 20px;
+    width: 100%;
+    
 }
 
 .price {
@@ -204,8 +207,8 @@ main {
     color: #E95851;
 }
 
-.container {
-    padding-top: 30px;
+.containers {
+    padding: 30px;
     /* background-color: #fff; */
 }
 
@@ -317,6 +320,7 @@ main {
 }
 
 .img_details_product {
+    
     text-align: center;
     padding: 20px 0px;
 
@@ -355,14 +359,9 @@ main {
 }
 
 .product-image {
-    height: 200px;
+    height: 150px;
     text-align: center;
 }
-
-.product-image img {
-    max-height: 100%;
-}
-
 h4 {
     font-size: 14px;
 }
@@ -382,8 +381,8 @@ h3 {
     border-radius: 50%;
     padding: 12px 0px 5px 5px;
     position: absolute;
-    top: 340px;
-    left: 4%;
+    top: 220px;
+    left: 10%;
 
 
 }
@@ -399,8 +398,8 @@ h3 {
     border-radius: 50%;
     padding: 12px 0px 5px 5px;
     position: absolute;
-    top: 340px;
-    left: 630px;
+    top: 220px;
+    left: 580px;
 
 }
 
