@@ -31,7 +31,7 @@
                         <div class="row mb-3">
                             <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
                             <div class="col-sm-9">
-                                <input type="email" class="form-control" id="inputEmail3">
+                                <input type="email" class="form-control" id="inputEmail3" disabled value="<?= $_SESSION['user']['email'] ?>">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -46,7 +46,7 @@
                                 <input type="password" class="form-control" id="inputPassword3">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Sign in</button>
+                        <button type="submit" class="btn btn-primary">Đổi</button>
                     </form>
                 </article>
             </article>
@@ -61,19 +61,19 @@
                         <div class="row mb-3">
                             <label for="inputEmail3" class="col-sm-3 col-form-label">Email :</label>
                             <div class="col-sm-9 m-auto">
-                                <strong>duan1_team4@fpt.edu.vn</strong>
+                                <strong><?= $_SESSION['user']['email'] ?></strong>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputPassword3" class="col-sm-3 col-form-label">Số Dư :</label>
                             <div class="col-sm-9 m-auto">
-                            <strong>1000000đ</strong>
+                            <strong>0đ</strong>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputPassword3" class="col-sm-3 col-form-label">Ngày Tạo :</label>
                             <div class="col-sm-9 m-auto">
-                            <strong>11/1/2022</strong>
+                            <strong><?= $_SESSION['user']['created_date_user'] ?></strong>
                             </div>
                         </div>
                         <div class="row mb-3">
