@@ -23,7 +23,7 @@
                     </select>
                 </div>
                 <div class="col-md-6">
-                    <p>Tên loại hàng</p>
+                    <p>Danh mục</p>
                     <select name="category_pro" id="" class="form-control">
                         <option value="" hidden></option>
                         <?php foreach($cate as $ct) : ?>

@@ -4,6 +4,7 @@
     include_once '../../model/danhmuc.php';
     include_once '../../model/sanpham.php';
     include_once '../../model/variant.php';
+    include_once '../../model/statistics.php';
     include_once './header.php';
     if(isset($_GET['id_menu'])){
         $id_menu=$_GET['id_menu'];
@@ -36,7 +37,7 @@
                     if(is_array($pro_one)){
                         $er['pro'] = $name.' đã tồn tại';
                     }
-                    if(!preg_match('/^[A-Z][\w\s][^_]+$/', $name)){
+                    if(!preg_match('/^[A-Za-z][\w\s][^_]+$/', $name)){
                         $er['name'] = $name.' tên sản phẩm Không hợp lệ';
                     }
                     if(!preg_match('/^[\d]+$/', $price) || $price < 0){
@@ -457,8 +458,8 @@
                                 if(!in_array(strtolower($path),$imgs)){
                                     $er['images'] = 'Ảnh không đúng định dạng';
                                 }else{
-                                    move_uploaded_file($image_variant['tmp_name'][$na],$dir.$val);
                                     if(!array_filter($er)){
+                                        move_uploaded_file($image_variant['tmp_name'][$na],$dir.$val);
                                         insert_img_var($product,$variant,$val);
                                     }
                                 }
@@ -466,6 +467,8 @@
                             if(!array_filter($er)){
                                 insert_variant_pro($product,$variant,$quantity_variant,$price_variant,$sale_variant,$special_features);
                                 $mesages = "Thêm biến thể thành công";
+                                $variant = select_all_variant();
+                                $product = select_all_pro();
                             }
                         }
                         include_once './product/add_variant.php';
@@ -557,6 +560,77 @@
                         $var = select_all_pro_var();
                         include_once './product/list_variant.php';
                     }
+                    break;
+                case 'productStatistics':
+                    if(isset($_POST['month_btn'])){
+                        $date = $_POST['month'];
+                        $product_cate = Statistics_cate_pro($date);
+                    }else{
+                        $date = date('Y-m');
+                        $product_cate = Statistics_cate_pro($date);
+                    }
+                    include_once './statistics/product.php';
+                    break;
+                case 'chartPro':
+                    $date = $_GET['date'];
+                    if($date != ''){
+                        $product_cate = Statistics_cate_pro($date);
+                    }else{
+                        $product_cate = Statistics_cate_pro('');
+                    }
+                    include_once './statistics/proChart.php';
+                    break;
+                case 'userStatistics':
+                    if(isset($_POST['month_btn'])){
+                        $date = $_POST['month'];
+                        $user = statistics_user($date);
+                    }else{
+                        $date = date('Y-m');
+                        $user = statistics_user($date);
+                    }
+                    include_once './statistics/userStatistics.php';
+                    break;
+                case 'chartuser':
+                    $date = $_GET['date'];
+                    $df = 0;
+                    if($date != ''){
+                        $user = statistics_user($date);
+                    }else{
+                        $user = statistics_user('');
+                    }
+                    // for ($j=0; $j < count($user); $j++) { 
+                        
+                        for($i = 1; $i <= 12; $i++){
+                            if($i==12) $sign=""; else $sign=",";
+                            for ($j=0; $j < count($user);$j++){
+                                if($i < 10 ){
+                                    $s = "0$i";
+                                    // echo $s;
+                                    // echo substr($user[$j]['created_date_user'],5,2);
+                                    if(($s == substr($user[$j]['created_date_user'],5,2))){
+                                        echo "['".$i."', ".$user[$j]['sums']."]".$sign;
+                                        echo $j;
+                                        // $j++;
+                                    }else{
+                                        echo "['".$i."', ".$df." ]".$sign;
+                                        $j++;
+                                    }
+                                }else{
+                                    // echo $i;
+                                    if($i == substr($user[$j]['created_date_user'],5,2)){
+                                        echo "['".$i."', ".$user[$j]['sums']."]".$sign;
+                                    }else{
+                                        echo "['".$i."', ".$df." ]".$sign;
+                                        
+                                    }
+                                }
+                                continue;
+                        }
+                            // }
+                        }
+                    echo '<pre>';
+                    print_r($user);
+                    include_once './statistics/chartUser.php';
                     break;
             default:
                 # code...

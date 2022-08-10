@@ -1,19 +1,12 @@
-<?php 
-        if(isset($_GET['id_pro'])){
-           $id_product_details = $_GET['id_pro'];
-           $sql = "SELECT * FROM products where id_pro =$id_product_details";
-           $product_detals =  pdo_query_one($sql);
-        }
-
-
-?>
-
+<?php
+      extract($pro);
+    ?>
 <main style="background:#696969;">
 <div class="container">
     <div class="row" id="row">
       <div class="col-md-6" id="colum-one">
         <div class="img_details_product">
-          <img src="./image/<?= $product_detals['images_default'] ?>" alt="" class="img-product-1">
+          <img src="./image/<?= $pro['images_default'] ?>" alt="" class="img-product-1">
           <div class="icon-one">
             <a href=""><i class="fa-solid fa-arrow-left-long icon text-icon "></i></a>
           </div>
@@ -107,9 +100,6 @@ function showDivs(n) {
 
 
         </div>
-        <?php
-      extract($pro);
-    ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
                 <script>
                     $(document).ready(function(){
@@ -270,10 +260,10 @@ function showDivs(n) {
 
             </div> -->
             <div class="col-md-6">
-                <h2 class="text-1"><?= $product_detals['pro_name'] ?></h2>
+                <h2 class="text-1"><?= $pro['pro_name'] ?></h2>
                 <div class="variant">
                     <div class="variant-price">
-                        <span class="price_new text-1"><?= $product_detals['price_default'] ?>₫ </span>
+                        <span class="price_new text-1"><?= $pro['price_default'] ?>₫ </span>
                         <span class="price_old text-1">33.990.000₫</span>
                         <span class="discount text-1">-18%</span>
                         <h4 class="text-1">Dung lượng</h4>

@@ -28,7 +28,8 @@
                     $user = select_one_user($email,$password);
                     if(is_array($user)){
                         $_SESSION['user'] = $user;
-                        include './main.php';
+                        header('Location:index.php');
+                        die;
                     }else{
                         include './view/client/user/login.php';
                     }
@@ -121,6 +122,13 @@
                     }
                     $ProductsHome = select_sp($key,$iddm);
                     include './view/client/search.php';
+                    break;
+                case 'logout':
+                    if(isset($_SESSION['user'])){
+                        session_destroy();
+                        header('Location:index.php');
+                        die;
+                    }
                     break;
             default:
                 include './main.php';

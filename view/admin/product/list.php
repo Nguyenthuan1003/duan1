@@ -52,7 +52,7 @@
                         <?php foreach ($product as $pro) : ?>
                         <tr>
                             <td scope="row"><?=$pro['id_pro']?></td>
-                            <td scope="row"><img src="../../image/<?=$pro['images_default']?>" alt="anh" widtd="100%"></td>
+                            <td scope="row"><img src="<?=$pro['images_default']?>" alt="anh" width="100px"></td>
                             <td scope="row"><?=$pro['pro_name']?></td>
                             <td scope="row"><?=$pro['created_date']?></td>
                             <td scope="row"><?=$pro['price_default']?></td>

@@ -1,7 +1,7 @@
 <?php
     function insert_bl($noidung,$ma_hh,$ma_kh,$ngay_bl){
-        $sql="INSERT INTO `comment`(`id_comment`, `id_pro`, `id_user`, `created_date_comment`, `description_comment`) 
-        VALUES('$noidung','$ma_hh','$ma_kh','$ngay_bl')";
+        $sql="INSERT INTO `comment`( `id_pro`, `id_user`, `created_date_comment`, `description_comment`) 
+        VALUES('$ma_hh','$ma_kh','$ngay_bl','$noidung')";
         pdo_execute($sql);
     }
     function select_bl($id){

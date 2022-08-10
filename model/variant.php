@@ -11,7 +11,7 @@
     }
     function insert_img_var($id_pro,$id_var,$img){
         $sql = "INSERT INTO `images_products_attribute`(`id_pro`, `id_variant`, `images_pro_attri`) 
-        VALUES('$id_pro', '$id_var', $img')";
+        VALUES('$id_pro', '$id_var', '$img')";
         pdo_execute($sql);
     }
     function insert_variant_pro($pro,$var,$quantity,$price,$sale,$special){
