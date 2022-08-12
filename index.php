@@ -426,6 +426,13 @@
                     case 'admin':
                         include './view/admin/';
                     break;
+                case 'logout':
+                    if(isset($_SESSION['user'])){
+                        session_destroy();
+                        header('Location:index.php');
+                        die;
+                    }
+                    break;
             default:
                 include './main.php';
                 break;

@@ -2,6 +2,7 @@
     include_once '../../../model/PDO.php';
     include_once '../../../model/comment.php';
     $idPro = $_REQUEST['idproduct'];
+    // echo $idPro;
     $listbl = select_bl($idPro);
 ?>
 <!DOCTYPE html>
@@ -20,9 +21,9 @@
             foreach ($listbl as $bl){
                 extract($bl);
                 echo '<tr>
-                        <td>'.$noi_dung.'</td>
-                        <td>'.$user.'</td>
-                        <td>'.$ngay_bl.'</td>
+                        <td>'.$description_comment.'</td>
+                        <td>'.$user_name.'</td>
+                        <td>'.$created_date_comment.'</td>
                     </tr>';
             }
         ?>
@@ -36,8 +37,13 @@
         if(isset($_POST['addbl'])&&($_POST['addbl'])){
             $noidung = $_POST['msg'];
             $ma_hh = $_POST['id'];
-            $ma_kh = $_SESSION['user']['id'];
+            if(isset($_SESSION['user'])){
+                $ma_kh = $_SESSION['user']['id'];
+            }else{
+                $ma_kh = 3;
+            }
             $ngay_bl = date('h:i:sa d/m/Y');
+            // die;
             insert_bl($noidung,$ma_hh,$ma_kh,$ngay_bl);
             header('Location: '.$_SERVER['HTTP_REFERER']);
         }

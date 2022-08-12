@@ -4,6 +4,8 @@
     include_once '../../model/danhmuc.php';
     include_once '../../model/sanpham.php';
     include_once '../../model/variant.php';
+    include_once '../../model/statistics.php';
+    include_once '../../model/comment.php';
     include_once './header.php';
     if(isset($_GET['id_menu'])){
         $id_menu=$_GET['id_menu'];
@@ -36,7 +38,7 @@
                     if(is_array($pro_one)){
                         $er['pro'] = $name.' đã tồn tại';
                     }
-                    if(!preg_match('/^[A-Z][\w\s][^_]+$/', $name)){
+                    if(!preg_match('/^[A-Za-z][\w\s][^_]+$/', $name)){
                         $er['name'] = $name.' tên sản phẩm Không hợp lệ';
                     }
                     if(!preg_match('/^[\d]+$/', $price) || $price < 0){
@@ -559,6 +561,109 @@
                         delete_pro_var($_GET['id'],$_GET['id_var']);
                         $var = select_all_pro_var();
                         include_once './product/list_variant.php';
+                    }
+                    break;
+                case 'productStatistics':
+                    if(isset($_POST['month_btn'])){
+                        $date = $_POST['month'];
+                        $product_cate = Statistics_cate_pro($date);
+                    }else{
+                        $date = date('Y-m');
+                        $product_cate = Statistics_cate_pro($date);
+                    }
+                    include_once './statistics/product.php';
+                    break;
+                case 'chartPro':
+                    $date = $_GET['date'];
+                    if($date != ''){
+                        $product_cate = Statistics_cate_pro($date);
+                    }else{
+                        $product_cate = Statistics_cate_pro('');
+                    }
+                    include_once './statistics/proChart.php';
+                    break;
+                case 'userStatistics':
+                    if(isset($_POST['month_btn'])){
+                        $date = $_POST['month'];
+                        $user = statistics_user($date);
+                    }else{
+                        $date = date('Y-m');
+                        $user = statistics_user($date);
+                    }
+                    include_once './statistics/userStatistics.php';
+                    break;
+                case 'chartuser':
+                    $date = $_GET['date'];
+                    $df = 0;
+                    if($date != ''){
+                        $user = statistics_user($date);
+                    }else{
+                        $user = statistics_user('');
+                    }
+                    // for ($j=0; $j < count($user); $j++) { 
+                        
+                        // for($i = 1; $i <= 12; $i++){
+                        //     if($i==12) $sign=""; else $sign=",";
+                        //     for ($j=0; $j < count($user);$j++){
+                        //         if($i < 10 ){
+                        //             $s = "0$i";
+                        //             // echo $s;
+                        //             // echo substr($user[$j]['created_date_user'],5,2);
+                        //             if(($s == substr($user[$j]['created_date_user'],5,2))){
+                        //                 echo "['".$i."', ".$user[$j]['sums']."]".$sign;
+                        //                 echo $j;
+                        //                 // $j++;
+                        //             }else{
+                        //                 echo "['".$i."', ".$df." ]".$sign;
+                        //                 // $j++;
+                        //             }
+                        //         }else{
+                        //             // echo $i;
+                        //             if($i == substr($user[$j]['created_date_user'],5,2)){
+                        //                 echo "['".$i."', ".$user[$j]['sums']."]".$sign;
+                        //             }else{
+                        //                 echo "['".$i."', ".$df." ]".$sign;
+                                        
+                        //             }
+                        //         }
+                        // }
+                        // continue;
+                        // if($i <= count($user)){
+                        //     if($user[$i]['sums'] > 0){
+                        //         $a = $i+1;
+                        //         echo "['".$a."', ".$user[$i]['sums']."]".$sign;
+                        //     }else{
+                        //         $a = $i+1;
+                        //         echo "['".$a."', ".$df." ]".$sign;
+                        //     }
+                        // }else{
+                        //     $a = $i+1;
+                        //     echo "['".$a."', ".$df." ]".$sign;
+                        // }
+                            // }
+                        // }
+                    // echo '<pre>';
+                    // print_r($user);
+                    include_once './statistics/chartUser.php';
+                    break;
+                case 'comment':
+                    $comments = synthetic_bl();
+                    include_once './comment/listpro.php';
+                    break;
+                case 'comment_pro':
+                    if(isset($_GET['id'])){
+                        $id = $_GET['id'];
+                        $comment = select_bl($id);
+                        include_once './comment/list.php';
+                    }
+                    break;
+                case 'delete_comment':
+                    if(isset($_GET['id'])){
+                        $id = $_GET['id'];
+                        $id_pro = $_GET['id_pro'];
+                        delete_bl($id);
+                        $comment = select_bl($id_pro);
+                        include_once './comment/list.php';
                     }
                     break;
             default:

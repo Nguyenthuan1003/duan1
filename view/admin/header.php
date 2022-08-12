@@ -60,7 +60,23 @@
                         <li><a class="dropdown-item" href="index.php?id_menu=user">Quản Lý Khách Hàng </a></li>
                         <li><a class="dropdown-item" href="index.php?id_menu=variant">Quản Lý biến thể </a></li>
                         <li><a class="dropdown-item" href="index.php?id_menu=comment">Quản Lý Bình Luận </a></li>
-                        <li><a class="dropdown-item" href="index.php?id_menu=statistic">Thống Kê </a></li>
+                        <!-- <li><a class="dropdown-item" href="index.php?id_menu=statistic">Thống Kê </a></li> -->
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle" href="index.php?id_menu=statistic" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Thống kê
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="index.php?id_menu=productStatistics">Thống kê hàng hóa</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="index.php?id_menu=userStatistics">Thống kê người dùng</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="commentStatistics">Thống kê bình luận</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="turnoverStatistics">Thống kê doanh thu</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="orderStatistics">Thống kê đơn hàng</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
 </div>
