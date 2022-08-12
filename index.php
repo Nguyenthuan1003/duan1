@@ -11,6 +11,7 @@
     include './model/users.php';
     include "./model/voucher.php";
     include "./model/order.php";
+    include "./model/variant.php";
     $CategoriesHome = select_all_dm();
     $ProductsHome = select_page_home();
     $Curent_Page = 1 ;
@@ -220,94 +221,144 @@
                 case 'chitiet':
                         $id = $_GET['id_pro'];
                         $pro = load_one_pro($id);
+                        $var = select_id_variant_with_id_pro($id);
+                        if(!isset($_GET['version']) && !empty($var) && !isset($_GET['versions']) && !isset($_GET['color']) && !isset($_GET['colors'])  ){
+                        
+                        $img_var = select_img_variant_with_id_variant($id,$var[0]['id_variant']);
+                        $version = select_version_variant($id);
+                        $color = select_color_variant($id) ; }
+                        else if(isset($_GET['version'])&&isset($_GET['color']))
+                        {
+                            $versions = $_GET['version'] ;
+                            $color = $_GET['color'];
+                            $pro_attri = select_pro_with_idpro_and_version_and_color_variant($id,$versions,$color);
+                            $img_var = select_img_variant_with_id_variant($id,$pro_attri[0]['id_variant']);
+                            $version = select_version_variant($id);
+                            $color = select_color_variant($id) ;
+                        }
+                        else if(empty($var))
+                        {
+                            
+                        }
                         include './view/client/detail_product.php';
                     break;
                 case 'quen_mat_khau':
                         include './view/client/forgot_password.php';
                     break;
                 case 'cart':
-
-                        if(isset($_GET['id_pro']) && empty($_SESSION['id_cart'])){
-                
+    
+                        if(isset($_POST['add_to_cart']) && isset($_GET['id_pro']) && !isset($_SESSION['id_cart']) && empty($_SESSION['id_cart']) && isset($_POST["version_pro"]) && isset($_POST["color_pro"]))
+                        {
+                           
+                           $pro = select_pro_with_idpro_and_version_and_color_variant($_GET['id_pro'],$_POST["version_pro"],$_POST["color_pro"]);
+                           
                             $arr_cart = [
-                                'id' => $_GET['id_pro'],
-                                'quantity' => 1
+                                'id' => $pro[0]['id_pro'],
+                                'quantity' => 1,
+                                'id_variant' => $pro[0]['id_variant']
                                 
                             ];
                             $_SESSION['id_cart'] = $arr_cart['id'] ;
-                            $_SESSION['quantity_pro_cart'] = $arr_cart['quantity'] ;  
-                           
-
+                            $_SESSION['quantity_pro_cart'] = $arr_cart['quantity'] ;
+                            $_SESSION['id_variant'] = $arr_cart['id_variant'] ;
+                            
                         }
-                        else if(isset($_GET['id_pro']) && !empty($_SESSION['id_cart'])){
-                            $id_add_pro = $_GET['id_pro'];
-                          
+                        else if(isset($_POST['add_to_cart']) && isset($_GET['id_pro']) && isset($_SESSION['id_cart']) && !empty($_SESSION['id_cart']) && isset($_POST["version_pro"]) && isset($_POST["color_pro"])){
+                            
+                            $pro = select_pro_with_idpro_and_version_and_color_variant($_GET['id_pro'],$_POST["version_pro"],$_POST["color_pro"]);
+
                             if(!is_array($_SESSION['id_cart'])){
-                                if($id_add_pro === $_SESSION['id_cart']){                 
+                                if($pro[0]['id_pro'] == $_SESSION['id_cart'] && $pro[0]['id_variant'] == $_SESSION['id_variant'] ){                 
                                         $_SESSION["quantity_pro_cart"] += 1;
                                 }
                                 else{
-                                    $arr_cart_ = [
-                                        'id' => $id_add_pro,          
-                                    ];
-    
+                                    
                                     $arr_id_cart = array();
                                     $arr_id_cart[] = $_SESSION['id_cart'];
-                                    $arr_id_cart [] = $arr_cart_['id'];
+                                    $arr_id_cart[] = $pro[0]['id_pro'];
                                     // push id product vào mảng
                                     $arr_quantity_pro_cart = array();
                                     $arr_quantity_pro_cart[] =  $_SESSION['quantity_pro_cart'];
-                                    $arr_quantity_pro_cart [] = 1 ;
+                                    $arr_quantity_pro_cart[] = 1 ;
+
+                                    $arr_id_variant = array();
+                                    $arr_id_variant[] = $_SESSION['id_variant'];
+                                    $arr_id_variant[] = $pro[0]['id_variant'] ;
                                    
                                     $_SESSION['id_cart'] = $arr_id_cart;
                                     $_SESSION['quantity_pro_cart'] = $arr_quantity_pro_cart;
+                                    $_SESSION['id_variant'] =  $arr_id_variant ;
+                                    
+                                    
                                 }
                             }else{
-                                 if(in_array($id_add_pro,$_SESSION['id_cart']))
-                                  {
-                                     for($i = 0 ; $i < count($_SESSION['id_cart']) ; $i++){
-                                      {
-                                         if($id_add_pro == $_SESSION["id_cart"][$i] )
-                                            {
-                                              $_SESSION["quantity_pro_cart"][$i] += 1 ;     
-                                            };
-                                      } 
-                                  }
-                                }
-                                  else if(!in_array($id_add_pro,$_SESSION['id_cart'])){
                                 
-                                    $arr_cart = [
-                                        'id' => $id_add_pro,
-                                        'quantity' => 1
-                                        
-                                    ];
-    
+                                $stacks = 0 ;
+
+                                for($i = 0 ; $i < count($_SESSION['id_cart']) ; $i++)
+                                {
+                                    if($pro[0]['id_pro'] == $_SESSION['id_cart'][$i] && $_SESSION['id_variant'][$i] == $pro[0]['id_variant'] )
+                                    {
+                                       $_SESSION["quantity_pro_cart"][$i] += 1 ;
+                                       $stacks = 1 ;
+                                       break; 
+                                    }
+                                };
+
+                                if($stacks === 0) {
+                                
                                     $arr_id_cart = array();
-                                    $arr_id_cart = $_SESSION['id_cart'] ;
-                                    $arr_id_cart[] = $arr_cart['id'];
-                                    // push id product vào mảng 
-    
+                                    $arr_id_cart = $_SESSION['id_cart'];
+                                    $arr_id_cart[] = $pro[0]['id_pro'];
+                                    // push id product vào mảng
                                     $arr_quantity_pro_cart = array();
                                     $arr_quantity_pro_cart =  $_SESSION['quantity_pro_cart'];
                                     $arr_quantity_pro_cart[] = 1 ;
+
+                                    $arr_id_variant = array();
+                                    $arr_id_variant = $_SESSION['id_variant'];
+                                    $arr_id_variant[] = $pro[0]['id_variant'] ;
                                    
                                     $_SESSION['id_cart'] = $arr_id_cart;
                                     $_SESSION['quantity_pro_cart'] = $arr_quantity_pro_cart;
-                                   
+                                    $_SESSION['id_variant'] =  $arr_id_variant ;
+
+                                    var_dump($_SESSION['id_cart']);
+                                    echo "<br>";
+                                    var_dump($_SESSION['quantity_pro_cart']);
+                                    echo "<br>";
+                                    var_dump($_SESSION['id_variant']);
+
+                                    echo "<br>";
+
+                                    setcookie('id_cart', json_encode($_SESSION['id_cart']), time()+3000000);
+
+                                    $data = json_decode($_COOKIE['id_cart'], true);
+                                    var_dump($data);
     
                                 }
                             }
 
                             
-                        };   
-                        // lưu id product từ trang main vào session
+                        }
+                        else if(isset($_POST['add_to_cart']) && isset($_GET['id_pro']) && !isset($_POST["version_pro"]) && !isset($_POST["color_pro"]))
+                        {
+                            include "main.php";
+                            echo "<script>alert('Vui Lòng Chọn Sản Phẩm Khác hoặc liên hệ với Shop')</script>";
+                            die;
+                            
+                        }
+                        
+                        ;
+                        // lưu id product và id variant từ trang main vào session
                         
                         if(isset($_POST['edit_cart']) && isset($_SESSION['id_cart']) && is_array($_SESSION['id_cart']) )
                         {
                             $id_pro = $_POST['edit_idpro_cart'] ;
+                            $id_varian = $_POST['edit_idpro_varriant_cart'];
                             $quantity_pro = $_POST['qantit_pro'];
                             for( $i = 0 ; $i < count($_SESSION['id_cart']) ; $i++){
-                                if($_SESSION['id_cart'][$i] == $id_pro)
+                                if($_SESSION['id_cart'][$i] == $id_pro && $_SESSION['id_variant'][$i] == $id_varian)
                                 {
                                     $_SESSION["quantity_pro_cart"][$i] =  $quantity_pro ;
                                 }
@@ -327,6 +378,7 @@
 
                             $arr_remove_id = array();
                             $arr_remove_sl = array();
+                            $arr_remove_id_var = array();
                             
                             for( $i = 0 ; $i < count($_SESSION['id_cart']) ; $i++){
                                 if($i == $id_pro)
@@ -334,22 +386,23 @@
                                   continue ;                                   
                                 };
                                 $arr_remove_id[] = $_SESSION['id_cart'][$i] ;
-                                $arr_remove_sl [] = $_SESSION["quantity_pro_cart"][$i] ;
+                                $arr_remove_sl[] = $_SESSION["quantity_pro_cart"][$i] ;
+                                $arr_remove_id_var[] =  $_SESSION['id_variant'][$i];
                             };
                             
-
                             $_SESSION['id_cart'] = $arr_remove_id ;
                             $_SESSION["quantity_pro_cart"] = $arr_remove_sl ;
+                            $_SESSION['id_variant'] = $arr_remove_id_var;
 
                         }
                         else if(isset($_POST['remove_cart']) && isset($_SESSION['id_cart']) && !is_array($_SESSION['id_cart']))
                         {
-                            $_SESSION['id_cart'] = '';
-                            $_SESSION["quantity_pro_cart"] = '';
-                            
+                            unset($_SESSION['id_cart']);
+                            unset($_SESSION["quantity_pro_cart"]);
+                            unset($_SESSION['id_variant']);
                         }
                         ;
-                        $hanghoa = select_all_pro() ;
+                        $hanghoa = select_all_product_atrri() ;
                         include './view/client/cart.php';
                         
                     break;

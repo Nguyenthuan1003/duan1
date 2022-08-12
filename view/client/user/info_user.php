@@ -35,7 +35,6 @@
                             <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
                             <div class="col-sm-9">
                                 <input type="email" class="form-control" id="inputEmail3" disabled value="<?= $_SESSION['user']['email'] ?>">
-                                <input type="email" class="form-control" id="inputEmail3" value="<?=isset($user['email']) ? $user['email'] : ''?>">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -66,21 +65,18 @@
                             <label for="inputEmail3" class="col-sm-3 col-form-label">Email :</label>
                             <div class="col-sm-9 m-auto">
                                 <strong><?= $_SESSION['user']['email'] ?></strong>
-                                <strong><?=isset($user['email']) ? $user['email'] : ''?></strong>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputPassword3" class="col-sm-3 col-form-label">Số Dư :</label>
                             <div class="col-sm-9 m-auto">
-                            <strong>0đ</strong>
-                            <strong><?=isset($user['accont_balance']) ? $user['accont_balance'] : ''?></strong>
+                            <strong><?=isset($user['accont_balance']) ? $user['accont_balance'] : '0'?>đ</strong>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputPassword3" class="col-sm-3 col-form-label">Ngày Tạo :</label>
                             <div class="col-sm-9 m-auto">
                             <strong><?= $_SESSION['user']['created_date_user'] ?></strong>
-                            <strong><?=isset($user['created_date_user']) ? $user['created_date_user'] : ''?></strong>
                             </div>
                         </div>
                         <div class="row mb-3">

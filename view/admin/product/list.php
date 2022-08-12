@@ -34,6 +34,7 @@
 
             </div>
             <div class="main-buttom">
+                <span><?= isset($message)?$message:"" ?></span>
                 <table class="table">
                     <thead>
                         <tr>
@@ -52,7 +53,7 @@
                         <?php foreach ($product as $pro) : ?>
                         <tr>
                             <td scope="row"><?=$pro['id_pro']?></td>
-                            <td scope="row"><img src="../../image/<?=$pro['images_default']?>" alt="anh" widtd="100%"></td>
+                            <td scope="row"><img src="../../image/<?=$pro['images_default']?>" alt="anh" style="width:50px"></td>
                             <td scope="row"><?=$pro['pro_name']?></td>
                             <td scope="row"><?=$pro['created_date']?></td>
                             <td scope="row"><?=$pro['price_default']?></td>
@@ -62,6 +63,11 @@
                                 <td scope="row"><?=$pro['id_cate']==$ct['id_cate'] ? $ct['cate_name'] : ''?></td>
                             <?php endforeach; ?>
                             <td>
+                               <a href="index.php?id_menu=details_pro_variant&id=<?=$pro['id_pro']?>">
+                                    <button class="btn btn-danger" type="submit">
+                                        chi tiết
+                                    </button>
+                                </a>
                                 <a href="index.php?id_menu=edit_product&id=<?=$pro['id_pro']?>">
                                     <button class="btn btn-danger" type="submit">
                                         <i class="fa-solid fa-pen"></i>
