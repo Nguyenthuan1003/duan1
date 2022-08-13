@@ -69,6 +69,88 @@
                     include './view/client/user/registe.php';
                     break;
                 case 'pay':
+
+                function get_info_order($city,$ditrict,$ward)
+                {
+                           
+                      $response = file_get_contents('https://provinces.open-api.vn/api/?depth=3');
+
+                      $api = json_decode($response);
+                      $arr_thanh_pho = array();
+    
+                      for($i = 0; $i < count($api) ;$i++)
+                      {
+                        $arr_thanh_pho[] = (array)$api[$i];
+       
+                        };
+
+                       $arr_huyen = array();
+                       $arr_phuong = $arr_thanh_pho ;
+                     for($i = 0; $i < count($arr_thanh_pho) ;$i++)
+                    {
+       
+                             $arr_thanh_pho[$i]['districts']; 
+                              $d = $i ;  
+                       for($a = 0 ; $a < count($arr_thanh_pho[$d]['districts']); $a++)
+                      {
+                      $arr_phuong[$d]['districts'][$a] = (array)$arr_thanh_pho[$d]['districts'][$a];    
+                       }
+        
+                       };
+    
+    
+                    $arr_place = $arr_phuong ;
+                 for($v = 0; $v < count($arr_phuong) ;$v++)
+                 {
+                     $arr_phuong[$v]['districts']; 
+                     $b = $v ;  
+                    for($k = 0 ; $k < count($arr_phuong[$b]['districts']); $k++)
+                    {
+                      $f = $k ;
+                       for($e = 0 ; $e < count($arr_phuong[$b]['districts'][$f]['wards']) ; $e++ )
+                      {
+                         $arr_place[$b]['districts'][$f]['wards'][$e] = (array)$arr_phuong[$b]['districts'][$f]['wards'][$e] ;
+                       }
+                    }
+        
+                   };
+    
+                $city ;
+                $huyen ;
+                $phuong ;
+        for($v = 0; $v < count($arr_place) ;$v++)
+       {
+          if($arr_place[$v]['code'] == $city)
+          {
+          $city = $arr_place[$v]['name'];
+            $b = $v ;  
+            for($k = 0 ; $k < count($arr_place[$b]['districts']); $k++)
+           {
+               if($arr_place[$b]['districts'][$k]['code'] == $ditrict)
+              {
+
+                 $huyen = $arr_place[$b]['districts'][$k]['name'] ;
+                 $f = $k ;
+                   for($e = 0 ; $e < count($arr_place[$b]['districts'][$f]['wards']) ; $e++ )
+                   {
+                      if($arr_place[$b]['districts'][$f]['wards'][$e]['code'] == $ward )
+                     {
+                       $phuong = $arr_place[$b]['districts'][$f]['wards'][$e]['name'];
+                     }
+                  }
+               }
+            }
+          }
+        
+        }
+         ;
+        $diachi = $phuong . "-". $huyen . "-". $city ;
+        return $diachi ;
+        ;
+         ;
+                    };
+                    // hàm lấy địa chỉ api .
+
                     $value_voucher = 0 ;
                     $sl_voucher = 0 ;
                     $voucher = get_all_voucher();
@@ -140,6 +222,7 @@
                         $apartmentNumber = $_POST['apartmentNumber'];
                         $err = [];
 
+
                         if($user_name == "")
                         {
                             $err['user'] = "bạn chưa nhập họ tên";
@@ -155,15 +238,15 @@
                         };
                         if($city =="")
                         {
-                            $err['city'] = "bạn chưa nhập thành phố";
+                            $err['city'] = "bạn chưa chọn thành phố";
                         };
                         if($district =="")
                         {
-                            $err['district'] = "bạn chưa nhập Quận / Huyện";
+                            $err['district'] = "bạn chưa chọn Quận / Huyện";
                         };
-                        if( $wards =="")
+                        if( $wards == "")
                         {
-                            $err['wards'] = "bạn chưa nhập Phường / Xã";
+                            $err['wards'] = "bạn chưa chọn Phường / Xã";
                         };
                         if( $apartmentNumber =="")
                         {
@@ -171,18 +254,26 @@
                         };
 
                         if(empty($err) && $method_payment === "thanh toán khi nhận hàng"){
+
+                            $loca = get_info_order($city,$district,$wards);
                             $date = date("d/m/Y") ;
-                            insert_order($user_name,$apartmentNumber.'-'.$wards.'-'.$district.'-'.$city,$date,isset( $_SESSION['voucher'])? $_SESSION['voucher']:'', $total_price ,$phoneNumber ,$email, isset($_SESSION['user'])?$_SESSION['user']['id_user']:"");
+                            insert_order($user_name,$apartmentNumber.'-'.$loca,$date,isset( $_SESSION['voucher'])? $_SESSION['voucher']:'', $total_price ,$phoneNumber ,$email, isset($_SESSION['user'])?$_SESSION['user']['id_user']:"");
                             $order = select_one_order($email,$date) ;
                             $id_order = $order['id_order'];
 
                             
-                            for($i = 0 ; $i< count($_SESSION['id_cart']) ;$i++)
+                            $ca = is_array($_SESSION['id_cart'])?count($_SESSION['id_cart']):1 ;
+                            for($i = 0 ; $i < $ca ; $i++)
                             {
-                                $sp = load_one_pro($_SESSION['id_cart'][$i]);
-                                insert_order_details($id_order,$_SESSION['id_cart'][$i],$_SESSION["quantity_pro_cart"][$i],$sp['price_default'],$sp['price_default']);
-                            };
+                                    $sp = select_one_pro_atrri($_SESSION['id_cart'][$i],$_SESSION['id_variant'][$i]) ;
+                                    insert_order_details($id_order,$_SESSION['id_cart'][$i],$_SESSION["quantity_pro_cart"][$i],$sp['price'],$sp['price'],$_SESSION['id_variant'][$i]);
+                                    //insert thông tin vào bảng chi tiết đơn hàng
+                                    $quantity = $sp['quantity'] - $_SESSION["quantity_pro_cart"][$i] ;
+                                    update_quantity_pro_var($_SESSION['id_cart'][$i],$_SESSION['id_variant'][$i],$quantity);
+                                    // cập nhập lại số lượng của sản phẩm còn lại sau khi mua 
+                            }
 
+                            
                             header("location:index.php?act=ordered&&id_order=$id_order");
                             
                            
@@ -191,10 +282,8 @@
                         }
 
 
-                    }
-
-                    $sql = "SELECT * FROM products";
-                    $hanghoa = pdo_query($sql) ;
+                    };
+                    $hanghoa = select_all_product_atrri();
                         include './view/client/pay.php';
                     break;
                     case 'blog':
@@ -206,10 +295,10 @@
                         {
                             $id_order = $_GET['id_order'];
                             $order = select_one_order_id($id_order);
-                            $order_details =get_all_order_details($id_order);
+                            $order_details = get_all_order_details($id_order);
                             
                         };
-                        $hanghoa = select_all_pro() ;
+                        $hanghoa = select_all_product_atrri() ;
                         include './view/client/ordered.php';
                     break;
                 case 'info-user':
@@ -246,32 +335,45 @@
                         include './view/client/forgot_password.php';
                     break;
                 case 'cart':
-    
-                        if(isset($_POST['add_to_cart']) && isset($_GET['id_pro']) && !isset($_SESSION['id_cart']) && empty($_SESSION['id_cart']) && isset($_POST["version_pro"]) && isset($_POST["color_pro"]))
+                        
+                        if(isset($_COOKIE['id_cart']) && !empty($_COOKIE['id_cart']))
                         {
+                            $_SESSION['id_cart'] = json_decode($_COOKIE['id_cart'], true); ;
+                            $_SESSION['quantity_pro_cart'] = json_decode($_COOKIE['quantity_pro_cart'], true);
+                            $_SESSION['id_variant'] = json_decode($_COOKIE['id_variant'], true);
+                        };
+                        if(isset($_POST['add_to_cart']) && isset($_GET['id_pro']) && empty($_SESSION['id_cart']) && isset($_POST["version_pro"]) && isset($_POST["color_pro"]))
+                            
+                        {
+                             
+                                 $pro = select_pro_with_idpro_and_version_and_color_variant($_GET['id_pro'],$_POST["version_pro"],$_POST["color_pro"]);
                            
-                           $pro = select_pro_with_idpro_and_version_and_color_variant($_GET['id_pro'],$_POST["version_pro"],$_POST["color_pro"]);
-                           
-                            $arr_cart = [
+                                $arr_cart = [
                                 'id' => $pro[0]['id_pro'],
                                 'quantity' => 1,
                                 'id_variant' => $pro[0]['id_variant']
                                 
-                            ];
-                            $_SESSION['id_cart'] = $arr_cart['id'] ;
-                            $_SESSION['quantity_pro_cart'] = $arr_cart['quantity'] ;
-                            $_SESSION['id_variant'] = $arr_cart['id_variant'] ;
-                            
-                        }
-                        else if(isset($_POST['add_to_cart']) && isset($_GET['id_pro']) && isset($_SESSION['id_cart']) && !empty($_SESSION['id_cart']) && isset($_POST["version_pro"]) && isset($_POST["color_pro"])){
-                            
-                            $pro = select_pro_with_idpro_and_version_and_color_variant($_GET['id_pro'],$_POST["version_pro"],$_POST["color_pro"]);
+                               ];
+                               $_SESSION['id_cart'] = $arr_cart['id'] ;
+                               $_SESSION['quantity_pro_cart'] = $arr_cart['quantity'] ;
+                               $_SESSION['id_variant'] = $arr_cart['id_variant'] ;
 
-                            if(!is_array($_SESSION['id_cart'])){
-                                if($pro[0]['id_pro'] == $_SESSION['id_cart'] && $pro[0]['id_variant'] == $_SESSION['id_variant'] ){                 
+                               
+                               setcookie('id_cart', json_encode($_SESSION['id_cart']), time()+3000000);
+                               setcookie('quantity_pro_cart', json_encode($_SESSION['quantity_pro_cart']), time()+3000000);
+                               setcookie('id_variant', json_encode($_SESSION['id_variant']), time()+3000000);
+                            
+                            }
+                            else if(isset($_POST['add_to_cart']) && isset($_GET['id_pro']) && isset($_SESSION['id_cart']) && !empty($_SESSION['id_cart']) && isset($_POST["version_pro"]) && isset($_POST["color_pro"])){
+                            
+                              $pro = select_pro_with_idpro_and_version_and_color_variant($_GET['id_pro'],$_POST["version_pro"],$_POST["color_pro"]);
+
+                               if(!is_array($_SESSION['id_cart'])){
+                                   if($pro[0]['id_pro'] == $_SESSION['id_cart'] && $pro[0]['id_variant'] == $_SESSION['id_variant'] ){                 
                                         $_SESSION["quantity_pro_cart"] += 1;
-                                }
-                                else{
+                                        setcookie('quantity_pro_cart', json_encode($_SESSION['quantity_pro_cart']), time()+3000000);
+                                 }
+                                   else{
                                     
                                     $arr_id_cart = array();
                                     $arr_id_cart[] = $_SESSION['id_cart'];
@@ -288,6 +390,11 @@
                                     $_SESSION['id_cart'] = $arr_id_cart;
                                     $_SESSION['quantity_pro_cart'] = $arr_quantity_pro_cart;
                                     $_SESSION['id_variant'] =  $arr_id_variant ;
+
+                                    
+                                    setcookie('id_cart', json_encode($_SESSION['id_cart']), time()+3000000);
+                                    setcookie('quantity_pro_cart', json_encode($_SESSION['quantity_pro_cart']), time()+3000000);
+                                    setcookie('id_variant', json_encode($_SESSION['id_variant']), time()+3000000);
                                     
                                     
                                 }
@@ -300,6 +407,7 @@
                                     if($pro[0]['id_pro'] == $_SESSION['id_cart'][$i] && $_SESSION['id_variant'][$i] == $pro[0]['id_variant'] )
                                     {
                                        $_SESSION["quantity_pro_cart"][$i] += 1 ;
+                                       setcookie('quantity_pro_cart', json_encode($_SESSION['quantity_pro_cart']), time()+3000000);
                                        $stacks = 1 ;
                                        break; 
                                     }
@@ -323,19 +431,10 @@
                                     $_SESSION['quantity_pro_cart'] = $arr_quantity_pro_cart;
                                     $_SESSION['id_variant'] =  $arr_id_variant ;
 
-                                    var_dump($_SESSION['id_cart']);
-                                    echo "<br>";
-                                    var_dump($_SESSION['quantity_pro_cart']);
-                                    echo "<br>";
-                                    var_dump($_SESSION['id_variant']);
-
-                                    echo "<br>";
-
+                                    
                                     setcookie('id_cart', json_encode($_SESSION['id_cart']), time()+3000000);
-
-                                    $data = json_decode($_COOKIE['id_cart'], true);
-                                    var_dump($data);
-    
+                                    setcookie('quantity_pro_cart', json_encode($_SESSION['quantity_pro_cart']), time()+3000000);
+                                    setcookie('id_variant', json_encode($_SESSION['id_variant']), time()+3000000);
                                 }
                             }
 
@@ -348,27 +447,63 @@
                             die;
                             
                         }
+                    
                         
                         ;
                         // lưu id product và id variant từ trang main vào session
+                    
+
+                        // lưu sản phẩm vào cookie
                         
                         if(isset($_POST['edit_cart']) && isset($_SESSION['id_cart']) && is_array($_SESSION['id_cart']) )
                         {
                             $id_pro = $_POST['edit_idpro_cart'] ;
                             $id_varian = $_POST['edit_idpro_varriant_cart'];
                             $quantity_pro = $_POST['qantit_pro'];
+                            $quantity_pro_on_db = $_POST['quantity_pro_on_db'];
+                            $name_pro = $_POST['name_pro'];
+                            $color_pro = $_POST['color_pro'];
+                            $version_pro = $_POST['version_pro'];
+                            $check_edit_quantity = 0 ;
                             for( $i = 0 ; $i < count($_SESSION['id_cart']) ; $i++){
                                 if($_SESSION['id_cart'][$i] == $id_pro && $_SESSION['id_variant'][$i] == $id_varian)
                                 {
-                                    $_SESSION["quantity_pro_cart"][$i] =  $quantity_pro ;
+                                    if($quantity_pro <= $quantity_pro_on_db )
+                                    {
+                                        $_SESSION["quantity_pro_cart"][$i] =  $quantity_pro ;
+                                        setcookie('quantity_pro_cart', json_encode($_SESSION['quantity_pro_cart']), time()+3000000);
+                                        $check_edit_quantity = 1 ;
+                                        break;
+                                    }
                                 }
                             }
+                            if($check_edit_quantity == 0)
+                            {
+                                $mesage_quantity_cart = $name_pro." ".$version_pro." ".$color_pro." trong kho không đủ "." ".$quantity_pro." chiếc vui lòng nhập lại";
+                            };
                         }
                         else if(isset($_POST['edit_cart']) && isset($_SESSION['id_cart']) && !is_array($_SESSION['id_cart']))
                         {
                             $id_pro = $_POST['edit_idpro_cart'] ;
                             $quantity_pro = $_POST['qantit_pro'];
-                            $_SESSION["quantity_pro_cart"] =  $quantity_pro ;
+                            $quantity_pro_on_db = $_POST['quantity_pro_on_db'];
+                            $name_pro = $_POST['name_pro'];
+                            $color_pro = $_POST['color_pro'];
+                            $version_pro = $_POST['version_pro'];
+                            $check_edit_quantity = 0 ;
+                            if($quantity_pro <= $quantity_pro_on_db )
+                            {
+                                $_SESSION["quantity_pro_cart"] =  $quantity_pro ;
+                                setcookie('quantity_pro_cart', json_encode($_SESSION['quantity_pro_cart']), time()+3000000);
+                                $check_edit_quantity = 1 ;
+                                
+                            };
+                            if($check_edit_quantity == 0)
+                            {
+                                $mesage_quantity_cart = $name_pro." ".$version_pro." ".$color_pro." trong kho không đủ "." ".$quantity_pro." chiếc vui lòng nhập lại";
+                            };
+
+                            
                         }
                         // cập nhập số lượng trong trang cart   
                         
@@ -394,12 +529,19 @@
                             $_SESSION["quantity_pro_cart"] = $arr_remove_sl ;
                             $_SESSION['id_variant'] = $arr_remove_id_var;
 
+                            setcookie('id_cart', json_encode($_SESSION['id_cart']), time()+3000000);
+                            setcookie('quantity_pro_cart', json_encode($_SESSION['quantity_pro_cart']), time()+3000000);
+                            setcookie('id_variant', json_encode($_SESSION['id_variant']), time()+3000000);
+
                         }
                         else if(isset($_POST['remove_cart']) && isset($_SESSION['id_cart']) && !is_array($_SESSION['id_cart']))
                         {
                             unset($_SESSION['id_cart']);
                             unset($_SESSION["quantity_pro_cart"]);
                             unset($_SESSION['id_variant']);
+                            setcookie('id_cart',"", time()-3000000);
+                            setcookie('quantity_pro_cart',"", time()-3000000);
+                            setcookie('id_variant',"", time()-3000000);
                         }
                         ;
                         $hanghoa = select_all_product_atrri() ;
