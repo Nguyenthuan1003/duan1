@@ -28,7 +28,7 @@
                     <input type="submit" value="ĐĂNG KÝ" class="btn btn-primary mt-4 w-100" name="registe">
                 </form>
                 <div class="btn-registe">
-                    <a href=""><input type="submit" value="QUAY LẠI TRANG ĐĂNG NHẬP" class="btn btn-outline-primary mt-4 w-100"></a>
+                    <a href="index.php?act=login"><input type="submit" value="QUAY LẠI TRANG ĐĂNG NHẬP" class="btn btn-outline-primary mt-4 w-100"></a>
                 </div>
             </div>
         </div>

@@ -6,6 +6,7 @@
     include_once '../../model/variant.php';
     include_once '../../model/statistics.php';
     include_once '../../model/comment.php';
+    include_once '../../model/webSetting.php';
     include_once './header.php';
     if(isset($_GET['id_menu'])){
         $id_menu=$_GET['id_menu'];
@@ -663,6 +664,62 @@
                         delete_bl($id);
                         $comment = select_bl($id_pro);
                         include_once './comment/list.php';
+                    }
+                    break;
+                case 'website':
+                    $websetting = select_all_websetting();
+                    include_once './website/update.php';
+                    break;
+                case 'update_web':
+                    if(isset($_POST['updateWeb'])){
+                        $id = $_POST['id'];
+                        $nameWeb = $_POST['nameWeb'];
+                        $logo = $_FILES['logo'];
+                        $dir = "../../upload/";
+                        $path = pathinfo($logo['name'], PATHINFO_EXTENSION);
+                        $imgs = ['jpg','jpeg','png'];
+                        $email = $_POST['email'];
+                        $phone1 = $_POST['phone1'];
+                        $phone2 = $_POST['phone2'];
+                        $facebook = $_POST['facebook'];
+                        $youtobe = $_POST['youtobe'];
+                        $er = [];
+                        if(!preg_match('/^[A-Za-z0-9]+$/',$nameWeb)){
+                            $er['name'] = 'Tên website không hợp lệ';
+                        }
+                        if($logo['size'] <= 0){
+                            $er['logo'] = 'Bạn chưa tải ảnh logo';
+                        }
+                        if($logo['size'] > 0){
+                            if(!in_array(strtolower($path),$imgs)){
+                                $er['img'] = 'Ảnh logo không đúng định dạng';
+                            }
+                        }
+                        if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
+                            $er['email'] = 'Email không đúng định dạng';
+                        }
+                        if(!preg_match('/^(0|\+84)[\d]{9}$/',$phone1)){
+                            $er['phone1'] = 'Số điện thoại tư vấn không hợp lệ';
+                        }
+                        if(!preg_match('/^(0|\+84)[\d]{9}$/',$phone2)){
+                            $er['phone2'] = 'Số điện thoại hỗ trợ không hợp lệ';
+                        }
+                        if(!preg_match('~^(http|https)://(|www\.)[a-z]+[a-z-_\.]*\.[a-z]{2,}(:\d+)?(|/?|/[a-z-_0-9\./]*)$~',$facebook)){
+                            $er['fb'] = 'URL không hợp lệ';
+                        }
+                        if(!preg_match('~^(http|https)://(|www\.)[a-z]+[a-z-_\.]*\.[a-z]{2,}(:\d+)?(|/?|/[a-z-_0-9\./]*)$~',$youtobe)){
+                            $er['yt'] = 'URL không hợp lệ';
+                        }
+                        if(array_filter($er)){
+                            $websetting = select_all_websetting();
+                            include_once './website/update.php';
+                        }
+                        if(!array_filter($er)){
+                            move_uploaded_file($logo['tmp_name'],$dir.$logo['name']);
+                            update_websetting($name,$dir.$logo['name'],$email,$phone1,$phone2,$facebook,$youtobe);
+                            $message = 'Cập nhật thành công';
+                            include_once './website/update.php';
+                        }
                     }
                     break;
             default:
