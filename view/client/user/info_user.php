@@ -9,7 +9,7 @@
                         <li class=""><a href="" class="li_info_user"><i class=" fa fa-heart me-2"></i>Sản phẩm yêu
                                 thích</a>
                         </li>
-                        <li class=""><a href="" class="li_info_user"><i class="fa fa-pen-to-square me-2"></i>Cập nhật
+                        <li class=""><a href="index.php?act=editUser&id=<?=$_SESSION['user']['id_user']?>" class="li_info_user"><i class="fa fa-pen-to-square me-2"></i>Cập nhật
                                 tài
                                 khoản</a></li>
                         <li class=""><a href="" class="li_info_user"><i class="fa fa-gift me-2"></i>Ưu đãi của bạn:</a>

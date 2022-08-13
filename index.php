@@ -33,7 +33,7 @@
                     $user = select_one_user($email,$password);
                     if(is_array($user)){
                         $_SESSION['user'] = $user ;
-                        include './main.php';
+                        header('Location:index.php');
                         
                     }else{
                         include './view/client/user/login.php';
@@ -490,6 +490,51 @@
                         }
                     }
                     include './view/client/user/changePass.php';
+                    break;
+                case 'editUser':
+                    if(isset($_GET['id'])){
+                        $user = select_one_ad($_GET['id']);
+                    }
+                    include './view/client/user/edit.php';
+                    break;
+                case 'update_user':
+                    if(isset($_POST['edit_user'])){
+                        $id = $_POST['id_user'];
+                        $fullname = $_POST['name'] ;
+                        $useName = $_POST['name-login'] ;
+                        $email_user = $_POST['email_user'] ;
+                        $phone =  $_POST['phone'] ;
+                        $_err_add_khach_hang = [];
+                        if(empty($fullname)){
+                            $_err_add_khach_hang['fullname_user'] = "Bạn chưa nhập tên";
+                        };
+
+                        if(!preg_match('/^[A-Za-z\s]+$/u',$useName)){
+                            $_err_add_khach_hang['name-login'] = "bạn chưa nhập tên đăng nhập";
+                        };
+
+                        if($email_user == ""){
+                            $_err_add_khach_hang['email_user'] = "bạn chưa nhập email";
+                        }
+                        else if(!filter_var($email_user, FILTER_VALIDATE_EMAIL))
+                        {
+                            $_err_add_khach_hang['email_user'] = "bạn chưa nhập đúng định dạng email";
+                        }
+                        if(!preg_match('/^(0|\+84)[0-9]{9}$/', $phone)){
+                            $_err_add_khach_hang['phone'] = "bạn chưa nhập số điện thoại";
+                        };
+                        if(array_filter($_err_add_khach_hang)){
+                            $user = select_one_ad($id);
+                            include_once './view//client/user/edit.php';
+                        }
+                        if(!array_filter($_err_add_khach_hang))
+                        {
+                            edit_user($useName,$fullname,$email_user,$phone,'','','','',$id);
+                            $mesages = "thêm khách hàng thành công" ;   
+                            $user = select_one_ad($id);
+                            include_once './view//client/user/edit.php';
+                        }
+                    }
                     break;
             default:
                 include './main.php';

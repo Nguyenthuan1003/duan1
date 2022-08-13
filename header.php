@@ -55,7 +55,7 @@
            </section>
             <section>
               <a href="index.php?act=info-user" class="btn btn-outline-primary btn-sm">chi tiết tài khoản</a>
-              <a href="" class="btn btn-outline-danger btn-sm">log out</a>
+              <a href="index.php?act=logout" class="btn btn-outline-danger btn-sm">log out</a>
             </section>
           </div>
           <?php else :  ?>

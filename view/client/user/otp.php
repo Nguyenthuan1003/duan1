@@ -1,10 +1,5 @@
 <?php
-// echo $_SESSION['forEmail'];
-// echo $_COOKIE['forEmail'];
-echo $_SESSION['forEmail'];
-
 if(isset($_COOKIE['forEmail'])){
-    echo $_COOKIE['forEmail'];
      $cookie_email = $_COOKIE['forEmail'];
 }
 ?>
