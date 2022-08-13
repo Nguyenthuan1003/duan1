@@ -27,9 +27,9 @@
          $sql = "SELECT * FROM orders WHERE  id_order='".$id."' ";
          return pdo_query_one($sql);
      };
-     function insert_order_details($id_order,$id_pro,$quantity_order,$price_order,$unit_price)
+     function insert_order_details($id_order,$id_pro,$quantity_order,$price_order,$unit_price,$id_var)
      {
-         $sql = "INSERT INTO order_details (`id_order`,`id_pro`,`quantity_order`,`price_order`,`unit_price`) value ('$id_order','$id_pro','$quantity_order','$price_order','$unit_price')";
+         $sql = "INSERT INTO order_details (`id_order`,`id_pro`,`quantity_order`,`price_order`,`unit_price`,`id_variant`) value ('$id_order','$id_pro','$quantity_order','$price_order','$unit_price','$id_var')";
          return pdo_execute($sql);
      };
 

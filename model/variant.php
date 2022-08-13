@@ -57,4 +57,9 @@
         $sql = "SELECT * FROM products_attribute p JOIN variant v ON p.id_variant = v.id_variant JOIN images_products_attribute i ON i.id_variant = v.id_variant JOIN products pr ON p.id_pro = pr.id_pro GROUP BY p.id_pro , p.id_variant ORDER BY i.id_image_pro_attr" ;
         return pdo_query($sql);
     }
+    function select_one_pro_atrri($id_pro ,$id_var)
+    {
+        $sql = "SELECT * FROM products_attribute p JOIN variant v ON p.id_variant = v.id_variant JOIN images_products_attribute i ON i.id_variant = v.id_variant JOIN products pr ON p.id_pro = pr.id_pro GROUP BY p.id_pro , p.id_variant HAVING p.id_pro='".$id_pro."' AND p.id_variant='".$id_var."' ORDER BY i.id_image_pro_attr" ;
+        return pdo_query_one($sql);
+    }
 ?>

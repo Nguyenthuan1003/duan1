@@ -1,4 +1,5 @@
-<main class="p-0 pt-2">
+<script>document.querySelector("body").style.background="#FFFFFF"</script>
+<main  class="p-0 pt-2">
     <div class="container p-0 pt-2  m-0 ms-4 me-2 mb-5">
         <form action="index.php?act=pay" method="post">
         <div class="row">
@@ -24,14 +25,14 @@
                             <div class="col-md-6">
                                 <div class="input-pay">
                                     <p>Họ và tên (<span>*</span>)</p>
-                                    <input type="text" name="username">
+                                    <input style="border:1px solid grey ;" type="text" name="username">
                                     <p class="text-danger mt-2"><?= isset($err['user'])?$err['user']:"" ?></p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="input-pay">
                                     <p>Số điện thoại (<span>*</span>)</p>
-                                    <input type="text" name="phoneNumber">
+                                    <input style="border:1px solid grey ;" type="text" name="phoneNumber">
                                     <p class="text-danger mt-2"><?= isset($err['phone'])?$err['phone']:"" ?></p>
                                 </div>
                             </div>
@@ -43,31 +44,36 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="input-pay">
+                                <div class="select-pay">
                                     <p>Tỉnh/ Thành phố (<span>*</span>)</p>
-                                    <input type="text" name="city">
+                                    <select name="city" id="province">
+                                    </select>
                                     <p class="text-danger mt-2"><?= isset($err['city'])?$err['city']:"" ?></p>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="input-pay">
+                                <div class="select-pay">
                                     <p>Quận/ Huyện (<span>*</span>)</p>
-                                    <input type="text" name="district">
+                                    <select name="district" id="district">
+                                      <option  value="">chọn quận</option>
+                                     </select>
                                     <p class="text-danger mt-2"><?= isset($err['district'])?$err['district']:"" ?></p>
                                     
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="input-pay">
+                                <div class="select-pay">
                                     <p>Phường/ Xã (<span>*</span>)</p>
-                                    <input type="text" name="wards">
+                                    <select name="wards" id="ward">
+                                    <option value="">chọn phường</option>
+                                    </select>
                                     <p class="text-danger mt-2"><?= isset($err['wards'])?$err['wards']:"" ?></p>
                                     
                                 </div>
                             </div>
                             <div class="input-pay">
                                 <p>Số nhà/ Tên đường (<span>*</span>)</p>
-                                <input type="text" name="apartmentNumber">
+                                <input style="border:1px solid grey ;" type="text" name="apartmentNumber">
                                 <p class="text-danger mt-2"><?= isset($err['apartmentNumber'])?$err['apartmentNumber']:"" ?></p>
                             </div>
                             <div class="pay">
@@ -132,29 +138,30 @@
         <div class="col-md-4 mt-4">
             <form action="" method="post">
                 <div class="row m-0 mt-5">
-                    <?php if(isset($_SESSION['id_cart']) && !empty($_SESSION['id_cart'])): ?>
+                <?php if(isset($_SESSION['id_cart']) && !empty($_SESSION['id_cart'])): ?>
                     <?php $a = is_array($_SESSION['id_cart'])?sizeof($_SESSION['id_cart']) : 1  ?>
-                    <?php foreach($hanghoa as $hangh): ?>
-                    <?php for($i = 0 ; $i < $a ; $i++) : ?>
-                    <?php if(  $_SESSION['id_cart'][$i] === $hangh['id_pro'] ): ?>
+                    <?php foreach($hanghoa as $hh): ?>
+                    <?php  for( $i = 0 ; $i < $a ; $i++): ?>
+                    <?php if($_SESSION['id_cart'][$i] == $hh['id_pro'] && $_SESSION['id_variant'][$i] == $hh['id_variant']  ): ?>
                     <article class="row">
                         <div class="col-3">
-                            <a href=""><img src="./image/<?= $hangh['images_default'] ?>" width="60"
+                            <a href=""><img src="./upload/<?= $hh['images_pro_attri'] ?>" width="60"
                                     alt="ảnh sản phẩm"></a>
                         </div>
                         <div class="col-8 d-flex">
-                            <p class="m-auto"><?= $hangh['pro_name']  ?></p>
+                            <p class="m-auto row"><?= $hh['pro_name']  ?> <?= $hh['color_variant'] ?> <?= $hh['version_variant'] ?></p>
                         </div>
+                        
                     </article>
                     <article class="row  mt-2">
                         <div class="col-6 d-flex">
-                            <input class="price text-danger col-12 m-auto " id="price_pro"
-                                value="<?=number_format($hangh['price_default'] * $_SESSION['quantity_pro_cart'][$i]) ?>đ">
+                            <input style="height:30px ; font-size:16px" disabled class="price text-danger col-12 p-0 " id="price_pro"
+                                value="<?=number_format($hh['price'] * $_SESSION['quantity_pro_cart'][$i]) ?>đ">
                         </div>
 
                         <div class="buttons_added col-6">
                             <span class="mt-2 me-2">sl: </span>
-                            <input aria-label="quantity" class="input-qty" max="100000" min="1" name="" type="number"
+                            <input aria-label="quantity" style="height:30px" class="input-qty" max="100000" min="1" name="" type="number"
                                 disabled value="<?= $_SESSION['quantity_pro_cart'][$i] ?>" id="sum">
 
                         </div>
@@ -174,8 +181,8 @@
                     <?php $a = is_array($_SESSION['id_cart'])?sizeof($_SESSION['id_cart']) : 1  ?>
                     <?php foreach($hanghoa as $hangh): ?>
                     <?php for($i = 0 ; $i < $a ; $i++) : ?>
-                    <?php if(  $_SESSION['id_cart'][$i] === $hangh['id_pro'] ): ?>
-                    <?php $total_price += ($hangh['price_default'] * $_SESSION['quantity_pro_cart'][$i]) ?>
+                    <?php if(  $_SESSION['id_cart'][$i] === $hangh['id_pro'] && $_SESSION['id_variant'][$i] == $hangh['id_variant']  ): ?>
+                    <?php $total_price += ($hangh['price'] * $_SESSION['quantity_pro_cart'][$i]) ?>
                     <?php endif ?>
                     <?php endfor ?>
                     <?php endforeach ?>
@@ -187,7 +194,7 @@
                     <p id="sale">Khuyến mãi: </p>
                     <p id="transport_fee">Phí vận chuyển: </p>
                 </div>
-                <div class="sum">
+                <div class="sum mt-3 mb-3">
                     <p id="sumMonney"></p>
                     <p>*Giá trên đã bao gồm VAT và phí vận chuyển.</p>
                 </div>
@@ -201,10 +208,10 @@
             <?php $total_price = $total_price - $total_price*($value_voucher/100) ?>
             <div class="provisional">
                 <p id="provisional">e-voucher : <?= $code_voucher ?></p>
-                <p id="sale">giảm : <span class="text-danger"> -
+                <p id="sale" class="mt-2">giảm : <span class="text-danger"> -
                         <?=number_format($total_price*($value_voucher/100)) ?>đ</span></p>
                 <input type="number" hidden value="<?= $total_price ?>" name="total_price" >
-                <p>tổng : <input class="text-danger" style="border:none" disabled  value="<?= number_format($total_price) ?>đ"> </p>
+                <p class="mt-2">tổng : <input class="text-danger" style="border:none" disabled  value="<?= number_format($total_price) ?>đ"> </p>
             </div>
             <?php  else : ?>
                     <input name="total_price" value="<?= $total_price ?>" hidden>

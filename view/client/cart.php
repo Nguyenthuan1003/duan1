@@ -1,9 +1,11 @@
+<script>document.querySelector("body").style.background="#FFFFFF"</script>
 <main>
     <article>
 
         <div class="pe-4 ps-4 row m-auto ">
             <section class="main_cart col-8 border mt-4 mb-4">
                 <h2 class="ms-4">Giỏ Hàng</h2>
+                <p class="mt-2 text-danger"><?= isset($mesage_quantity_cart)?$mesage_quantity_cart:"" ?></p>
 
                 <hr class="text-secondary">
                 <article class="wrap_product_on_cart">
@@ -11,8 +13,7 @@
                     <?php $a = is_array($_SESSION['id_cart'])?sizeof($_SESSION['id_cart']) : 1  ?>
                     <?php foreach($hanghoa as $hh): ?>
                     <?php  for( $i = 0 ; $i < $a ; $i++): ?>
-                    <?php if($_SESSION['id_cart'][$i] == $hh['id_pro']): ?>
-                    <?php if($_SESSION['id_variant'][$i] == $hh['id_variant']  ): ?>
+                    <?php if($_SESSION['id_cart'][$i] == $hh['id_pro'] && $_SESSION['id_variant'][$i] == $hh['id_variant']  ): ?>
                     <section class="product_on_cart row">
 
                         <div class="info_product_on_cart col-5 row">
@@ -38,6 +39,10 @@
                                     <input type="hidden" name="edit_idpro_varriant_cart"
                                         value="<?= $hh['id_variant'] ?>">
                                     <input type="hidden" name="remove_idpro_cart" value="<?= $i ?>">
+                                    <input type="hidden" name="quantity_pro_on_db" value="<?= $hh['quantity'] ?>">
+                                    <input type="hidden" name="name_pro" value="<?= $hh['pro_name'] ?>">
+                                    <input type="hidden" name="color_pro" value="<?= $hh['color_variant'] ?>">
+                                    <input type="hidden" name="version_pro" value="<?= $hh['version_variant'] ?>">
                                     <p class="price_product_on_cart text-danger mt-2 me-5">
                                         <?= $hh['price'] * (is_array($_SESSION['quantity_pro_cart'])?$_SESSION['quantity_pro_cart'][$i] : $_SESSION['quantity_pro_cart'] ) ?>
                                     </p>
@@ -55,12 +60,15 @@
                                     </div>
                                     <input type="submit" name="edit_cart" class="btn btn-primary" value="cập nhập">
                                     <input type="submit" name="remove_cart" class="btn btn-danger ms-2" value="xóa">
+                                    
                                 </div>
+                                <div class="col-12 ms-5 mt-3">
+                                    <span>(số lượng hàng còn trong kho : <?= $hh['quantity'] ?>)</span>
+                                    </div>
                             </form>
                         </div>
                     </section>
                     <hr class="text-secondary">
-                    <?php endif ?>
                     <?php endif ?>
                     <?php endfor ?>
                     <?php endforeach ?>

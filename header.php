@@ -23,7 +23,7 @@
 <body>
  <div class="header border w-100 m-0 px-3">
        <div class="logo">
-        <a href=""><img src="./image/<?=$logo?>" alt="" class="img"></a>
+        <a href=""><img style="width:160px" src="./upload/logo.png" alt="" class="img"></a>
        </div>
        <nav class="navbar navbar-expand-lg navbar-light">
          <div class="container-fluid">
