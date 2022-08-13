@@ -85,12 +85,13 @@
                     $name = $_POST['name_pro'];
                     $price = $_POST['price_pro'];
                     $status = $_POST['status_pro'];
+                    echo $status ;
                     $category = $_POST['category_pro'];
                     $date = $_POST['date_pro'];
                     $image = $_FILES["image_pro"];
                     $des_pro = $_POST['des_pro'];
-                    $dir = '../../upload/';
-                    $targets =  $dir.$image['name'];
+                    $dir = '../../image/';
+                    $targets =  $image['name'];
                     $imgs = ['jpg','jpeg','png'];
                     $path = pathinfo($image['name'],PATHINFO_EXTENSION);
                     $er = [];
@@ -117,7 +118,7 @@
                         if(!in_array(strtolower($path),$imgs)){
                             $er['img'] = ' Ảnh vừa nhập không đúng định dạng jpg, jpeg hoặc png';
                         }else{
-                            move_uploaded_file($image['tmp_name'], $targets);
+                            move_uploaded_file($image['tmp_name'],$dir.$targets);
                         }
                     }else{
                         $targets = '';

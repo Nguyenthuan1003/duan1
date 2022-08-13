@@ -11,18 +11,22 @@
                 <div class="input_registe">
                         <p class="text-primary text-start">Tên đăng nhập</p>
                         <input type="text"  class="form-control" name="name" placeholder="Nhập tên đăng nhập">
+                        <span class="text-danger"><?= isset($error['name'])? $error['name'] : ""?></span>
                     </div>
                     <div class="input_registe mt-1">
                         <p class="text-primary text-start">Email</p>
                         <input type="text"  class="form-control" name="email" placeholder="Nhập email để đăng ký">
+                        <span class="text-danger"><?= isset($error['email'])? $error['email'] : ""?></span>
                     </div>
                     <div class="input_registe mt-1">
                         <p class="text-primary text-start">Mật khẩu</p>
                         <input type="text"  class="form-control" name="password" placeholder="Nhập mật khẩu để đăng ký ">
+                        <span class="text-danger"><?= isset($error['password'])? $error['password'] : ""?></span>
                     </div>
                     <div class="input_registe mt-1">
                         <p class="text-primary text-start">Nhập lại Mật khẩu</p>
                         <input type="text"  class="form-control" name="enterThePassword" placeholder="Nhập lại mật khẩu để đăng ký">
+                        <span class="text-danger"><?= isset($error['enterThePassword'])?$error['enterThePassword'] : ""?></span>
                     </div>
 
                     <input type="submit" value="ĐĂNG KÝ" class="btn btn-primary mt-4 w-100" name="registe">

@@ -1,5 +1,4 @@
-
-  <main>
+<main>
     <a href="index.php?id_menu=add_user" class="btn btn-primary" >add khách hàng</a>
     
     <div class="container-list-client">
