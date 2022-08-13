@@ -42,6 +42,14 @@
         $sql = "SELECT * FROM user WHERE id_user=".$id;
         return pdo_query_one($sql);
     }
-
+    function forgetpass($email){
+        $sql = "SELECT * FROM `user` WHERE email='".$email."'";
+        // echo $sql;die;
+        return pdo_query_one($sql);
+    }
+    function changePass($email,$pass){
+        $sql = "UPDATE `user` SET password='".$pass."' WHERE email='".$email."'";
+        pdo_execute($sql);
+    }
    
 ?>

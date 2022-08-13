@@ -1,3 +1,13 @@
+<?php
+// echo $_SESSION['forEmail'];
+// echo $_COOKIE['forEmail'];
+echo $_SESSION['forEmail'];
+
+if(isset($_COOKIE['forEmail'])){
+    echo $_COOKIE['forEmail'];
+     $cookie_email = $_COOKIE['forEmail'];
+}
+?>
 <main class="bg-body">
     <div class="container p-5">
         <div class="row shadow-lg p-3 mb-5 bg-body rounded">
@@ -9,12 +19,10 @@
                 <p>Vui lòng điền đầy đủ thông tin</p>
                 <form action="" method="post">
                     <div class="input_login">
-                        <p class="text-primary text-start">Email</p>
-                        <input type="text" class="form-control" name="email" value="<?=isset($user['email']) ? $user['email'] : ''?>">
+                        <p class="text-primary text-start">Mã xác nhận</p>
+                        <input type="text" class="form-control" name="code">
                     </div>
-                    <!-- <a href="index.php?act=otp"> -->
-                        <input type="submit" value="Tiếp Tục" class="btn btn-primary mt-4 w-100" name="ranCode">
-                    <!-- </a> -->
+                    <input type="submit" value="Tiếp Tục" class="btn btn-primary mt-4 w-100" name="login">
                 </form>
                 <div class="btn-login">
                     <p class="text-secondary mt-3">hoặc</p>

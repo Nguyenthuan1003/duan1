@@ -9,6 +9,7 @@
     include './model/danhmuc.php';
     include './model/sanpham.php';
     include './model/users.php';
+    include './model/sendmail.php';
     include "./model/voucher.php";
     include "./model/order.php";
     include "./model/variant.php";
@@ -574,6 +575,63 @@
                         header('Location:index.php');
                         die;
                     }
+                    break;
+                case 'forgotPassword':
+                    if(isset($_POST['ranCode'])){
+                        $email = $_POST['email'];
+                        $user = forgetpass($email);
+                        if(!is_array($user)){
+                            $message = 'Email không tồn tại';
+                            include_once './view/client/user/forgot_password.php';
+                        }
+                        if(is_array($user)){
+                            $_SESSION['forEmail'] = $user['email'];
+                            echo $_SESSION['forEmail'];
+                            $_SESSION['code'] = rand(100000,999999);
+                            setcookie('forEmail', $_SESSION['code'],time()+(3000));
+                            sendmail($user['user_name'],$user['email'],'Mã xác nhận của bạn là: '.$_SESSION['code'],'Thegioialo','Mã xác nhận');
+                            $message = 'Đã gửi mã xác nhận. Vui lòng kiểm tra email. Mã xác nhận có hiệu lực trong 5 phút';
+                            header('Location: index.php?act=otp');
+                        }
+                    }
+                    
+                    include_once './view/client/user/forgot_password.php';
+                    break;
+                case 'otp':
+                    if(isset($_POST['login'])){
+                        $code = $_POST['code'];
+                        if (isset($_COOKIE['forEmail'])){
+                            if($code != $_COOKIE['forEmail']){
+                                $message = 'Mã xác nhận không chính xác';
+                                include_once './view/client/user/otp.php';
+                            }else{
+                                header('Location: index.php?act=changePass');
+                            }
+                        }
+                    }
+                    include_once './view/client/user/otp.php';
+                    break;
+                case 'changePass':
+                    if(isset($_POST['pass'])){
+                        $password = $_POST['password'];
+                        $passwords = $_POST['passwords'];
+                        $er = [];
+                        if(!preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[\!\@\#\$%\^\*\(\)-\+]).{8,30}$/',$password)){
+                            $er['password']='mật khẩu yếu';
+                        }
+                        if($password != $passwords){
+                            $er['password']='Mật khẩu nhập lại không đúng';
+                        }
+                        if(array_filter($er)){
+                            include './view/client/user/changePass.php';
+                        }
+                        if(!array_filter($er) && isset($_SESSION['forEmail'])){
+                            changePass($_SESSION['forEmail'], $password);
+                            $message = 'Đổi mật khẩu thành công';
+                            header('Location: index.php');
+                        }
+                    }
+                    include './view/client/user/changePass.php';
                     break;
             default:
                 include './main.php';
