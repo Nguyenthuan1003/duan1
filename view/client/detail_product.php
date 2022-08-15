@@ -280,7 +280,7 @@
 
                             <input type="submit" name="add_to_cart" style="font-size:25px"
                                 class="btn btn-primary col-12 " value="Thêm Vào Giỏ Hàng">
-                            <input type="submit" name="add_to_wishlist" style="font-size:25px"
+                            <input type="button" name="add_to_wishlist" style="font-size:25px"
                                 class="btn btn-light col-12 mt-3 " value="Thêm Vào danh sách yêu thích">
 
 
