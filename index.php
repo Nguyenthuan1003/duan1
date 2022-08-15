@@ -305,6 +305,8 @@
                 case 'info-user':
                     if(isset($_SESSION['user'])&&is_array($_SESSION['user'])){
                         $user = $_SESSION['user'];
+                        $order =  get_all_order_with_id_user($user['id_user']);
+                        
                     }
                         include './view/client/user/info_user.php';
                     break;
@@ -336,6 +338,7 @@
                         include './view/client/forgot_password.php';
                     break;
                 case 'cart':
+                        
                         
                         if(isset($_COOKIE['id_cart']) && !empty($_COOKIE['id_cart']))
                         {
@@ -633,6 +636,30 @@
                     }
                     include './view/client/user/changePass.php';
                     break;
+                    case 'search_order':
+                        
+                        include './view/client/search_order.php';
+                        break;
+                    case 'details_order':
+
+                            if(isset($_GET['id_order']))
+                            {
+                                $id_order = $_GET['id_order'];
+                                $order = select_one_order_id($id_order);
+                                $order_details = get_all_order_details($id_order);
+                            };
+                            // xem chi tiết đơn hàng từ trang info user
+                            if(isset($_POST['search_order'])&& isset($_POST['search_order_value']) && !empty($_POST['search_order_value']))
+                            {
+                                $id_order = $_POST['search_order_value'];
+                                $order = select_one_order_id($id_order);
+                                $order_details = get_all_order_details($id_order);
+                                
+                            };
+                            // xem chi tiết đơn hàng từ trang tìm kiếm đơn hàng .
+                            $hanghoa = select_all_product_atrri() ;
+                            include './view/client/details_order.php';
+                            break;
             default:
                 include './main.php';
                 break;
