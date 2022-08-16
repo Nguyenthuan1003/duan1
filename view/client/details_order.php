@@ -1,13 +1,10 @@
 <main class="bg-body">
     <div class="container pt-3">
         <div style="width:50%" class="row shadow-lg p-3 mb-5 m-auto bg-body rounded">
+        <h2 style="font-size:20px" class="text-success text-center"><i class="fa fa-bag-shopping me-3"></i>Chi Tiết Đơn Hàng</h2>
             <?php if(isset($order) && !empty($order)) : ?>
-            <h2 style="font-size:20px" class="text-success text-center"><i class="fa fa-bag-shopping me-3"></i>Đặt hàng
-                thành công</h2>
+            
             <div style="font-size:13px" class="col-md-12 mt-0 w-100">
-
-
-                <p>Cảm Ơn Bạn Đã Cho <b>Thegioialo.vn</b> Cơ Hội Được Phục Vụ</p>
 
                 <section class="mt-3 p-2 bg-light rounded-3">
                     <div class="row">
@@ -28,17 +25,19 @@
                             <li class="mt-2">
                                 <b>Tổng Tiền: </b> <?= number_format($order['total_price']) ?>đ
                             </li>
+                            
                         </ul>
                     </div>
 
                 </section>
-                <section>
-
+                <section class="mt-3">
+                   <button style="border: 2px dashed #198754; width:100% ; color:#198754" class="btn"><?= $order['status_order'] == 2 ? "Chờ Xử Lý" : ($order['status_order'] == 1 ? "Đã Xử Lý" : "Đã Giao Hàng" ) ?></button>
                 </section>
+               
                 <hr style="height:1px ; color : grey ;" style="width:100%">
                 <p>Sản Phẩm Trong Đơn Hàng</p>
                 <section class="mt-3 p-2 bg-body border rounded-3">
-                    <?php if(isset($_GET['id_order']) && !empty( $order_details)): ?>
+                    <?php if( ( isset($_POST['search_order'])&& isset($_POST['search_order_value']) && !empty($_POST['search_order_value']) ) || isset($_GET['id_order']) ): ?>
                     <?php $a = is_array($order_details)?sizeof($order_details) : 1  ?>
                     <?php foreach($hanghoa as $hangh): ?>
                     <?php for($i = 0 ; $i < $a ; $i++) : ?>

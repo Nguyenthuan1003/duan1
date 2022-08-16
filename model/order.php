@@ -5,6 +5,11 @@
          return pdo_query($sql);
      }
      ;
+     function get_all_order_with_id_user($id_user){
+        $sql = "SELECT * FROM orders where id_user='".$id_user."'";
+        return pdo_query($sql);
+    }
+    ;
      function get_all_order_details($id){
         $sql = "SELECT * FROM order_details where id_order='".$id."'";
         return pdo_query($sql);
