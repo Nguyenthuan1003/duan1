@@ -48,6 +48,11 @@
         <div class="icon"> 
           <a href="index.php?act=cart"><i class="fa-solid fa-cart-shopping" id="icon"></i></a> 
         </div>
+        <?php if(isset($_SESSION['user'])) : ?>
+          <div class="icon">
+            <a href="index.php?act=withlist&id=<?=$_SESSION['user']['id_user']?>"><i class="fa-solid fa-heart-pulse"></i></a>
+          </div>
+        <?php endif; ?>
         <?php if(isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
           <div class="mt-3 mb-2">
             <section class="ms-2"><i class="fa fa-user"></i>

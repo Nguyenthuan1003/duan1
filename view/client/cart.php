@@ -12,6 +12,65 @@
                     <?php if(isset($_SESSION['id_cart']) && !empty($_SESSION['id_cart'])): ?>
                     <?php $a = is_array($_SESSION['id_cart'])?sizeof($_SESSION['id_cart']) : 1  ?>
                     <?php foreach($hanghoa as $hh): ?>
+                    <?php if($a == 1) : ?>
+                        <?php if($_SESSION['id_cart'] == $hh['id_pro'] && $_SESSION['id_variant'] == $hh['id_variant']  ): ?>
+                    <section class="product_on_cart row">
+
+                        <div class="info_product_on_cart col-5 row">
+                            <article class="img_product_on_cart  text-align-center d-flex col-4 ms-2">
+                                <img src="./upload/<?= $hh['images_pro_attri'] ?>" width="70px" class="m-auto" alt="">
+                            </article>
+                            <article class="wrap_info_product_on_cart col-7 mt-2">
+                                <p class="name_product_on_cart"><?= $hh['pro_name'] ?></p>
+                                <section>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm"
+                                        disabled><?= $hh['color_variant'] ?></button>
+                                    <button type="button" class="btn btn-outline-success btn-sm"
+                                        disabled><?= $hh['version_variant'] ?></button>
+                                </section>
+
+                            </article>
+                        </div>
+                        <div class="total_price_product_on_cart col-7 d-flex">
+                            <form action="index.php?act=cart" method="post">
+
+                                <div class="buttons_added col-12   m-auto">
+                                    <input type="hidden" name="edit_idpro_cart" value="<?= $hh['id_pro'] ?>">
+                                    <input type="hidden" name="edit_idpro_varriant_cart"
+                                        value="<?= $hh['id_variant'] ?>">
+                                    <input type="hidden" name="remove_idpro_cart" value="<?= $i ?>">
+                                    <input type="hidden" name="quantity_pro_on_db" value="<?= $hh['quantity'] ?>">
+                                    <input type="hidden" name="name_pro" value="<?= $hh['pro_name'] ?>">
+                                    <input type="hidden" name="color_pro" value="<?= $hh['color_variant'] ?>">
+                                    <input type="hidden" name="version_pro" value="<?= $hh['version_variant'] ?>">
+                                    <p class="price_product_on_cart text-danger mt-2 me-5">
+                                        <?= $hh['price'] * (is_array($_SESSION['quantity_pro_cart'])?$_SESSION['quantity_pro_cart'][$i] : $_SESSION['quantity_pro_cart'] ) ?>
+                                    </p>
+                                    <input class="price_product_default" hidden value="<?= $hh['price']?>">
+                                    <!-- <input class="minus minus_product_on_cart" type="button" value="-" id="Subtraction">
+                            <input class="quantity_product_on_cart p-0 text-center" type="number" value="1">
+                            <input class="plus plus_product_on_cart" type="button" value="+" id="plus"> -->
+                                    <div class="buttons_added">
+                                        <input class="minus is-form" type="button" value="-" id="Subtraction">
+                                        <input class="input-qty" max="100000" min="1"
+                                            mix="<?= (is_array($_SESSION['quantity_pro_cart'])?$_SESSION['quantity_pro_cart'][$i] : $_SESSION['quantity_pro_cart'] ) ?>"
+                                            name="qantit_pro" type="number"
+                                            value="<?= (is_array($_SESSION['quantity_pro_cart'])?$_SESSION['quantity_pro_cart'][$i] : $_SESSION['quantity_pro_cart'] ) ?>">
+                                        <input class="plus is-form" type="button" value="+" id="plus">
+                                    </div>
+                                    <input type="submit" name="edit_cart" class="btn btn-primary" value="cập nhập">
+                                    <input type="submit" name="remove_cart" class="btn btn-danger ms-2" value="xóa">
+                                    
+                                </div>
+                                <div class="col-12 ms-5 mt-3">
+                                    <span>(số lượng hàng còn trong kho : <?= $hh['quantity'] ?>)</span>
+                                    </div>
+                            </form>
+                        </div>
+                    </section>
+                    <hr class="text-secondary">
+                    <?php endif ?>
+                    <?php else : ?>
                     <?php  for( $i = 0 ; $i < $a ; $i++): ?>
                     <?php if($_SESSION['id_cart'][$i] == $hh['id_pro'] && $_SESSION['id_variant'][$i] == $hh['id_variant']  ): ?>
                     <section class="product_on_cart row">
@@ -71,6 +130,7 @@
                     <hr class="text-secondary">
                     <?php endif ?>
                     <?php endfor ?>
+                    <?php endif ?>
                     <?php endforeach ?>
                     <?php else :  ?>
                     <p>Vui lòng thêm sản phẩm vào giỏ hàng</p>

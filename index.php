@@ -13,6 +13,7 @@
     include "./model/voucher.php";
     include "./model/order.php";
     include "./model/variant.php";
+    include_once './model/withlist.php';
     $CategoriesHome = select_all_dm();
     $ProductsHome = select_page_home();
     $Curent_Page = 1 ;
@@ -116,9 +117,9 @@
         
                    };
     
-                $city ;
-                $huyen ;
-                $phuong ;
+                // $city ;
+                // $huyen ;
+                // $phuong ;
         for($v = 0; $v < count($arr_place) ;$v++)
        {
           if($arr_place[$v]['code'] == $city)
@@ -331,9 +332,6 @@
                             
                         }
                         include './view/client/detail_product.php';
-                    break;
-                case 'quen_mat_khau':
-                        include './view/client/forgot_password.php';
                     break;
                 case 'cart':
                         
@@ -677,6 +675,55 @@
                             include_once './view//client/user/edit.php';
                         }
                     }
+                    break;
+                case 'wl':
+                    if(isset($_GET['id_pro']) && isset($_GET['id_user']) && isset($_GET['id_var'])){
+                        $id = $_GET['id_pro'];
+                        $id_user = $_GET['id_user'];
+                        $id_variant = $_GET['id_var'];
+                        insert_wishlist($id,$id_user,$id_variant);
+                        ?>
+                            <script>
+                                alert('Thêm sản phẩm vào danh sách yêu thích thành công');
+                            </script>
+                        <?php
+                    $pro = load_one_pro($id);
+                    $var = select_id_variant_with_id_pro($id);
+                    if(!isset($_GET['version']) && !empty($var) && !isset($_GET['versions']) && !isset($_GET['color']) && !isset($_GET['colors'])  ){
+                    
+                    $img_var = select_img_variant_with_id_variant($id,$var[0]['id_variant']);
+                    $version = select_version_variant($id);
+                    $color = select_color_variant($id) ; }
+                    else if(isset($_GET['version'])&&isset($_GET['color']))
+                    {
+                        $versions = $_GET['version'] ;
+                        $color = $_GET['color'];
+                        $pro_attri = select_pro_with_idpro_and_version_and_color_variant($id,$versions,$color);
+                        $img_var = select_img_variant_with_id_variant($id,$pro_attri[0]['id_variant']);
+                        $version = select_version_variant($id);
+                        $color = select_color_variant($id) ;
+                    }
+                    else if(empty($var))
+                    {
+                        
+                    }
+                    include './view/client/detail_product.php';
+                    }
+                case 'withlist':
+                    if(isset($_GET['id'])){
+                        $id = $_GET['id'];
+                        $wishlish = select_all_wishlist($id);
+                    }
+                    include './view/client/wishlist/list.php';
+                    break;
+                case 'delete_wl':
+                    if(isset($_GET['id']) && isset($_GET['id_user'])){
+                        $id = $_GET['id'];
+                        $id_user = $_GET['id_user'];
+                        delete_wishlish($id);
+                        $wishlish = select_all_wishlist($id_user);
+                    }
+                    include './view/client/wishlist/list.php';
                     break;
             default:
                 include './main.php';

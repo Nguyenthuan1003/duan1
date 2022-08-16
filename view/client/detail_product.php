@@ -19,6 +19,7 @@
                                     <img class="owl-lazy" title="<?= $pro['pro_name'] ?>" alt="<?= $pro['pro_name'] ?>"
                                         data-src="./upload/<?= $img_vars['images_pro_attri'] ?>" width="500"
                                         height="650">
+                                <?php $_SESSION['id_var']=$img_vars['id_variant'] ?>
                                 </div>
                                 <?php endforeach ?>
                                 <?php elseif(isset($_GET['version']) && isset($_GET['color'])) : ?>
@@ -27,6 +28,7 @@
                                     <img class="owl-lazy" title="<?= $pro['pro_name'] ?>" alt="<?= $pro['pro_name'] ?>"
                                         data-src="./upload/<?= $img_varss['images_pro_attri'] ?>" width="500"
                                         height="650">
+                                <?php $_SESSION['id_var']=$img_varss['id_variant'] ?>
                                 </div>
                                 <?php endforeach ?>
                                 <?php elseif(empty($var)) : ?>
@@ -36,12 +38,11 @@
                                 </div>
                                 <?php endif ?>
                             </div>
-
                         </div>
                     </div>
                     <div class="video-sp"></div>
                 </aside>
-
+                
                 <aside>
                     <form action="index.php?act=cart&&id_pro=<?= $pro['id_pro'] ?>" method="post">
                         <h1><?= $pro['pro_name'] ?></h1>
@@ -280,9 +281,12 @@
 
                             <input type="submit" name="add_to_cart" style="font-size:25px"
                                 class="btn btn-primary col-12 " value="Thêm Vào Giỏ Hàng">
-                            <input type="button" name="add_to_wishlist" style="font-size:25px"
-                                class="btn btn-light col-12 mt-3 " value="Thêm Vào danh sách yêu thích">
-
+                                <?php  if(isset($_SESSION['user'])) : ?>
+                                    <a href="index.php?act=wl&id_pro=<?=$pro['id_pro']?>&id_user=<?=$_SESSION['user']['id_user']?>&id_var=<?=$_SESSION['id_var']?>">
+                                        <input type="button" name="add_to_wishlist" style="font-size:25px"
+                                        class="btn btn-light col-12 mt-3 " value="Thêm Vào danh sách yêu thích">
+                                    </a>
+                                <?php endif ?>
 
 
                         </div>
@@ -326,7 +330,18 @@
                 </aside>
             </div>
         </div>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function(){
+                        $("#comments").load("./view/client/comment/comment_form.php", {idproduct:<?=$id?>});
+                    });
+                </script>
+                <div class="mg-top">
+                <div class="comment" id="comments">
+                   
+                </div>
+                </div>
+            <?php print_r($_SESSION['user'])?>
         <div class="descrip">
             <strong id="combo-title" class="sg-access">Phụ kiện gợi ý cho iPhone</strong>
             <div id="combo-detail" class="access-sg owl-carousel">
