@@ -731,6 +731,22 @@
                         $order = select_all_od();
                         include_once './order/list.php';
                     break;
+                case 'edit_od':
+                    if(isset($_GET['id'])){
+                        $pro = select_one_od($_GET['id']);
+                    }
+                    include_once './order/edit.php';
+                    break;
+                case 'update_order':
+                    if(isset($_POST['edit_od'])){
+                        $id_od = $_POST['id_od'];
+                        $user_name = $_POST['user_name'];
+                        $address = $_POST['address'];
+                        $status_od = $_POST['status_od'];
+                        $er = [];
+                        
+                    }
+                    break;
             default:
                 # code...
                 break;

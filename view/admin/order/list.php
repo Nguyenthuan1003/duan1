@@ -65,15 +65,14 @@
                             <td scope="row"><?=$pro['total_price']?></td>
                             <td scope="row"><?=$pro['created_date_order']?></td>
                             <td scope="row"><?=$pro['address_order']?></td>
-                            <td scope="row"><?=$pro['status_order']== 0 ? 'Chờ xử lý' : ($pro['status_order']==1 ? 'Đã xác nhận' : 'Đang giao hàng')?></td>
-                            
+                            <td scope="row"><?=$pro['status_order']== 0 ? 'Chờ xử lý' : ($pro['status_order']==1 ? 'Đã xác nhận' : 'Đã giao hàng')?></td>
                             <td>
-                                <a href="index.php?id_menu=edit_product&id=<?=$pro['id_pro']?>">
+                                <a href="index.php?id_menu=edit_od&id=<?=$pro['id_order']?>">
                                     <button class="btn btn-danger" type="submit">
                                         <i class="fa-solid fa-pen"></i>
                                     </button>
                                 </a>
-                                <a href="index.php?id_menu=delete_product&id=<?=$pro['id_pro']?>">
+                                <a href="index.php?id_menu=delete_od&id=<?=$pro['id_order']?>">
                                     <button class="btn btn-danger" type="remove">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </button>

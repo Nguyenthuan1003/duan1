@@ -41,6 +41,10 @@
         $sql = "SELECT * FROM `order_details` as od JOIN orders as o ON od.id_order = o.id_order JOIN products as p ON od.id_pro = p.id_pro JOIN variant as v ON od.id_variant = v.id_variant";
         return pdo_query($sql);
      }
+     function select_one_od($id){
+        $sql = "SELECT * FROM `orders` WHERE id_order=".$id;
+        return pdo_query_one($sql);
+     }
 
 
 ?>

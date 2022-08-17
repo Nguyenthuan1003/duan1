@@ -11,7 +11,7 @@
                 <article class="wrap_product_on_cart">
                     <?php if(isset($_SESSION['id_cart']) && !empty($_SESSION['id_cart'])): ?>
                     <?php $a = is_array($_SESSION['id_cart'])?sizeof($_SESSION['id_cart']) : 1  ?>
-                    <?php if($a == 1) : ?>
+                    <?php if($a == 1 && !is_array($_SESSION['id_cart'])): ?>
                     <?php foreach($hanghoa as $hh): ?>
                         <?php if($_SESSION['id_cart'] == $hh['id_pro'] && $_SESSION['id_variant'] == $hh['id_variant']  ): ?>
                     <section class="product_on_cart row">
@@ -71,7 +71,8 @@
                     <hr class="text-secondary">
                     <?php endif ?>
                     <?php endforeach; ?>
-                    <?php else : ?>
+                    <?php endif; ?>
+                    <?php if(is_array($_SESSION['id_cart'])) : ?>
                     <?php foreach($hanghoa as $hh): ?>
                     <?php  for( $i = 0 ; $i < $a ; $i++): ?>
                     <?php if($_SESSION['id_cart'][$i] == $hh['id_pro'] && $_SESSION['id_variant'][$i] == $hh['id_variant']  ): ?>
