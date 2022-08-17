@@ -18,21 +18,21 @@
                 <div class="col-md-6">
                     <p>Trạng thái</p>
                     <select name="status_od" id="" class="form-control">
-                        <?php if(isset($pro['status_order'])) : ?>
                             <?php if($pro['status_order'] == 0) : ?>
                                 <option value="0" selected>Chờ xử lý</option>
                                 <option value="1">Đã xác nhận</option>
-                                <option value="1">Đã giao hàng</option>
-                            <?php elseif($pro['status_order'] == 1): ?>
-                                <option value="0">Chờ xử lý</option>
-                                <option value="1" selected>Đã xác nhận</option>
-                                <option value="1">Đã giao hàng</option>
+                                <option value="2">Đã giao hàng</option>
                             <?php else : ?>
-                                <option value="0">Chờ xử lý</option>
-                                <option value="1">Đã xác nhận</option>
-                                <option value="1" selected>Đã giao hàng</option>
+                                <?php if($pro['status_order'] == 1): ?>
+                                    <option value="0">Chờ xử lý</option>
+                                    <option value="1" selected>Đã xác nhận</option>
+                                    <option value="2">Đã giao hàng</option>
+                                <?php else : ?>
+                                    <option value="0">Chờ xử lý</option>
+                                    <option value="1">Đã xác nhận</option>
+                                    <option value="2" selected>Đã giao hàng</option>
+                                <?php endif; ?>
                             <?php endif; ?>
-                        <?php endif; ?>
                     </select>
                 </div>
             </div>

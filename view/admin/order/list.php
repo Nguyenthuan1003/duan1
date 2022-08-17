@@ -72,7 +72,7 @@
                                         <i class="fa-solid fa-pen"></i>
                                     </button>
                                 </a>
-                                <a href="index.php?id_menu=delete_od&id=<?=$pro['id_order']?>">
+                                <a href="index.php?id_menu=delete_od&id=<?=$pro['id_order']?>&id_var=<?=$pro['id_variant']?>">
                                     <button class="btn btn-danger" type="remove">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </button>

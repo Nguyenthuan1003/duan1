@@ -744,7 +744,32 @@
                         $address = $_POST['address'];
                         $status_od = $_POST['status_od'];
                         $er = [];
-                        
+                        if(empty($user_name)){
+                            $er['name'] = 'Bạn chưa nhập tên người đặt hàng';
+                        }
+                        if(empty($address)){
+                            $er['add'] = 'Bạn chưa nhập địa chỉ nhận hàng';
+                        }
+                        if(!preg_match('/^[\d]{1}$/',$status_od)){
+                            $er['sta'] = 'Bạn chưa chọn trạng thái';
+                        }
+                        if(array_filter($er)){
+                            $pro = select_one_od($id_od);
+                            include_once './order/edit.php';
+                        }
+                        if(!array_filter($er)){
+                            edit_od($id_od,$user_name,$address,$status_od);
+                            $message = "Cập nhật thành công";
+                            $pro = select_one_od($id_od);
+                            include_once './order/edit.php';
+                        }
+                    }
+                    break;
+                case 'delete_od':
+                    if(isset($_GET['id']) && isset($_GET['id_var'])){
+                        delete_od($_GET['id'],$_GET['id_var']);
+                        $order = select_all_od();
+                        include_once './order/list.php';
                     }
                     break;
             default:

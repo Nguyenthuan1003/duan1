@@ -45,6 +45,24 @@
         $sql = "SELECT * FROM `orders` WHERE id_order=".$id;
         return pdo_query_one($sql);
      }
-
+    function edit_od($id,$name,$address,$status){
+        $sql = "UPDATE `orders` SET `name_order`='".$name."',`address_order`='".$address."'
+        ,`status_order`=".$status." WHERE id_order=".$id;
+        pdo_execute($sql);
+    }
+    function delete_od($id,$id_var){
+        $sql = "DELETE FROM `order_details` WHERE id_order=".$id." AND id_variant=".$id_var;
+        pdo_execute($sql);
+        $sql = "SELECT count(id_order) as od FROM `order_details` WHERE id_order=".$id;
+        $c = pdo_query_value($sql);
+        foreach ($c as $c){
+            $d = $c;
+        }
+        echo $d;
+        if($d < 1){
+            $sql = "DELETE FROM `orders` WHERE id_order=".$id;
+            pdo_execute($sql);
+        }
+    }
 
 ?>
