@@ -199,11 +199,11 @@
                     <p>*Giá trên đã bao gồm VAT và phí vận chuyển.</p>
                 </div>
             </form>
-            <?php if($_SESSION['user']) : ?>
-            <form class="d-flex" role="search" action="index.php?act=pay" method="post">
-                <input class="form-control" type="text" placeholder="Mã giảm giá" name="code_voucher">
-                <button class="btn btn-danger ms-3" name="add_voucher" type="submit">Áp</button>
-            </form>
+            <?php if(isset($_SESSION['user'])) : ?>
+                <form class="d-flex" role="search" action="index.php?act=pay" method="post">
+                    <input class="form-control" type="text" placeholder="Mã giảm giá" name="code_voucher">
+                    <button class="btn btn-danger ms-3" name="add_voucher" type="submit">Áp</button>
+                </form>
             <?php endif; ?>
             <p class="text-danger mt-3"><?= isset($mesage_voucher) ? $mesage_voucher:"" ?></p>
             <?php  if( $value_voucher !== 0) : ?>

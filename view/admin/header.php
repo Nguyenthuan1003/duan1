@@ -31,7 +31,7 @@
                             </div>
 
                             <div class="name-user">
-                                <h3 class="name_user_text"><?= $_SESSION['user']['user_name'] ?></h3>
+                                <h3 class="name_user_text"><?=$_SESSION['user']['user_name'] ?></h3>
                                 <a href="" class="btn btn-danger btn-sm">đăng xuất</a>
                                 <a href="../../index.php" class="btn btn-primary btn-sm ms-3">xem website</a>
                             </div>

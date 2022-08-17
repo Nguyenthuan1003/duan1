@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include_once '../../model/PDO.php';
     include_once '../../model/users.php';
     include_once '../../model/danhmuc.php';
@@ -8,6 +9,7 @@
     include_once '../../model/comment.php';
     include_once '../../model/webSetting.php';
     include_once '../../model/order.php';
+    include_once '../../model/voucher.php';
     include_once './header.php';
     if(isset($_GET['id_menu'])){
         $id_menu=$_GET['id_menu'];
@@ -725,7 +727,8 @@
                     }
                     break;
                 case 'vorcher':
-
+                    $vorcher = get_all_voucher();
+                    include_once './vorcher/list.php';
                     break;
                 case 'order':
                         $order = select_all_od();
@@ -772,8 +775,79 @@
                         include_once './order/list.php';
                     }
                     break;
+                case 'add_vorcher'; 
+                    if(isset($_POST['add_vorcher'])){
+                        $nameVocher = $_POST['nameVocher'];
+                        $quantityVorcher = $_POST['quantityVorcher'];
+                        $dateVocher = $_POST['dateVocher'];
+                        $valueVorcher = $_POST['valueVorcher'];
+                        $er = [];
+                        $vor = get_all_voucher();
+                        foreach ($vor as $v){
+                            if($v['name_vorcher'] == $nameVocher){
+                                $er['vor'] = 'Vorcher đã tồn tại';
+                            }
+                        }
+                        if(!preg_match('/^[\w]+$/',$nameVocher)){
+                            $er['name'] = 'Tên vorcher không hợp lệ';
+                        }
+                        if(!preg_match('/^\d+$/',$quantityVorcher)){
+                            $er['quantity'] = 'Số lượng không hợp lệ';
+                        }
+                        if(!preg_match('/^[\d]{4}-[\d]{2}-[\d]{2}$/', $dateVocher)){
+                            $er['date'] = 'Ngày tháng năm không đúng';
+                        }
+                        if(!preg_match('/^\d+$/', $valueVorcher)){
+                            $er['value'] = 'Giá trị vorcher không hợp lệ';
+                        }
+                        if(!array_filter($er)){
+                            insert_vorcher($nameVocher,$quantityVorcher,$dateVocher,$valueVorcher);
+                            $message = 'Thêm vorcher thành công';
+                            include_once './vorcher/add.php';
+                        }
+                    }
+                    include_once './vorcher/add.php';
+                    break;
+                case 'edit_vorcher':
+                    if(isset($_GET['id'])){
+                        $vorcher = get_vorcher_id($_GET['id']);
+                    }
+                    include_once './vorcher/edit.php';
+                    break;
+                case 'update_vorcher':
+                    if(isset($_POST['edit_vorcher'])){
+                        $id = $_POST['idVorcher'];
+                        $nameVocher = $_POST['nameVocher'];
+                        $quantityVorcher = $_POST['quantityVorcher'];
+                        $dateVocher = $_POST['dateVocher'];
+                        $valueVorcher = $_POST['valueVorcher'];
+                        $er = [];
+                        if(!preg_match('/^[\w]+$/',$nameVocher)){
+                            $er['name'] = 'Tên vorcher không hợp lệ';
+                        }
+                        if(!preg_match('/^\d+$/',$quantityVorcher)){
+                            $er['quantity'] = 'Số lượng không hợp lệ';
+                        }
+                        if(!preg_match('/^[\d]{4}-[\d]{2}-[\d]{2}$/', $dateVocher)){
+                            $er['date'] = 'Ngày tháng năm không đúng';
+                        }
+                        if(!preg_match('/^\d+$/', $valueVorcher)){
+                            $er['value'] = 'Giá trị vorcher không hợp lệ';
+                        }
+                        if(array_filter($er)){
+                            $vorcher = get_vorcher_id($id);
+                            include_once './vorcher/edit.php';
+                        }
+                        if(!array_filter($er)){
+                            update_vorcher($nameVocher,$quantityVorcher,$dateVocher,$valueVorcher,$id);
+                            $message = 'Cập nhật vorcher thành công';
+                            $vorcher = get_vorcher_id($id);
+                            include_once './vorcher/edit.php';
+                        }
+                    }
+                    break;
             default:
-                # code...
+                include 'main.php';
                 break;
         }
     }else{
