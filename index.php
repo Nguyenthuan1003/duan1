@@ -307,41 +307,9 @@
                             insert_order($_SESSION['info_pay']['user_name'],$_SESSION['info_pay']['dia_chi'],$_SESSION['info_pay']['date'],2,isset( $_SESSION['voucher'])? $_SESSION['voucher']:'', $_SESSION['info_pay']['total_price'] ,$_SESSION['info_pay']['sdt'] ,$_SESSION['info_pay']['email'], isset($_SESSION['user'])?$_SESSION['user']['id_user']:"");
                             $order = select_one_order($_SESSION['info_pay']['email'],$_SESSION['info_pay']['date']) ;
                             $id_order = $order['id_order'];
-                           
-                            
-                            $ca = is_array($_SESSION['id_cart'])?count($_SESSION['id_cart']):1 ;
-                            for($i = 0 ; $i < $ca ; $i++)
-                            {
-                                    $sp = select_one_pro_atrri($_SESSION['id_cart'][$i],$_SESSION['id_variant'][$i]) ;
-                                    insert_order_details($id_order,$_SESSION['id_cart'][$i],$_SESSION["quantity_pro_cart"][$i],$sp['price'],$sp['price'],$_SESSION['id_variant'][$i]);
-                                    //insert thông tin vào bảng chi tiết đơn hàng
-                                    $quantity = $sp['quantity'] - $_SESSION["quantity_pro_cart"][$i] ;
-                                    update_quantity_pro_var($_SESSION['id_cart'][$i],$_SESSION['id_variant'][$i],$quantity);
-                                    // cập nhập lại số lượng của sản phẩm còn lại sau khi mua 
-                            }
-                            
-                            header("location:index.php?act=ordered&&id_order=$id_order&&id_ordered=$id_order");
-                           }
-                           else
-                           {
-                               $mesage = "mã code không đúng ";
-                               header('location: ./view/client/pay/check_pay.php');
-                           }
-                          }
-                          
-                          
-                        }
-                       
-                    break;
-                    case 'ordered':
-                        if(isset($_GET['id_ordered']))
-                        {
-                            $id_order = $_GET['id_ordered'];
-                            $order = select_one_order_id($id_order);
                             $total = number_format($order['total_price']) ;
-                            $order_details = get_all_order_details($id_order);
-                            $bodys = "
-                            <main class='bg-body'>
+                           
+                            $bodys = "<main class='bg-body'>
                             <div class='container pt-3'>
                                 <div style='width:50% ; box-shadow: 10px 5px 5px black;' class='row shadow-lg p-3 mb-5 m-auto bg-body rounded'>
                                     <h2 style='font-size:20px' class='text-success text-center'><i class='fa fa-bag-shopping me-3'></i>Đặt hàng
@@ -353,7 +321,7 @@
                         
                                         <section class='mt-3 p-2 bg-light rounded-3'>
                                             <div class='row'>
-                                                <p class='col-6'><b>Mã Đơn Hàng:</b> # $order[id_order]</p>
+                                                <p class='col-6'><b>Mã Đơn Hàng:</b> #$order[id_order]</p>
                                                
                                             </div>
                                             <div class='mt-3'>
@@ -381,14 +349,47 @@
                                 </div>
                             </div>
                         </main>";
-                            $body = "đặt hàng thành công <br> mã đơn hàng của bạn : $order[id_order] <br> họ tên : $order[name_order]. <br> số điện thoại : $order[sdt] <br> ngày đặt hàng : $order[created_date_order] <br> địa chỉ nhận hàng : $order[address_order] <br> tổng số tiền : $order[total_price] ." ;
+                    
                             sendmail($order['name_order'],$order['email'],$bodys,"Thegioialo.vn","Bạn Đã Đặt Hàng Thành Công");
+                           
+                            
+                            $ca = is_array($_SESSION['id_cart'])?count($_SESSION['id_cart']):1 ;
+                            for($i = 0 ; $i < $ca ; $i++)
+                            {
+                                    $sp = select_one_pro_atrri($_SESSION['id_cart'][$i],$_SESSION['id_variant'][$i]) ;
+                                    insert_order_details($id_order,$_SESSION['id_cart'][$i],is_array($_SESSION['quantity_pro_cart'])?$_SESSION['quantity_pro_cart'][$i] : $_SESSION['quantity_pro_cart'],$sp['price'],$sp['price'],$_SESSION['id_variant'][$i]);
+                                    //insert thông tin vào bảng chi tiết đơn hàng
+                                    $quantity = $sp['quantity'] - $_SESSION["quantity_pro_cart"][$i] ;
+                                    update_quantity_pro_var($_SESSION['id_cart'][$i],$_SESSION['id_variant'][$i],$quantity);
+                                    // cập nhập lại số lượng của sản phẩm còn lại sau khi mua 
+                            };
+
+                            
                             unset($_SESSION['id_cart']);
                             unset($_SESSION["quantity_pro_cart"]);
                             unset($_SESSION['id_variant']);
                             setcookie('id_cart',"", time()-3000000);
                             setcookie('quantity_pro_cart',"", time()-3000000);
                             setcookie('id_variant',"", time()-3000000);
+                            
+                            header("location:index.php?act=ordered&&id_order=$id_order");
+
+                           }
+                           else
+                           {
+                               $mesage = "mã code không đúng ";
+                               header('location: ./view/client/pay/check_pay.php');
+                           }
+                          }
+                          
+                          
+                        }
+                       
+                    break;
+                    case 'ordered':
+                        if(isset($_GET['id_ordered']))
+                        {
+                           
                         };
                         if(isset($_GET['id_order']))
                         {

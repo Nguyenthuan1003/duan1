@@ -86,7 +86,7 @@
                 <?php endif ?>
                 <?php if($order['status_order'] == 2 && !isset($remove_ordered ) ): ?>
                 <section class="mt-3">
-                   <a style="width:100% ;" href="index.php?act=remove_order&&remove_id_order=<?= $order['id_order'] ?>" class="btn btn-danger">HỦY ĐƠN HÀNG</a>
+                   <a style="width:100% ;" href="index.php?act=check_remove_order&&remove_id_order=<?= $order['id_order'] ?>" class="btn btn-danger">HỦY ĐƠN HÀNG</a>
                 </section>
                 <?php endif ?>
                 <div class="btn-login mt-3">
