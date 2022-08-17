@@ -14,36 +14,37 @@
 <div class="header-admin">
                 <div class="header-top">
                     <div class="row" id="row-header">
-                        <div class="col-md-3">
+                        <div class="col-3">
                             <a href=""><img
-                                    src="https://vietadsgroup.vn/uploads-new/the-gioi-bai-viet/y-nghia-logo-cua-the-gioi-di-dong-la-gi2-800x450.jpg"
+                                    src="../../upload/logo.png"
                                     alt="" class="logo_img_admin"></a>
                         </div>
-                        <div class="col-md-3"></div>
-                        <div class="col-md-3" id="user_addmin">
-                            <div class="icon_name-user">
-                                <a href="">
+                        <div class="col-3"></div>
+                        <div class="col-3" id="user_addmin">
+                            <div class="icon_name-user d-flex">
+                               
 
-                                    <div class="user_icon_admin">
+                                    <div class="user_icon_admin m-auto">
                                         <i class="fa-solid fa-user" id="user_icon_admin"></i>
                                     </div>
-                                </a>
+                            
                             </div>
 
                             <div class="name-user">
-                                <h3 class="name_user_text">Nguyễn Quang Minh</h3>
-                                <a href="">đăng xuất</a>
+                                <h3 class="name_user_text"><?= $_SESSION['user']['user_name'] ?></h3>
+                                <a href="" class="btn btn-danger btn-sm">đăng xuất</a>
+                                <a href="../../index.php" class="btn btn-primary btn-sm ms-3">xem website</a>
                             </div>
 
                         </div>
-                        <div class="col-md-3" id="icon-header">
-                            <div class="search">
-                                <input type="search" class="input_header_admin" placeholder="Tìm Kiếm">
+                        <div class="col-3" id="icon-header">
+                            <div class="search mt-4 ">
+                                <input type="search" class="input_header_admin" placeholder="Tìm Kiếm ">
                                 <div class="icon-search-admin">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    
                                 </div>
                             </div>
-                            <div class="icon_header_addmin">
+                            <div class="icon_header_addmin ">
                                 <i id="bell_addmin" class="fa-solid fa-bell"></i>
                                 <i class="fa-solid fa-gear" id="setting_header_addmin"></i>
 

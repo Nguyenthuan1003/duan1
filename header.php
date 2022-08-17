@@ -26,7 +26,7 @@
         <a href=""><img style="width:160px" src="./upload/logo.png" alt="" class="img"></a>
        </div>
        <nav class="navbar navbar-expand-lg navbar-light">
-         <div class="container-fluid">
+         <div class="">
            <div class="collapse navbar-collapse" id="navbarNav">
              <ul class="navbar-nav" id="nav-bar">
                 <li class="nav-item">
@@ -40,6 +40,9 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="index.php?act=contact">LIÊN HỆ</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="index.php?act=search_order">TRA CỨU ĐƠN HÀNG</a>
                 </li>
              </ul>
             </div>

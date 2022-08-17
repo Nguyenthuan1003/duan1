@@ -22,13 +22,13 @@ try {
     $mail->CharSet = 'utf8';                                    // Tiếng việt
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
     $mail->Username   = 'thegioialo247@gmail.com';                     //SMTP username
-    $mail->Password   = 'fbcizyrutsbeefjl';                               //SMTP password
+    $mail->Password   = 'xpycfuthusbfheho';                               //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('thegioialo247@gmail.com', "$title");
-    $mail->addAddress("$email","$user");     //Add a recipient
+    $mail->setFrom('thegioialo247@gmail.com', $title);
+    $mail->addAddress($email,$user);     //Add a recipient
     // $mail->addAddress('ellen@example.com');               //Name is optional
     $mail->addReplyTo('thegioialo247@gmail.com', 'Information');
     // $mail->addCC('cc@example.com');
@@ -40,14 +40,18 @@ try {
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = "$title2";
-    $mail->Body    = "$passwords";
+    $mail->Subject = $title2;
+    $mail->Body    = $passwords;
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();
-    echo 'Message has been sent';
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
 }
+
+
+
 ?>
+
+

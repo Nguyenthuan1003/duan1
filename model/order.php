@@ -15,11 +15,19 @@
         return pdo_query($sql);
     }
     ;
+    function delete_order($id){
+        $sql  = "DELETE FROM `orders` WHERE id_order=".$id;
+        pdo_execute($sql);
+    };
+    function delete_order_details($id){
+        $sql  = "DELETE FROM `order_details` WHERE id_order=".$id;
+        pdo_execute($sql);
+    };
 
-     function insert_order($name_order,$address,$created_date_order,$name_voucher,$total_price,$phone,$email,$id_user)
+     function insert_order($name_order,$address,$created_date_order,$status_order,$name_voucher,$total_price,$phone,$email,$id_user)
      {
-         $sql = "INSERT INTO orders (`name_order`,`address_order`,`created_date_order`,`name_voucher`,`total_price`,`sdt`,`email`,`id_user`) value 
-         ('$name_order','$address','$created_date_order','$name_voucher','$total_price','$phone','$email','$id_user')";
+         $sql = "INSERT INTO orders (`name_order`,`address_order`,`created_date_order`,`status_order`,`name_voucher`,`total_price`,`sdt`,`email`,`id_user`) value 
+         ('$name_order','$address','$created_date_order','$status_order','$name_voucher','$total_price','$phone','$email','$id_user')";
          return pdo_execute($sql);
      };
      function select_one_order($email,$date)

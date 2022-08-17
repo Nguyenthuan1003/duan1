@@ -256,29 +256,19 @@
                         };
 
                         if(empty($err) && $method_payment === "thanh toán khi nhận hàng"){
-
                             $loca = get_info_order($city,$district,$wards);
                             $date = date("d/m/Y") ;
-                            insert_order($user_name,$apartmentNumber.'-'.$loca,$date,isset( $_SESSION['voucher'])? $_SESSION['voucher']:'', $total_price ,$phoneNumber ,$email, isset($_SESSION['user'])?$_SESSION['user']['id_user']:"");
-                            $order = select_one_order($email,$date) ;
-                            $id_order = $order['id_order'];
-
-                            
-                            $ca = is_array($_SESSION['id_cart'])?count($_SESSION['id_cart']):1 ;
-                            for($i = 0 ; $i < $ca ; $i++)
-                            {
-                                    $sp = select_one_pro_atrri($_SESSION['id_cart'][$i],$_SESSION['id_variant'][$i]) ;
-                                    insert_order_details($id_order,$_SESSION['id_cart'][$i],$_SESSION["quantity_pro_cart"][$i],$sp['price'],$sp['price'],$_SESSION['id_variant'][$i]);
-                                    //insert thông tin vào bảng chi tiết đơn hàng
-                                    $quantity = $sp['quantity'] - $_SESSION["quantity_pro_cart"][$i] ;
-                                    update_quantity_pro_var($_SESSION['id_cart'][$i],$_SESSION['id_variant'][$i],$quantity);
-                                    // cập nhập lại số lượng của sản phẩm còn lại sau khi mua 
-                            }
-
-                            
-                            header("location:index.php?act=ordered&&id_order=$id_order");
-                            
-                           
+                            $pay = [
+                                'user_name' => $user_name,
+                                'dia_chi' => $loca,
+                                'email' => $email ,
+                                'sdt' => $phoneNumber ,
+                                'total_price' => $total_price ,
+                                'status' => 2 ,
+                                 'date' => $date
+                            ];
+                            $_SESSION['info_pay'] = $pay ;
+                            header("location:index.php?act=check_pay&&info_pay");          
                             
 
                         }
@@ -292,7 +282,114 @@
                         $blog = select_all_blog() ;
                         include './view/client/blogs.php';
                     break;
+                    case 'check_pay':
+
+
+                        if(isset($_GET['info_pay']))
+                        {
+                            $user =  $_SESSION['info_pay']['user_name'];
+                            $email =  $_SESSION['info_pay']['email'];
+                            $_SESSION['code_check_pay'] = rand(100000,999999);
+                            setcookie('check_pay', $_SESSION['code_check_pay'],time()+(3000));
+                            sendmail($user,$email,'Mã xác nhận của bạn là: '.$_SESSION['code_check_pay'],'Thegioialo','Mã Xác Thực Đặt Hàng');
+                            $message = 'Đã gửi mã xác nhận. Vui lòng kiểm tra email. Mã xác nhận có hiệu lực trong 5 phút';
+                            include './view/client/pay/check_pay.php';
+                        };
+
+                        if(isset($_POST['submit_check_pay']))
+                        {
+                            if(empty($_POST['code_check_pay'])){
+                                $message = 'Vui lòng nhập mã code';
+                                include './view/client/pay/check_pay.php';
+                            }
+                            else {
+                            if($_POST['code_check_pay'] == $_COOKIE['check_pay']){
+                            insert_order($_SESSION['info_pay']['user_name'],$_SESSION['info_pay']['dia_chi'],$_SESSION['info_pay']['date'],2,isset( $_SESSION['voucher'])? $_SESSION['voucher']:'', $_SESSION['info_pay']['total_price'] ,$_SESSION['info_pay']['sdt'] ,$_SESSION['info_pay']['email'], isset($_SESSION['user'])?$_SESSION['user']['id_user']:"");
+                            $order = select_one_order($_SESSION['info_pay']['email'],$_SESSION['info_pay']['date']) ;
+                            $id_order = $order['id_order'];
+                           
+                            
+                            $ca = is_array($_SESSION['id_cart'])?count($_SESSION['id_cart']):1 ;
+                            for($i = 0 ; $i < $ca ; $i++)
+                            {
+                                    $sp = select_one_pro_atrri($_SESSION['id_cart'][$i],$_SESSION['id_variant'][$i]) ;
+                                    insert_order_details($id_order,$_SESSION['id_cart'][$i],$_SESSION["quantity_pro_cart"][$i],$sp['price'],$sp['price'],$_SESSION['id_variant'][$i]);
+                                    //insert thông tin vào bảng chi tiết đơn hàng
+                                    $quantity = $sp['quantity'] - $_SESSION["quantity_pro_cart"][$i] ;
+                                    update_quantity_pro_var($_SESSION['id_cart'][$i],$_SESSION['id_variant'][$i],$quantity);
+                                    // cập nhập lại số lượng của sản phẩm còn lại sau khi mua 
+                            }
+                            
+                            header("location:index.php?act=ordered&&id_order=$id_order&&id_ordered=$id_order");
+                           }
+                           else
+                           {
+                               $mesage = "mã code không đúng ";
+                               header('location: ./view/client/pay/check_pay.php');
+                           }
+                          }
+                          
+                          
+                        }
+                       
+                    break;
                     case 'ordered':
+                        if(isset($_GET['id_ordered']))
+                        {
+                            $id_order = $_GET['id_ordered'];
+                            $order = select_one_order_id($id_order);
+                            $total = number_format($order['total_price']) ;
+                            $order_details = get_all_order_details($id_order);
+                            $bodys = "
+                            <main class='bg-body'>
+                            <div class='container pt-3'>
+                                <div style='width:50% ; box-shadow: 10px 5px 5px black;' class='row shadow-lg p-3 mb-5 m-auto bg-body rounded'>
+                                    <h2 style='font-size:20px' class='text-success text-center'><i class='fa fa-bag-shopping me-3'></i>Đặt hàng
+                                        thành công</h2>
+                                    <div style='font-size:13px' class='col-md-12 mt-0 w-100'>
+                        
+                        
+                                        <p>Cảm Ơn Bạn Đã Cho <b>Thegioialo.vn</b> Cơ Hội Được Phục Vụ</p>
+                        
+                                        <section class='mt-3 p-2 bg-light rounded-3'>
+                                            <div class='row'>
+                                                <p class='col-6'><b>Mã Đơn Hàng:</b> # $order[id_order]</p>
+                                               
+                                            </div>
+                                            <div class='mt-3'>
+                                                <ul style='list-style-type: circle;'>
+                                                    <li>
+                                                        <b>Người Nhận:</b>  $order[name_order]  $order[sdt] 
+                                                    </li>
+                                                    <li class='mt-2'>
+                                                        <b>Địa Chỉ Nhận Hàng:</b>  $order[address_order]
+                                                    </li>
+                                                    <li class='mt-2'>
+                                                        <b>Hình Thức Nhận Hàng:</b> nhận hàng rồi thanh toán
+                                                    </li>
+                                                    <li class='mt-2'>
+                                                        <b>Tổng Tiền: </b> $total đ
+                                                    </li>
+                                                    
+                                                    <a href='http://localhost:3000/index.php?act=details_order&&id_order=$order[id_order]'>xem chi tiết đơn hàng</a>
+                                                    
+                                                </ul>
+                                            </div>
+                        
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+                        </main>";
+                            $body = "đặt hàng thành công <br> mã đơn hàng của bạn : $order[id_order] <br> họ tên : $order[name_order]. <br> số điện thoại : $order[sdt] <br> ngày đặt hàng : $order[created_date_order] <br> địa chỉ nhận hàng : $order[address_order] <br> tổng số tiền : $order[total_price] ." ;
+                            sendmail($order['name_order'],$order['email'],$bodys,"Thegioialo.vn","Bạn Đã Đặt Hàng Thành Công");
+                            unset($_SESSION['id_cart']);
+                            unset($_SESSION["quantity_pro_cart"]);
+                            unset($_SESSION['id_variant']);
+                            setcookie('id_cart',"", time()-3000000);
+                            setcookie('quantity_pro_cart',"", time()-3000000);
+                            setcookie('id_variant',"", time()-3000000);
+                        };
                         if(isset($_GET['id_order']))
                         {
                             $id_order = $_GET['id_order'];
@@ -301,7 +398,7 @@
                             
                         };
                         $hanghoa = select_all_product_atrri() ;
-                        include './view/client/ordered.php';
+                        include './view/client/order/ordered.php';
                     break;
                 case 'info-user':
                     if(isset($_SESSION['user'])&&is_array($_SESSION['user'])){
@@ -337,7 +434,8 @@
                     break;
                 case 'cart':
                         
-                        
+                       
+                                                
                         if(isset($_COOKIE['id_cart']) && !empty($_COOKIE['id_cart']))
                         {
                             $_SESSION['id_cart'] = json_decode($_COOKIE['id_cart'], true); ;
@@ -349,11 +447,15 @@
                         {
                              
                                  $pro = select_pro_with_idpro_and_version_and_color_variant($_GET['id_pro'],$_POST["version_pro"],$_POST["color_pro"]);
-                           
+                                 $quanty = array();
+                                $id_pro = $pro[0]['id_pro'] ;
+                                $id_variant = $pro[0]['id_variant'] ;
+                                $quanty[0]['quantity'] = 1 ;
+
                                 $arr_cart = [
-                                'id' => $pro[0]['id_pro'],
-                                'quantity' => 1,
-                                'id_variant' => $pro[0]['id_variant']
+                                'id' => $id_pro,
+                                'quantity' => $quanty[0]['quantity'],
+                                'id_variant' => $id_variant
                                 
                                ];
                                $_SESSION['id_cart'] = $arr_cart['id'] ;
@@ -585,26 +687,32 @@
                             $message = 'Email không tồn tại';
                             include_once './view/client/user/forgot_password.php';
                         }
-                        if(is_array($user)){
+                        if(isset($user) && !empty($user)){
                             $_SESSION['forEmail'] = $user['email'];
-                            echo $_SESSION['forEmail'];
                             $_SESSION['code'] = rand(100000,999999);
                             setcookie('forEmail', $_SESSION['code'],time()+(3000));
-                            sendmail($user['user_name'],$user['email'],'Mã xác nhận của bạn là: '.$_SESSION['code'],'Thegioialo','Mã xác nhận');
+                            sendmail($user['user_name'],$_SESSION['forEmail'],'Mã xác nhận của bạn là: '.$_SESSION['code'],'Thegioialo','Mã xác thực');
                             $message = 'Đã gửi mã xác nhận. Vui lòng kiểm tra email. Mã xác nhận có hiệu lực trong 5 phút';
                             header('Location: index.php?act=otp');
+                            
                         }
                     }
                     
                     include_once './view/client/user/forgot_password.php';
                     break;
                 case 'otp':
+                    if(isset($_SESSION['code']))
+                    {
+                        $message = 'Đã gửi mã xác nhận. Vui lòng kiểm tra email. Mã xác nhận có hiệu lực trong 5 phút';
+                        
+                    };
                     if(isset($_POST['login'])){
                         $code = $_POST['code'];
                         if (isset($_COOKIE['forEmail'])){
+                            
                             if($code != $_COOKIE['forEmail']){
                                 $message = 'Mã xác nhận không chính xác';
-                                include_once './view/client/user/otp.php';
+                               
                             }else{
                                 header('Location: index.php?act=changePass');
                             }
@@ -636,8 +744,53 @@
                     break;
                     case 'search_order':
                         
-                        include './view/client/search_order.php';
+                        include './view/client/order/search_order.php';
                         break;
+                    case 'remove_order':
+                                if(isset($_POST['submit_check_remove_order']) )
+                                {
+                                    if(empty($_POST['code_check_remove_order'])){
+                                        $message = 'Vui lòng nhập mã code';
+                                        include './view/client/order/check_remove_order.php';
+                                    }
+                                    else {
+                                    if($_POST['code_check_remove_order'] == $_COOKIE['check_remove_order']){
+                                        $id_order = $_POST['remove_id_order'];
+                                        $order = select_one_order_id($id_order);
+                                        $order_details = get_all_order_details($id_order); 
+                                        delete_order_details($id_order);
+                                        delete_order($id_order);
+                                        $date = date('m/d/Y h:i:s a', time()) ;
+                                        sendmail($order['name_order'],$order['email'],"đơn hàng có mã $id_order của bạn được hủy thành công vào lúc $date <br> ","Thegioialo.vn","Hủy Đơn Hàng Thành Công");
+                                        $remove_ordered = 1 ;
+                                        $hanghoa = select_all_product_atrri() ;
+                                        include './view/client/order/remove_order.php';
+                                    
+                                   }
+                                   else
+                                   {
+                                       $mesage = "mã code không đúng ";
+                                       include './view/client/order/check_remove_order.php';
+                                   }
+                                  }
+                                
+                                
+                               }
+                             
+                            break;
+                            case 'check_remove_order':
+                                if(isset($_GET['remove_id_order'])){
+                                    $id_order = $_GET['remove_id_order'];
+                                    $order = select_one_order_id($id_order);
+                                    $order_details = get_all_order_details($id_order); 
+                                    $_SESSION['code_check_remove_order'] = rand(100000,999999);
+                                    setcookie('check_remove_order', $_SESSION['code_check_remove_order'],time()+(3000));
+                                    sendmail($order['name_order'],$order['email'],'Mã xác nhận của bạn là: '.$_SESSION['code_check_remove_order'],'Thegioialo','Mã Xác Thực Hủy Đơn Hàng');
+                                    $message = 'Đã gửi mã xác nhận. Vui lòng kiểm tra email. Mã xác nhận có hiệu lực trong 5 phút';
+                                    include './view/client/order/check_remove_order.php';
+                                   
+                                 }
+                                break;
                     case 'details_order':
 
                             if(isset($_GET['id_order']))
@@ -656,7 +809,7 @@
                             };
                             // xem chi tiết đơn hàng từ trang tìm kiếm đơn hàng .
                             $hanghoa = select_all_product_atrri() ;
-                            include './view/client/details_order.php';
+                            include './view/client/order/details_order.php';
                             break;
                 case 'editUser':
                     if(isset($_GET['id'])){
@@ -710,10 +863,10 @@
                         $id_variant = $_GET['id_var'];
                         insert_wishlist($id,$id_user,$id_variant);
                         ?>
-                            <script>
-                                alert('Thêm sản phẩm vào danh sách yêu thích thành công');
-                            </script>
-                        <?php
+<script>
+alert('Thêm sản phẩm vào danh sách yêu thích thành công');
+</script>
+<?php
                     $pro = load_one_pro($id);
                     $var = select_id_variant_with_id_pro($id);
                     if(!isset($_GET['version']) && !empty($var) && !isset($_GET['versions']) && !isset($_GET['color']) && !isset($_GET['colors'])  ){
@@ -743,6 +896,7 @@
                     }
                     include './view/client/wishlist/list.php';
                     break;
+                    
                 case 'delete_wl':
                     if(isset($_GET['id']) && isset($_GET['id_user'])){
                         $id = $_GET['id'];
@@ -755,6 +909,7 @@
             default:
                 include './main.php';
                 break;
+                
         }
     }else{
         include './main.php';

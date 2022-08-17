@@ -43,8 +43,8 @@
               <?=$client['accont_balance']?>
             </td>
             <td>
-              <?php if($client['role'] === 1) : ?>
-                <p>Nhân viên</p>
+              <?php if($client['role'] == 1) : ?>
+                <p>quản trị viên</p>
               <?php else : ?>
                 <p>Khách hàng</p>
               <?php endif; ?>

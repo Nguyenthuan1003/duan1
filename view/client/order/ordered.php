@@ -1,15 +1,26 @@
 <main class="bg-body">
     <div class="container pt-3">
         <div style="width:50%" class="row shadow-lg p-3 mb-5 m-auto bg-body rounded">
-        <h2 style="font-size:20px" class="text-success text-center"><i class="fa fa-bag-shopping me-3"></i>Chi Tiết Đơn Hàng</h2>
-            <?php if(isset($order) && !empty($order)) : ?>
-            
+            <?php if(isset($order) && !empty($order) ) : ?>
+                <?php if(!isset($remove_ordered)) : ?>
+            <h2 style="font-size:20px" class="text-success text-center"><i class="fa fa-bag-shopping me-3"></i>Đặt hàng
+                thành công</h2>
             <div style="font-size:13px" class="col-md-12 mt-0 w-100">
+               
 
+                <p>Cảm Ơn Bạn Đã Cho <b>Thegioialo.vn</b> Cơ Hội Được Phục Vụ</p>
+                <?php else :  ?>
+
+                    <h2 style="font-size:20px" class="text-success text-center"><i class="fa fa-bag-shopping me-3"></i>Hủy Đơn Hàng
+                thành công</h2>
+            <div style="font-size:13px" class="col-md-12 mt-0 w-100">
+        
+                     
+                <?php endif ?>
                 <section class="mt-3 p-2 bg-light rounded-3">
                     <div class="row">
                         <p class="col-6"><b>Mã Đơn Hàng:</b> #<?= $order['id_order'] ?></p>
-                        <a href="" style="text-decoration:underline" class="col-6">quản lý đơn hàng</a>
+            
                     </div>
                     <div class="mt-3">
                         <ul style="list-style-type: circle;">
@@ -25,7 +36,6 @@
                             <li class="mt-2">
                                 <b>Tổng Tiền: </b> <?= number_format($order['total_price']) ?>đ
                             </li>
-                            
                         </ul>
                     </div>
 
@@ -37,7 +47,7 @@
                 <hr style="height:1px ; color : grey ;" style="width:100%">
                 <p>Sản Phẩm Trong Đơn Hàng</p>
                 <section class="mt-3 p-2 bg-body border rounded-3">
-                    <?php if( ( isset($_POST['search_order'])&& isset($_POST['search_order_value']) && !empty($_POST['search_order_value']) ) || isset($_GET['id_order']) ): ?>
+                    <?php if(isset($_GET['id_order']) && !empty( $order_details)): ?>
                     <?php $a = is_array($order_details)?sizeof($order_details) : 1  ?>
                     <?php foreach($hanghoa as $hangh): ?>
                     <?php for($i = 0 ; $i < $a ; $i++) : ?>
@@ -74,9 +84,9 @@
                 <?php else : ?>
                 <p>Chưa Có đơn hàng</p>
                 <?php endif ?>
-                <?php if($order['status_order'] == 2): ?>
+                <?php if($order['status_order'] == 2 && !isset($remove_ordered ) ): ?>
                 <section class="mt-3">
-                   <a style="width:100% ;" class="btn btn-danger">HỦY ĐƠN HÀNG</a>
+                   <a style="width:100% ;" href="index.php?act=remove_order&&remove_id_order=<?= $order['id_order'] ?>" class="btn btn-danger">HỦY ĐƠN HÀNG</a>
                 </section>
                 <?php endif ?>
                 <div class="btn-login mt-3">

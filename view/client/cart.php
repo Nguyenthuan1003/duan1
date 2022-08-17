@@ -13,7 +13,7 @@
                     <?php $a = is_array($_SESSION['id_cart'])?sizeof($_SESSION['id_cart']) : 1  ?>
                     <?php foreach($hanghoa as $hh): ?>
                     <?php if($a == 1) : ?>
-                        <?php if($_SESSION['id_cart'] == $hh['id_pro'] && $_SESSION['id_variant'] == $hh['id_variant']  ): ?>
+                        <?php if($_SESSION['id_cart'][$a-1] == $hh['id_pro'] && $_SESSION['id_variant'][$a-1] == $hh['id_variant']  ): ?>
                     <section class="product_on_cart row">
 
                         <div class="info_product_on_cart col-5 row">
@@ -44,7 +44,7 @@
                                     <input type="hidden" name="color_pro" value="<?= $hh['color_variant'] ?>">
                                     <input type="hidden" name="version_pro" value="<?= $hh['version_variant'] ?>">
                                     <p class="price_product_on_cart text-danger mt-2 me-5">
-                                        <?= $hh['price'] * (is_array($_SESSION['quantity_pro_cart'])?$_SESSION['quantity_pro_cart'][$i] : $_SESSION['quantity_pro_cart'] ) ?>
+                                        <?= $hh['price'] * (is_array($_SESSION['quantity_pro_cart'])?$_SESSION['quantity_pro_cart'][$a-1] : $_SESSION['quantity_pro_cart'] ) ?>
                                     </p>
                                     <input class="price_product_default" hidden value="<?= $hh['price']?>">
                                     <!-- <input class="minus minus_product_on_cart" type="button" value="-" id="Subtraction">
@@ -53,9 +53,9 @@
                                     <div class="buttons_added">
                                         <input class="minus is-form" type="button" value="-" id="Subtraction">
                                         <input class="input-qty" max="100000" min="1"
-                                            mix="<?= (is_array($_SESSION['quantity_pro_cart'])?$_SESSION['quantity_pro_cart'][$i] : $_SESSION['quantity_pro_cart'] ) ?>"
+                                            mix="<?= (is_array($_SESSION['quantity_pro_cart'])?$_SESSION['quantity_pro_cart'][$a-1] : $_SESSION['quantity_pro_cart'] ) ?>"
                                             name="qantit_pro" type="number"
-                                            value="<?= (is_array($_SESSION['quantity_pro_cart'])?$_SESSION['quantity_pro_cart'][$i] : $_SESSION['quantity_pro_cart'] ) ?>">
+                                            value="<?= (is_array($_SESSION['quantity_pro_cart'])?$_SESSION['quantity_pro_cart'][$a-1] : $_SESSION['quantity_pro_cart'] ) ?>">
                                         <input class="plus is-form" type="button" value="+" id="plus">
                                     </div>
                                     <input type="submit" name="edit_cart" class="btn btn-primary" value="cập nhập">

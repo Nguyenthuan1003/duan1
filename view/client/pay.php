@@ -156,13 +156,13 @@
                     <article class="row  mt-2">
                         <div class="col-6 d-flex">
                             <input style="height:30px ; font-size:16px" disabled class="price text-danger col-12 p-0 " id="price_pro"
-                                value="<?=number_format($hh['price'] * $_SESSION['quantity_pro_cart'][$i]) ?>đ">
+                                value="<?=number_format($hh['price'] * (is_array($_SESSION['quantity_pro_cart'])?$_SESSION['quantity_pro_cart'][$i] : $_SESSION['quantity_pro_cart'] )) ?>đ">
                         </div>
 
                         <div class="buttons_added col-6">
                             <span class="mt-2 me-2">sl: </span>
                             <input aria-label="quantity" style="height:30px" class="input-qty" max="100000" min="1" name="" type="number"
-                                disabled value="<?= $_SESSION['quantity_pro_cart'][$i] ?>" id="sum">
+                                disabled value="<?= (is_array($_SESSION['quantity_pro_cart'])?$_SESSION['quantity_pro_cart'][$i] : $_SESSION['quantity_pro_cart'] ) ?>" id="sum">
 
                         </div>
                     </article>
@@ -182,7 +182,7 @@
                     <?php foreach($hanghoa as $hangh): ?>
                     <?php for($i = 0 ; $i < $a ; $i++) : ?>
                     <?php if(  $_SESSION['id_cart'][$i] === $hangh['id_pro'] && $_SESSION['id_variant'][$i] == $hangh['id_variant']  ): ?>
-                    <?php $total_price += ($hangh['price'] * $_SESSION['quantity_pro_cart'][$i]) ?>
+                    <?php $total_price += ($hangh['price'] * (is_array($_SESSION['quantity_pro_cart'])?$_SESSION['quantity_pro_cart'][$i] : $_SESSION['quantity_pro_cart'] )) ?>
                     <?php endif ?>
                     <?php endfor ?>
                     <?php endforeach ?>
