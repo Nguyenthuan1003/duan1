@@ -22,7 +22,7 @@ try {
     $mail->CharSet = 'utf8';                                    // Tiếng việt
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
     $mail->Username   = 'thegioialo247@gmail.com';                     //SMTP username
-    $mail->Password   = 'fbcizyrutsbeefjl';                               //SMTP password
+    $mail->Password   = 'xpycfuthusbfheho';                               //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 

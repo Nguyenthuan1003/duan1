@@ -586,13 +586,15 @@
                             include_once './view/client/user/forgot_password.php';
                         }
                         if(is_array($user)){
+                            // print_r($user);
                             $_SESSION['forEmail'] = $user['email'];
-                            echo $_SESSION['forEmail'];
+                            // echo $_SESSION['forEmail'];
                             $_SESSION['code'] = rand(100000,999999);
                             setcookie('forEmail', $_SESSION['code'],time()+(3000));
-                            sendmail($user['user_name'],$user['email'],'Mã xác nhận của bạn là: '.$_SESSION['code'],'Thegioialo','Mã xác nhận');
+                            sendmail($user['user_name'],$_SESSION['forEmail'],'Mã xác nhận của bạn là: '.$_SESSION['code'],'Thegioialo','Mã xác nhận');
                             $message = 'Đã gửi mã xác nhận. Vui lòng kiểm tra email. Mã xác nhận có hiệu lực trong 5 phút';
-                            header('Location: index.php?act=otp');
+                            // header('Location: index.php?act=otp');
+                            include_once './view/client/user/otp.php';
                         }
                     }
                     
@@ -708,12 +710,26 @@
                         $id = $_GET['id_pro'];
                         $id_user = $_GET['id_user'];
                         $id_variant = $_GET['id_var'];
-                        insert_wishlist($id,$id_user,$id_variant);
+                        $wishlish = select_all_wishlist($id_user);
+                        $er = [];
+                        foreach ($wishlish as $wish){
+                            if($wish['id_variant'] == $id_variant){
+                                $er['wl'] = 'Sản phẩm đã tồn tại'; 
+                                ?>
+                                    <script>
+                                        alert('Sản phẩm đã tồn tại')
+                                    </script>
+                                <?php
+                            }
+                        }
+                            if(!array_filter($er)){
+                                insert_wishlist($id,$id_user,$id_variant);
                         ?>
                             <script>
                                 alert('Thêm sản phẩm vào danh sách yêu thích thành công');
                             </script>
                         <?php
+                        }
                     $pro = load_one_pro($id);
                     $var = select_id_variant_with_id_pro($id);
                     if(!isset($_GET['version']) && !empty($var) && !isset($_GET['versions']) && !isset($_GET['color']) && !isset($_GET['colors'])  ){
@@ -751,6 +767,13 @@
                         $wishlish = select_all_wishlist($id_user);
                     }
                     include './view/client/wishlist/list.php';
+                    break;
+                case 'search_pro':
+                    if(isset($_GET['key'])){
+                        $key = $_GET['key'];
+                        $ProductsHome = select_key($key);
+                    }
+                    include_once './view/client/search.php';
                     break;
             default:
                 include './main.php';

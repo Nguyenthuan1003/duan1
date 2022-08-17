@@ -7,6 +7,7 @@
     include_once '../../model/statistics.php';
     include_once '../../model/comment.php';
     include_once '../../model/webSetting.php';
+    include_once '../../model/order.php';
     include_once './header.php';
     if(isset($_GET['id_menu'])){
         $id_menu=$_GET['id_menu'];
@@ -722,6 +723,13 @@
                             include_once './website/update.php';
                         }
                     }
+                    break;
+                case 'vorcher':
+
+                    break;
+                case 'order':
+                        $order = select_all_od();
+                        include_once './order/list.php';
                     break;
             default:
                 # code...

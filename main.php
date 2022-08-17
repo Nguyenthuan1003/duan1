@@ -1,42 +1,3 @@
-<?php
-    //  $Sql = "SELECT count(id_pro) as sl_sp FROM products" ;
-    //  $Total_Sp = pdo_query_one($Sql);
-    //  // tổng sản phẩm trong bảng sản phẩm 
-    //  $Total_Product_On_Page = 12;
-    //  // số lượng sản phẩm trên page
-    //  $Total_Page = ceil($Total_Sp['sl_sp']/$Total_Product_On_Page) ;
-    //  // tổng lượng page sản phẩm hiển thị lên website 
-
- 
-
-    //  $Curent_Page = 1 ;
-    //  // page hiện tại 
-
-    //  if(isset($_GET['curent_page'])){
-    //  $Curent_Page = $_GET['curent_page'];
-    //  }
-    //  else { $Curent_Page = 1 ;} ;
-    //  // bắt sự kiện next trang 
-
-    //  $Limit_Start = ($Total_Product_On_Page - 1)*($Curent_Page-1) ;
-
-    //  // lấy sản phẩm bắt đầu từ $limit_start 
-
-   
-    //  $sql = "SELECT * FROM products LIMIT $Limit_Start,$Total_Product_On_Page";
-    //  $Products = pdo_query($sql) ;
-     // truy vấn sản phẩm 
-
-     
-    //  $sql_dm = "SELECT * FROM categories";
-    //  $Categories = pdo_query($sql_dm) ;
-     // truy vấn danh mục 
-
-
-
-?>
-
-
 <main class="main_index" style="background:#E4E5E7">
     <!-- banner -->
     <div class="slider">
@@ -60,15 +21,19 @@
         <div class="head-filter">
             <div class="row" style="width: 100%;">
                 <div class="col-md-4">
-                    <form class="d-inline-flex form-filter" action="index.php?" method="post">
-                        <label for="">Sắp xếp theo: </label>
-                        <select name="filter" class="filter">
-                            <option value="moiNhat">Mới nhất</option>
-                            <option value="cuNhat">Cũ nhất</option>
-                            <option value="giaCaoThap">Giá từ cao đến thấp</option>
-                            <option value="giaThapCao">Giá từ thấp đến cao</option>
-                        </select>
-                    </form>
+                    <!-- Example split danger button -->
+                    <div class="btn-group">
+                    <button type="button" class="btn btn-danger">Sắp xếp theo</button>
+                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="index.php?act=search_pro&key=ORDER BY id_pro DESC">Mới nhất</a></li>
+                        <li><a class="dropdown-item" href="index.php?act=search_pro&key=ORDER BY id_pro ASC">Cũ nhất</a></li>
+                        <li><a class="dropdown-item" href="index.php?act=search_pro&key=ORDER BY price_default DESC">Giá từ cao đến thấp</a></li>
+                        <li><a class="dropdown-item" href="index.php?act=search_pro&key=ORDER BY price_default ASC">Giá từ thấp đến cao</a></li>
+                    </ul>
+                    </div>
                 </div>
                 <div class="col-md-4"></div>
                 <div class="col-md-4">

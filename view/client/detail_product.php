@@ -341,7 +341,6 @@
                    
                 </div>
                 </div>
-            <?php print_r($_SESSION['user'])?>
         <div class="descrip">
             <strong id="combo-title" class="sg-access">Phụ kiện gợi ý cho iPhone</strong>
             <div id="combo-detail" class="access-sg owl-carousel">

@@ -111,6 +111,10 @@
         $sql.=" ORDER BY id_pro DESC";
         return pdo_query($sql);
     }
+    function select_key($key){
+        $sql = "SELECT * FROM products ".$key;
+        return pdo_query($sql);
+    }
     function update_quantity_pro_var($id_pro,$id_var,$quantity){
         $sql = "UPDATE `products_attribute` SET 
         `quantity`='".$quantity."' WHERE id_pro='".$id_pro."' AND id_variant=".$id_var;
