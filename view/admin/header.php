@@ -60,6 +60,7 @@
                         <li><a class="dropdown-item" href="index.php?id_menu=user">Quản Lý Khách Hàng </a></li>
                         <li><a class="dropdown-item" href="index.php?id_menu=variant">Quản Lý Biến Thể </a></li>
                         <li><a class="dropdown-item" href="index.php?id_menu=comment">Quản Lý Bình Luận </a></li>
+                        <li><a class="dropdown-item" href="index.php?id_menu=vorcher">Quản Lý Vorcher </a></li>
                         <li><a class="dropdown-item" href="index.php?id_menu=order">Quản Lý Đơn Hàng </a></li>
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle" href="index.php?id_menu=statistic" role="button" data-bs-toggle="dropdown" aria-expanded="false">

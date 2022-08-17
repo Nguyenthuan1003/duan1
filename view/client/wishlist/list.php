@@ -4,7 +4,7 @@
         <section class="product_on_cart row">
             <div class="info_product_on_cart col-5 row">
                 <article class="img_product_on_cart  text-align-center d-flex col-4 ms-2">
-                    <img src="./upload/<?= $w['images_default'] ?>" width="70px" class="m-auto" alt="">
+                    <img src="./upload/<?= $w['images_pro_attri'] ?>" width="70px" class="m-auto" alt="">
                 </article>
                 <article class="wrap_info_product_on_cart col-7 mt-2">
                     <p class="name_product_on_cart"><?= $w['pro_name'] ?></p>

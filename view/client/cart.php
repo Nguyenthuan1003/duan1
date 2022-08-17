@@ -11,9 +11,14 @@
                 <article class="wrap_product_on_cart">
                     <?php if(isset($_SESSION['id_cart']) && !empty($_SESSION['id_cart'])): ?>
                     <?php $a = is_array($_SESSION['id_cart'])?sizeof($_SESSION['id_cart']) : 1  ?>
+                    <?php if($a == 1 && !is_array($_SESSION['id_cart'])): ?>
                     <?php foreach($hanghoa as $hh): ?>
+<<<<<<< HEAD
                     <?php if($a == 1) : ?>
                         <?php if($_SESSION['id_cart'][$a-1] == $hh['id_pro'] && $_SESSION['id_variant'][$a-1] == $hh['id_variant']  ): ?>
+=======
+                        <?php if($_SESSION['id_cart'] == $hh['id_pro'] && $_SESSION['id_variant'] == $hh['id_variant']  ): ?>
+>>>>>>> 6e32b10eba465e8ab801bc8e3ee016ae5d34adbe
                     <section class="product_on_cart row">
 
                         <div class="info_product_on_cart col-5 row">
@@ -70,7 +75,10 @@
                     </section>
                     <hr class="text-secondary">
                     <?php endif ?>
-                    <?php else : ?>
+                    <?php endforeach; ?>
+                    <?php endif; ?>
+                    <?php if(is_array($_SESSION['id_cart'])) : ?>
+                    <?php foreach($hanghoa as $hh): ?>
                     <?php  for( $i = 0 ; $i < $a ; $i++): ?>
                     <?php if($_SESSION['id_cart'][$i] == $hh['id_pro'] && $_SESSION['id_variant'][$i] == $hh['id_variant']  ): ?>
                     <section class="product_on_cart row">
@@ -130,8 +138,8 @@
                     <hr class="text-secondary">
                     <?php endif ?>
                     <?php endfor ?>
-                    <?php endif ?>
                     <?php endforeach ?>
+                    <?php endif ?>
                     <?php else :  ?>
                     <p>Vui lòng thêm sản phẩm vào giỏ hàng</p>
                     <?php endif ?>

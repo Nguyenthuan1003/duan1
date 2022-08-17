@@ -6,7 +6,7 @@
             <div class="col-md-8">
                 <div class="delivery-address">
                     <h2>Chọn địa chỉ nhận hàng</h2>
-                    <form action="">
+                    <form action="" method="post">
                         <div class="row">
                             <div class="col-md-6 ">
                                 <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
@@ -199,10 +199,12 @@
                     <p>*Giá trên đã bao gồm VAT và phí vận chuyển.</p>
                 </div>
             </form>
+            <?php if($_SESSION['user']) : ?>
             <form class="d-flex" role="search" action="index.php?act=pay" method="post">
                 <input class="form-control" type="text" placeholder="Mã giảm giá" name="code_voucher">
                 <button class="btn btn-danger ms-3" name="add_voucher" type="submit">Áp</button>
             </form>
+            <?php endif; ?>
             <p class="text-danger mt-3"><?= isset($mesage_voucher) ? $mesage_voucher:"" ?></p>
             <?php  if( $value_voucher !== 0) : ?>
             <?php $total_price = $total_price - $total_price*($value_voucher/100) ?>
