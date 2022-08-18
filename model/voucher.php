@@ -17,4 +17,8 @@
         ,`expiration_date`='".$date."',`coupon_value`=".$value." WHERE id_vorcher=".$id;
         pdo_execute($sql);
     }
+    function delete_vorcher($id){
+        $sql = "DELETE FROM `e_vorcher` WHERE id_vorcher=".$id;
+        pdo_execute($sql);
+    }
 ?>

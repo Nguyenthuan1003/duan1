@@ -43,7 +43,7 @@
                             <td scope="row"><?=$pro['description_comment']?></td>
                             <td scope="row"><?=$pro['created_date_comment']?></td>
                             <td>
-                                <a href="index.php?id_menu=delete_comment&id=<?=$pro['id_comment']?>&id_pro=<?=$pro['id_pro']?>">
+                                <a onclick="return confirm('Bạn có chắc chắn xóa mục này')" href="index.php?id_menu=delete_comment&id=<?=$pro['id_comment']?>&id_pro=<?=$pro['id_pro']?>">
                                     <button class="btn btn-danger" type="button">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </button>

@@ -54,7 +54,7 @@
             </td>
             <td>
               <a href="index.php?id_menu=edit_user&id=<?=$client['id_user']?>"><button type="button" class="btn btn-danger"><i class="fa-solid fa-pencil"></i></button></a>
-              <a href="index.php?id_menu=delete_user&id=<?=$client['id_user']?>"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button></a>
+              <a onclick="return confirm('Bạn có chắc chắn xóa mục này')" href="index.php?id_menu=delete_user&id=<?=$client['id_user']?>"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button></a>
             </td>
           </tr>
           <?php endforeach;?>

@@ -5,14 +5,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="show-main-top">
-                            <span>show</span>
-                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
-                                id="show-number">
-                                <option selected>10</option>
-                                <option value="1">9</option>
-                                <option value="2">8</option>
-                                <option value="3">7</option>
-                            </select>
+                           
                             <div class="seach-main-top">
                                 <input type="text" class="form-control" placeholder="seach">
                             </div>
@@ -21,15 +14,7 @@
                     </div>
 
 
-                    <div class="col-md-6">
-                        <div class="" id="add-row">
-                            <a href="index.php?id_menu=aad_product">
-                                <button type="button" class="btn btn-primary">+ add hàng hóa</button>
-                            </a>
-                        </div>
-
-                    </div>
-
+                   
                 </div>
 
             </div>
@@ -72,7 +57,7 @@
                                         <i class="fa-solid fa-pen"></i>
                                     </button>
                                 </a>
-                                <a href="index.php?id_menu=delete_od&id=<?=$pro['id_order']?>&id_var=<?=$pro['id_variant']?>">
+                                <a onclick="return confirm('Bạn có chắc chắn xóa mục này')" href="index.php?id_menu=delete_od&id=<?=$pro['id_order']?>&id_var=<?=$pro['id_variant']?>">
                                     <button class="btn btn-danger" type="remove">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </button>

@@ -63,7 +63,7 @@
                                         <i class="fa-solid fa-pen"></i>
                                     </button>
                                 </a>
-                                <a href="index.php?id_menu=delete_pro_var&id=<?=$v['id_pro']?>&id_var=<?=$v['id_variant']?>">
+                                <a onclick="return confirm('Bạn có chắc chắn xóa mục này')" href="index.php?id_menu=delete_pro_var&id=<?=$v['id_pro']?>&id_var=<?=$v['id_variant']?>">
                                     <button class="btn btn-danger" type="remove">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </button>

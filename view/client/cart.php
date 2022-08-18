@@ -13,7 +13,6 @@
                     <?php $a = is_array($_SESSION['id_cart'])?sizeof($_SESSION['id_cart']) : 1  ?>
                     <?php if($a == 1 && !is_array($_SESSION['id_cart'])): ?>
                     <?php foreach($hanghoa as $hh): ?>
-                        <?php if($_SESSION['id_cart'][$a-1] == $hh['id_pro'] && $_SESSION['id_variant'][$a-1] == $hh['id_variant']  ): ?>
                         <?php if($_SESSION['id_cart'] == $hh['id_pro'] && $_SESSION['id_variant'] == $hh['id_variant']  ): ?>
                     <section class="product_on_cart row">
 
@@ -71,7 +70,6 @@
                     </section>
                     <hr class="text-secondary">
                     <?php endif ?>
-                    <?php endif; ?>
                     <?php endforeach; ?>
                     <?php endif; ?>
                     <?php if(is_array($_SESSION['id_cart'])) : ?>
@@ -123,7 +121,7 @@
                                         <input class="plus is-form" type="button" value="+" id="plus">
                                     </div>
                                     <input type="submit" name="edit_cart" class="btn btn-primary" value="cập nhập">
-                                    <input type="submit" name="remove_cart" class="btn btn-danger ms-2" value="xóa">
+                                    <input onclick="return confirm('Bạn có chắc chắn xóa mục này')" type="submit" name="remove_cart" class="btn btn-danger ms-2" value="xóa">
                                     
                                 </div>
                                 <div class="col-12 ms-5 mt-3">

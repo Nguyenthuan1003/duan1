@@ -72,5 +72,9 @@
             pdo_execute($sql);
         }
     }
+    function count_vorcher($id,$name){
+        $sql = "SELECT COUNT(name_voucher) as vor FROM `orders` WHERE id_user=".$id." AND name_voucher='".$name."'";
+        return pdo_query_one($sql);
+    }
 
 ?>

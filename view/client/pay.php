@@ -140,7 +140,38 @@
                 <div class="row m-0 mt-5">
                 <?php if(isset($_SESSION['id_cart']) && !empty($_SESSION['id_cart'])): ?>
                     <?php $a = is_array($_SESSION['id_cart'])?sizeof($_SESSION['id_cart']) : 1  ?>
+                    <?php if($a == 1 && !is_array($_SESSION['id_cart'])): ?>
                     <?php foreach($hanghoa as $hh): ?>
+                    <?php if($_SESSION['id_cart'] == $hh['id_pro'] && $_SESSION['id_variant'] == $hh['id_variant']  ): ?>
+                    <article class="row">
+                        <div class="col-3">
+                            <a href=""><img src="./upload/<?= $hh['images_pro_attri'] ?>" width="60"
+                                    alt="ảnh sản phẩm"></a>
+                        </div>
+                        <div class="col-8 d-flex">
+                            <p class="m-auto row"><?= $hh['pro_name']  ?> <?= $hh['color_variant'] ?> <?= $hh['version_variant'] ?></p>
+                        </div>
+                        
+                    </article>
+                    <article class="row  mt-2">
+                        <div class="col-6 d-flex">
+                            <input style="height:30px ; font-size:16px" disabled class="price text-danger col-12 p-0 " id="price_pro"
+                                value="<?=number_format($hh['price'] * (is_array($_SESSION['quantity_pro_cart'])?$_SESSION['quantity_pro_cart'][$i] : $_SESSION['quantity_pro_cart'] )) ?>đ">
+                        </div>
+
+                        <div class="buttons_added col-6">
+                            <span class="mt-2 me-2">sl: </span>
+                            <input aria-label="quantity" style="height:30px" class="input-qty" max="100000" min="1" name="" type="number"
+                                disabled value="<?= (is_array($_SESSION['quantity_pro_cart'])?$_SESSION['quantity_pro_cart'][$i] : $_SESSION['quantity_pro_cart'] ) ?>" id="sum">
+
+                        </div>
+                    </article>
+                    <hr class="text-secondary mt-3" style="width:75%">
+                    <?php endif ?>
+                    <?php endforeach ?>
+                    <?php endif ?>
+                    <?php if(is_array($_SESSION['id_cart'])) : ?>
+                        <?php foreach($hanghoa as $hh): ?>
                     <?php  for( $i = 0 ; $i < $a ; $i++): ?>
                     <?php if($_SESSION['id_cart'][$i] == $hh['id_pro'] && $_SESSION['id_variant'][$i] == $hh['id_variant']  ): ?>
                     <article class="row">
@@ -170,6 +201,7 @@
                     <?php endif ?>
                     <?php endfor ?>
                     <?php endforeach ?>
+                    <?php endif ?>
                     <?php else : ?>
                     <span class="text-danger">Chưa có hàng</span>
                     <?php endif ?>
@@ -179,13 +211,22 @@
                     <?php $total_price = 0  ?>
                     <?php if(isset($_SESSION['id_cart']) && !empty($_SESSION['id_cart'])): ?>
                     <?php $a = is_array($_SESSION['id_cart'])?sizeof($_SESSION['id_cart']) : 1  ?>
+                    <?php if($a == 1 && !is_array($_SESSION['id_cart'])): ?>
+                    <?php foreach($hanghoa as $hangh): ?>
+                    <?php if( $_SESSION['id_cart'] === $hangh['id_pro'] && $_SESSION['id_variant'] == $hangh['id_variant']  ): ?>
+                    <?php $total_price += ($hangh['price'] * (is_array($_SESSION['quantity_pro_cart'])?$_SESSION['quantity_pro_cart'][$i] : $_SESSION['quantity_pro_cart'] )) ?>
+                    <?php endif ?>
+                    <?php endforeach ?>
+                    <?php endif ?>
+                    <?php if(is_array($_SESSION['id_cart'])) : ?>
                     <?php foreach($hanghoa as $hangh): ?>
                     <?php for($i = 0 ; $i < $a ; $i++) : ?>
-                    <?php if(  $_SESSION['id_cart'][$i] === $hangh['id_pro'] && $_SESSION['id_variant'][$i] == $hangh['id_variant']  ): ?>
+                    <?php if( $_SESSION['id_cart'][$i] === $hangh['id_pro'] && $_SESSION['id_variant'][$i] == $hangh['id_variant']  ): ?>
                     <?php $total_price += ($hangh['price'] * (is_array($_SESSION['quantity_pro_cart'])?$_SESSION['quantity_pro_cart'][$i] : $_SESSION['quantity_pro_cart'] )) ?>
                     <?php endif ?>
                     <?php endfor ?>
                     <?php endforeach ?>
+                    <?php endif ?>
                     <?php else : ?>
                     <span class="text-danger">Chưa có hàng</span>
                     <?php endif ?>

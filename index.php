@@ -161,26 +161,21 @@
                     if(isset($_POST['add_voucher']) && !empty($_POST['code_voucher']))
                     {
                         $code_voucher = $_POST['code_voucher'];
-                        
-                       
+                        $countVor = count_vorcher($_SESSION['user']['id_user'], $code_voucher);
+                        foreach ($countVor as $key) {
+                            $counts = $key;
+                        }
+                       echo $counts;
                         for( $i = 0 ; $i < count($voucher) ; $i++)
                         {
                              
                             
                             if( $code_voucher === $voucher[$i]['name_vorcher'])
                             {
-                                foreach($orders as $orders)
-                                 {
-                                    if($orders['name_voucher'] === $voucher[$i]['name_vorcher']  )
-                                    {
-                                        $sl_voucher += 1 ;
-                                    }
-                                 };
-                                
                                  $voucher_date = $voucher[$i]['expiration_date'];
                                  $now = date("Y-m-d");
                                  
-                                 if($sl_voucher >= $voucher[$i]['quantity_limit'])
+                                 if($counts >= $voucher[$i]['quantity_limit'])
                                  {
                                     $mesage_voucher = "Voucher đã hết vui lòng nhập voucher khác ";
                                  }

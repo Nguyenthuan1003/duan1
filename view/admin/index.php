@@ -69,7 +69,7 @@
                         move_uploaded_file($image['tmp_name'],$targets);
                     }
                     if(!array_filter($er)){
-                        insert_pro($name, $price, $status, $category, $date, $des_pro, $targets);
+                        insert_pro($name, $price, $status, $category, $date, $des_pro, $image['name']);
                         $message = 'Sản phẩm đã được thêm mới';
                     }
                 }
@@ -845,6 +845,13 @@
                             include_once './vorcher/edit.php';
                         }
                     }
+                    break;
+                case 'delete_vorcher':
+                    if(isset($_GET['id'])){
+                        delete_vorcher($_GET['id']);
+                    }
+                        $vorcher = get_all_voucher();
+                        include_once './vorcher/list.php';
                     break;
             default:
                 include 'main.php';

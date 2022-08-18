@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include_once '../../../model/PDO.php';
     include_once '../../../model/comment.php';
     $idPro = $_REQUEST['idproduct'];
@@ -38,9 +39,9 @@
             $noidung = $_POST['msg'];
             $ma_hh = $_POST['id'];
             if(isset($_SESSION['user'])){
-                $ma_kh = $_SESSION['user']['id'];
+                $ma_kh = $_SESSION['user']['id_user'];
             }else{
-                $ma_kh = 3;
+                $ma_kh = 0;
             }
             $ngay_bl = date('h:i:sa d/m/Y');
             // die;
