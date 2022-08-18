@@ -1,6 +1,4 @@
-
-
-    <main>
+<main>
         <div class="container-client">
         <div class="add-client-1">
             <button class="btn btn-primary">update khách hàng</button>

@@ -10,15 +10,27 @@
                 <form action="" method="post">
                     <div class="input_login">
                         <p class="text-primary text-start">Email</p>
-                        <input type="text" class="form-control" name="email" placeholder="Nhập email để đăng nhập">
+                        <input type="text" class="form-control" name="email" value="<?=isset($user['email']) ? $user['email'] : ''?>">
                     </div>
-                    <input type="submit" value="Tiếp Tục" class="btn btn-primary mt-4 w-100" name="login">
+                    <!-- <a href="index.php?act=otp"> -->
+                        <input type="submit" value="Tiếp Tục" class="btn btn-primary mt-4 w-100" name="ranCode">
+                    <!-- </a> -->
                 </form>
                 <div class="btn-login">
                     <p class="text-secondary mt-3">hoặc</p>
-                    <a href=""><input type="submit" value="Quay Lại Trang Đăng Nhập"
+                    <a href="index.php?act=login"><input type="button" value="Quay Lại Trang Đăng Nhập"
                             class="btn btn-outline-primary w-100"></a>
                 </div>
+                <?php
+                if(isset($message)&&$message!=""){
+                    echo $message;
+                }
+                if(isset($er)&&$er!=""){
+                    foreach($er as $e){
+                        echo $e.'</br>';
+                    }
+                }
+            ?>
             </div>
         </div>
     </div>

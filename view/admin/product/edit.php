@@ -19,11 +19,11 @@
                     <select name="status_pro" id="" class="form-control">
                         <?php if(isset($pro['status'])) : ?>
                             <?php if($pro['status'] == 0) : ?>
-                                <option value="0" selected="selected">Còn hàng</option>
+                                <option value="0" selected>Còn Hàng</option>
                                 <option value="1">Hết hàng</option>
                             <?php else : ?>
                                 <option value="0">Còn hàng</option>
-                                <option value="1"  selected="selected">Hết hàng</option>
+                                <option value="1" selected >Hết hàng</option>
                             <?php endif; ?>
                         <?php else : ?>
                             <option value="0">Còn hàng</option>
@@ -40,7 +40,7 @@
                     </select>
                     <div class="">
                         <p>Ngày đăng</p>
-                        <input type="date" class="form-control" name="date_pro">
+                        <input type="date" class="form-control" name="date_pro" value="<?=$ct['created_date']?>">
                     </div>
                     <div class="">
                         <p>Ảnh</p>
@@ -71,4 +71,3 @@
             ?>
     </div>
 </main>
-

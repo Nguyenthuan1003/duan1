@@ -1,10 +1,16 @@
 <?php
+    session_start();
     include_once '../../model/PDO.php';
     include_once '../../model/users.php';
     include_once '../../model/danhmuc.php';
     include_once '../../model/sanpham.php';
     include_once '../../model/variant.php';
     include_once '../../model/order.php';
+    include_once '../../model/statistics.php';
+    include_once '../../model/comment.php';
+    include_once '../../model/webSetting.php';
+    include_once '../../model/order.php';
+    include_once '../../model/voucher.php';
     include_once './header.php';
     
     if(isset($_GET['id_menu'])){
@@ -35,10 +41,11 @@
                     $pro_one = select_pro_name($name);
                     $path = pathinfo($image['name'],PATHINFO_EXTENSION);
                     $er = [];
+                    echo $status;
                     if(is_array($pro_one)){
                         $er['pro'] = $name.' đã tồn tại';
                     }
-                    if(!preg_match('/^[A-Z][\w\s][^_]+$/', $name)){
+                    if(!preg_match('/^[A-Za-z][\w\s][^_]+$/', $name)){
                         $er['name'] = $name.' tên sản phẩm Không hợp lệ';
                     }
                     if(!preg_match('/^[\d]+$/', $price) || $price < 0){
@@ -65,7 +72,7 @@
                         move_uploaded_file($image['tmp_name'],$targets);
                     }
                     if(!array_filter($er)){
-                        insert_pro($name, $price, $status, $category, $date, $des_pro, $targets);
+                        insert_pro($name, $price, $status, $category, $date, $des_pro, $image['name']);
                         $message = 'Sản phẩm đã được thêm mới';
                     }
                 }
@@ -84,12 +91,13 @@
                     $name = $_POST['name_pro'];
                     $price = $_POST['price_pro'];
                     $status = $_POST['status_pro'];
+                    echo $status ;
                     $category = $_POST['category_pro'];
                     $date = $_POST['date_pro'];
                     $image = $_FILES["image_pro"];
                     $des_pro = $_POST['des_pro'];
-                    $dir = '../../upload/';
-                    $targets =  $dir.$image['name'];
+                    $dir = '../../image/';
+                    $targets =  $image['name'];
                     $imgs = ['jpg','jpeg','png'];
                     $path = pathinfo($image['name'],PATHINFO_EXTENSION);
                     $er = [];
@@ -116,7 +124,7 @@
                         if(!in_array(strtolower($path),$imgs)){
                             $er['img'] = ' Ảnh vừa nhập không đúng định dạng jpg, jpeg hoặc png';
                         }else{
-                            move_uploaded_file($image['tmp_name'], $targets);
+                            move_uploaded_file($image['tmp_name'],$dir.$targets);
                         }
                     }else{
                         $targets = '';
@@ -459,8 +467,8 @@
                                 if(!in_array(strtolower($path),$imgs)){
                                     $er['images'] = 'Ảnh không đúng định dạng';
                                 }else{
-                                    move_uploaded_file($image_variant['tmp_name'][$na],$dir.$val);
                                     if(!array_filter($er)){
+                                        move_uploaded_file($image_variant['tmp_name'][$na],$dir.$val);
                                         insert_img_var($product,$variant,$val);
                                     }
                                 }
@@ -468,6 +476,8 @@
                             if(!array_filter($er)){
                                 insert_variant_pro($product,$variant,$quantity_variant,$price_variant,$sale_variant,$special_features);
                                 $mesages = "Thêm biến thể thành công";
+                                $variant = select_all_variant();
+                                $product = select_all_pro();
                             }
                         }
                         include_once './product/add_variant.php';
@@ -561,12 +571,293 @@
                     }
                     break;
                 case 'order':
-                   $order = select_all_order();
+                   $order = select_all_od();
                    include_once './order/list.php';
-
+                    break;
+                case 'productStatistics':
+                    if(isset($_POST['month_btn'])){
+                        $date = $_POST['month'];
+                        $product_cate = Statistics_cate_pro($date);
+                    }else{
+                        $date = date('Y-m');
+                        $product_cate = Statistics_cate_pro($date);
+                    }
+                    include_once './statistics/product.php';
+                    break;
+                case 'chartPro':
+                    $date = $_GET['date'];
+                    if($date != ''){
+                        $product_cate = Statistics_cate_pro($date);
+                    }else{
+                        $product_cate = Statistics_cate_pro('');
+                    }
+                    include_once './statistics/proChart.php';
+                    break;
+                case 'userStatistics':
+                    if(isset($_POST['month_btn'])){
+                        $date = $_POST['month'];
+                        $user = statistics_user($date);
+                    }else{
+                        $date = date('Y-m');
+                        $user = statistics_user($date);
+                    }
+                    include_once './statistics/userStatistics.php';
+                    break;
+                case 'chartuser':
+                    $date = $_GET['date'];
+                    $df = 0;
+                    if($date != ''){
+                        $user = statistics_user($date);
+                    }else{
+                        $user = statistics_user('');
+                    }
+                    // for ($j=0; $j < count($user); $j++) { 
+                        
+                        // for($i = 1; $i <= 12; $i++){
+                        //     if($i==12) $sign=""; else $sign=",";
+                        //     for ($j=0; $j < count($user);$j++){
+                        //         if($i < 10 ){
+                        //             $s = "0$i";
+                        //             // echo $s;
+                        //             // echo substr($user[$j]['created_date_user'],5,2);
+                        //             if(($s == substr($user[$j]['created_date_user'],5,2))){
+                        //                 echo "['".$i."', ".$user[$j]['sums']."]".$sign;
+                        //                 echo $j;
+                        //                 // $j++;
+                        //             }else{
+                        //                 echo "['".$i."', ".$df." ]".$sign;
+                        //                 // $j++;
+                        //             }
+                        //         }else{
+                        //             // echo $i;
+                        //             if($i == substr($user[$j]['created_date_user'],5,2)){
+                        //                 echo "['".$i."', ".$user[$j]['sums']."]".$sign;
+                        //             }else{
+                        //                 echo "['".$i."', ".$df." ]".$sign;
+                                        
+                        //             }
+                        //         }
+                        // }
+                        // continue;
+                        // if($i <= count($user)){
+                        //     if($user[$i]['sums'] > 0){
+                        //         $a = $i+1;
+                        //         echo "['".$a."', ".$user[$i]['sums']."]".$sign;
+                        //     }else{
+                        //         $a = $i+1;
+                        //         echo "['".$a."', ".$df." ]".$sign;
+                        //     }
+                        // }else{
+                        //     $a = $i+1;
+                        //     echo "['".$a."', ".$df." ]".$sign;
+                        // }
+                            // }
+                        // }
+                    // echo '<pre>';
+                    // print_r($user);
+                    include_once './statistics/chartUser.php';
+                    break;
+                case 'comment':
+                    $comments = synthetic_bl();
+                    include_once './comment/listpro.php';
+                    break;
+                case 'comment_pro':
+                    if(isset($_GET['id'])){
+                        $id = $_GET['id'];
+                        $comment = select_bl($id);
+                        include_once './comment/list.php';
+                    }
+                    break;
+                case 'delete_comment':
+                    if(isset($_GET['id'])){
+                        $id = $_GET['id'];
+                        $id_pro = $_GET['id_pro'];
+                        delete_bl($id);
+                        $comment = select_bl($id_pro);
+                        include_once './comment/list.php';
+                    }
+                    break;
+                case 'website':
+                    $websetting = select_all_websetting();
+                    include_once './website/update.php';
+                    break;
+                case 'update_web':
+                    if(isset($_POST['updateWeb'])){
+                        $id = $_POST['id'];
+                        $nameWeb = $_POST['nameWeb'];
+                        $logo = $_FILES['logo'];
+                        $dir = "../../upload/";
+                        $path = pathinfo($logo['name'], PATHINFO_EXTENSION);
+                        $imgs = ['jpg','jpeg','png'];
+                        $email = $_POST['email'];
+                        $phone1 = $_POST['phone1'];
+                        $phone2 = $_POST['phone2'];
+                        $facebook = $_POST['facebook'];
+                        $youtobe = $_POST['youtobe'];
+                        $er = [];
+                        if(!preg_match('/^[A-Za-z0-9]+$/',$nameWeb)){
+                            $er['name'] = 'Tên website không hợp lệ';
+                        }
+                        if($logo['size'] <= 0){
+                            $er['logo'] = 'Bạn chưa tải ảnh logo';
+                        }
+                        if($logo['size'] > 0){
+                            if(!in_array(strtolower($path),$imgs)){
+                                $er['img'] = 'Ảnh logo không đúng định dạng';
+                            }
+                        }
+                        if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
+                            $er['email'] = 'Email không đúng định dạng';
+                        }
+                        if(!preg_match('/^(0|\+84)[\d]{9}$/',$phone1)){
+                            $er['phone1'] = 'Số điện thoại tư vấn không hợp lệ';
+                        }
+                        if(!preg_match('/^(0|\+84)[\d]{9}$/',$phone2)){
+                            $er['phone2'] = 'Số điện thoại hỗ trợ không hợp lệ';
+                        }
+                        if(!preg_match('~^(http|https)://(|www\.)[a-z]+[a-z-_\.]*\.[a-z]{2,}(:\d+)?(|/?|/[a-z-_0-9\./]*)$~',$facebook)){
+                            $er['fb'] = 'URL không hợp lệ';
+                        }
+                        if(!preg_match('~^(http|https)://(|www\.)[a-z]+[a-z-_\.]*\.[a-z]{2,}(:\d+)?(|/?|/[a-z-_0-9\./]*)$~',$youtobe)){
+                            $er['yt'] = 'URL không hợp lệ';
+                        }
+                        if(array_filter($er)){
+                            $websetting = select_all_websetting();
+                            include_once './website/update.php';
+                        }
+                        if(!array_filter($er)){
+                            move_uploaded_file($logo['tmp_name'],$dir.$logo['name']);
+                            update_websetting($name,$dir.$logo['name'],$email,$phone1,$phone2,$facebook,$youtobe);
+                            $message = 'Cập nhật thành công';
+                            include_once './website/update.php';
+                        }
+                    }
+                    break;
+                case 'vorcher':
+                    $vorcher = get_all_voucher();
+                    include_once './vorcher/list.php';
+                    break;
+                case 'edit_od':
+                    if(isset($_GET['id'])){
+                        $pro = select_one_od($_GET['id']);
+                    }
+                    include_once './order/edit.php';
+                    break;
+                case 'update_order':
+                    if(isset($_POST['edit_od'])){
+                        $id_od = $_POST['id_od'];
+                        $user_name = $_POST['user_name'];
+                        $address = $_POST['address'];
+                        $status_od = $_POST['status_od'];
+                        $er = [];
+                        if(empty($user_name)){
+                            $er['name'] = 'Bạn chưa nhập tên người đặt hàng';
+                        }
+                        if(empty($address)){
+                            $er['add'] = 'Bạn chưa nhập địa chỉ nhận hàng';
+                        }
+                        if(!preg_match('/^[\d]{1}$/',$status_od)){
+                            $er['sta'] = 'Bạn chưa chọn trạng thái';
+                        }
+                        if(array_filter($er)){
+                            $pro = select_one_od($id_od);
+                            include_once './order/edit.php';
+                        }
+                        if(!array_filter($er)){
+                            edit_od($id_od,$user_name,$address,$status_od);
+                            $message = "Cập nhật thành công";
+                            $pro = select_one_od($id_od);
+                            include_once './order/edit.php';
+                        }
+                    }
+                    break;
+                case 'delete_od':
+                    if(isset($_GET['id']) && isset($_GET['id_var'])){
+                        delete_od($_GET['id'],$_GET['id_var']);
+                        $order = select_all_od();
+                        include_once './order/list.php';
+                    }
+                    break;
+                case 'add_vorcher'; 
+                    if(isset($_POST['add_vorcher'])){
+                        $nameVocher = $_POST['nameVocher'];
+                        $quantityVorcher = $_POST['quantityVorcher'];
+                        $dateVocher = $_POST['dateVocher'];
+                        $valueVorcher = $_POST['valueVorcher'];
+                        $er = [];
+                        $vor = get_all_voucher();
+                        foreach ($vor as $v){
+                            if($v['name_vorcher'] == $nameVocher){
+                                $er['vor'] = 'Vorcher đã tồn tại';
+                            }
+                        }
+                        if(!preg_match('/^[\w]+$/',$nameVocher)){
+                            $er['name'] = 'Tên vorcher không hợp lệ';
+                        }
+                        if(!preg_match('/^\d+$/',$quantityVorcher)){
+                            $er['quantity'] = 'Số lượng không hợp lệ';
+                        }
+                        if(!preg_match('/^[\d]{4}-[\d]{2}-[\d]{2}$/', $dateVocher)){
+                            $er['date'] = 'Ngày tháng năm không đúng';
+                        }
+                        if(!preg_match('/^\d+$/', $valueVorcher)){
+                            $er['value'] = 'Giá trị vorcher không hợp lệ';
+                        }
+                        if(!array_filter($er)){
+                            insert_vorcher($nameVocher,$quantityVorcher,$dateVocher,$valueVorcher);
+                            $message = 'Thêm vorcher thành công';
+                            include_once './vorcher/add.php';
+                        }
+                    }
+                    include_once './vorcher/add.php';
+                    break;
+                case 'edit_vorcher':
+                    if(isset($_GET['id'])){
+                        $vorcher = get_vorcher_id($_GET['id']);
+                    }
+                    include_once './vorcher/edit.php';
+                    break;
+                case 'update_vorcher':
+                    if(isset($_POST['edit_vorcher'])){
+                        $id = $_POST['idVorcher'];
+                        $nameVocher = $_POST['nameVocher'];
+                        $quantityVorcher = $_POST['quantityVorcher'];
+                        $dateVocher = $_POST['dateVocher'];
+                        $valueVorcher = $_POST['valueVorcher'];
+                        $er = [];
+                        if(!preg_match('/^[\w]+$/',$nameVocher)){
+                            $er['name'] = 'Tên vorcher không hợp lệ';
+                        }
+                        if(!preg_match('/^\d+$/',$quantityVorcher)){
+                            $er['quantity'] = 'Số lượng không hợp lệ';
+                        }
+                        if(!preg_match('/^[\d]{4}-[\d]{2}-[\d]{2}$/', $dateVocher)){
+                            $er['date'] = 'Ngày tháng năm không đúng';
+                        }
+                        if(!preg_match('/^\d+$/', $valueVorcher)){
+                            $er['value'] = 'Giá trị vorcher không hợp lệ';
+                        }
+                        if(array_filter($er)){
+                            $vorcher = get_vorcher_id($id);
+                            include_once './vorcher/edit.php';
+                        }
+                        if(!array_filter($er)){
+                            update_vorcher($nameVocher,$quantityVorcher,$dateVocher,$valueVorcher,$id);
+                            $message = 'Cập nhật vorcher thành công';
+                            $vorcher = get_vorcher_id($id);
+                            include_once './vorcher/edit.php';
+                        }
+                    }
+                    break;
+                case 'delete_vorcher':
+                    if(isset($_GET['id'])){
+                        delete_vorcher($_GET['id']);
+                    }
+                        $vorcher = get_all_voucher();
+                        include_once './vorcher/list.php';
                     break;
             default:
-                # code...
+                include 'main.php';
                 break;
         }
     }else{

@@ -1,49 +1,10 @@
-<?php
-    //  $Sql = "SELECT count(id_pro) as sl_sp FROM products" ;
-    //  $Total_Sp = pdo_query_one($Sql);
-    //  // tổng sản phẩm trong bảng sản phẩm 
-    //  $Total_Product_On_Page = 12;
-    //  // số lượng sản phẩm trên page
-    //  $Total_Page = ceil($Total_Sp['sl_sp']/$Total_Product_On_Page) ;
-    //  // tổng lượng page sản phẩm hiển thị lên website 
-
- 
-
-    //  $Curent_Page = 1 ;
-    //  // page hiện tại 
-
-    //  if(isset($_GET['curent_page'])){
-    //  $Curent_Page = $_GET['curent_page'];
-    //  }
-    //  else { $Curent_Page = 1 ;} ;
-    //  // bắt sự kiện next trang 
-
-    //  $Limit_Start = ($Total_Product_On_Page - 1)*($Curent_Page-1) ;
-
-    //  // lấy sản phẩm bắt đầu từ $limit_start 
-
-   
-    //  $sql = "SELECT * FROM products LIMIT $Limit_Start,$Total_Product_On_Page";
-    //  $Products = pdo_query($sql) ;
-     // truy vấn sản phẩm 
-
-     
-    //  $sql_dm = "SELECT * FROM categories";
-    //  $Categories = pdo_query($sql_dm) ;
-     // truy vấn danh mục 
-
-
-
-?>
-
-
 <main class="main_index" style="background:#E4E5E7">
     <!-- banner -->
     <div class="slider">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="./image/Rectangle 123.png" class="d-block w-100" alt="...">
+                    <img src="./image/namthuymobile-banner-01.png" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
                     <img src="./image/Rectangle 123.png" class="d-block w-100" alt="...">
@@ -55,20 +16,24 @@
         </div>
     </div>
     <!-- end banner -->
-    <div class="container">
+    <div class="containers">
         <!-- filter -->
         <div class="head-filter">
             <div class="row" style="width: 100%;">
                 <div class="col-md-4">
-                    <form class="d-inline-flex form-filter" action="index.php?" method="post">
-                        <label for="">Sắp xếp theo: </label>
-                        <select name="filter" class="filter">
-                            <option value="moiNhat">Mới nhất</option>
-                            <option value="cuNhat">Cũ nhất</option>
-                            <option value="giaCaoThap">Giá từ cao đến thấp</option>
-                            <option value="giaThapCao">Giá từ thấp đến cao</option>
-                        </select>
-                    </form>
+                    <!-- Example split danger button -->
+                    <div class="btn-group">
+                    <button type="button" class="btn btn-danger">Sắp xếp theo</button>
+                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="index.php?act=search_pro&key=ORDER BY id_pro DESC">Mới nhất</a></li>
+                        <li><a class="dropdown-item" href="index.php?act=search_pro&key=ORDER BY id_pro ASC">Cũ nhất</a></li>
+                        <li><a class="dropdown-item" href="index.php?act=search_pro&key=ORDER BY price_default DESC">Giá từ cao đến thấp</a></li>
+                        <li><a class="dropdown-item" href="index.php?act=search_pro&key=ORDER BY price_default ASC">Giá từ thấp đến cao</a></li>
+                    </ul>
+                    </div>
                 </div>
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
@@ -172,7 +137,7 @@
                     <div class="col-xl-3 col-sm-6 ">
                         <div class="product-gap product_ bg-white rounded-3 p-3" style="max-width:100% ;">
                             <div class="product-image">
-                                <a href="index.php?act=chitiet&id_pro=<?=$product['id_pro']?>"><img style="height:150px ; display:block ; margin:auto" src="./upload/<?= $product['images_default'] ?>" alt="img"></a>
+                                <a href="index.php?act=chitiet&id_pro=<?=$product['id_pro']?>"><img style="height:150px ; display:block ; margin:auto" src="./upload/<?=$product['images_default']?>" alt="img"></a>
                             </div>
                             <div class="product-title">
                                 <a href="" style="text-decoration:none ;" class="product_name">
@@ -181,21 +146,11 @@
                                         <?= $product['pro_name'] ?></h3>
                                 </a>
 
-                                <div class="products-price ms-4">
+                                <div class="products-price ms-4 mt-2">
                                     <span class="text-start text-danger"><?= $product['price_default'] ?></span>
                                     <strike class="text-end"><?= $product['price_default'] ?></strike>
                                 </div>
-                                <div class="d-grid gap-2 d-md-block mt-3">
-                                    <a href="index.php?act=cart&id_pro=<?= $product['id_pro'] ?>" class="btn btn-success btn-sm">Thêm vào giỏ hàng</a>
-                                    <a href="" class="ms-3"><svg data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                            data-bs-title="Thêm Vào Wishlist" xmlns="http://www.w3.org/2000/svg"
-                                            width="24" height="24" fill="currentColor" class="bi bi-heart"
-                                            viewBox="0 0 17 17">
-                                            <path
-                                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                                        </svg></a>
-                                </div>
-                                <div class="d-grid d-md-block" style="margin-top:10px">
+                                <div class="d-grid d-md-block mt-4" style="margin-top:10px">
                                     <a href="index.php?act=chitiet&id_pro=<?= $product['id_pro'] ?>" class="btn btn-danger btn-sm w-100">Xem Chi Tiết</a>
                                 </div>
                             </div>

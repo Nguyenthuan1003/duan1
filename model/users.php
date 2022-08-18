@@ -26,9 +26,14 @@
         pdo_execute($sql);
     }
     function edit_user($name,$full_name,$email,$sdt,$parrword,$accont_balance,$role,$created_data_user,$id){
-        $sql="UPDATE `user` SET `user_name`='".$name."',`full_name`='".$full_name."',`email`='".$email."',
-        `sdt`='".$sdt."',`password`='".$parrword."',`accont_balance`='".$accont_balance."',
-        `role`=".$role.",`created_date_user`='".$created_data_user."' WHERE id_user='".$id."'";
+        if($role == '' && $created_data_user == ''){
+            $sql="UPDATE `user` SET `user_name`='".$name."',`full_name`='".$full_name."',`email`='".$email."',
+            `sdt`='".$sdt."' WHERE id_user='".$id."'";
+        }else{
+            $sql="UPDATE `user` SET `user_name`='".$name."',`full_name`='".$full_name."',`email`='".$email."',
+            `sdt`='".$sdt."',`password`='".$parrword."',`accont_balance`='".$accont_balance."',
+            `role`=".$role.",`created_date_user`='".$created_data_user."' WHERE id_user='".$id."'";
+        }
         // echo $sql;die;
         pdo_execute($sql);
 
@@ -42,6 +47,14 @@
         $sql = "SELECT * FROM user WHERE id_user=".$id;
         return pdo_query_one($sql);
     }
-
+    function forgetpass($email){
+        $sql = "SELECT * FROM `user` WHERE email='".$email."'";
+        // echo $sql;die;
+        return pdo_query_one($sql);
+    }
+    function changePass($email,$pass){
+        $sql = "UPDATE `user` SET password='".$pass."' WHERE email='".$email."'";
+        pdo_execute($sql);
+    }
    
 ?>

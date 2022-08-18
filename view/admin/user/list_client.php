@@ -1,5 +1,4 @@
-
-  <main>
+<main>
     <a href="index.php?id_menu=add_user" class="btn btn-primary" >add khách hàng</a>
     
     <div class="container-list-client">
@@ -44,8 +43,8 @@
               <?=$client['accont_balance']?>
             </td>
             <td>
-              <?php if($client['role'] === 1) : ?>
-                <p>Nhân viên</p>
+              <?php if($client['role'] == 1) : ?>
+                <p>quản trị viên</p>
               <?php else : ?>
                 <p>Khách hàng</p>
               <?php endif; ?>
@@ -55,7 +54,7 @@
             </td>
             <td>
               <a href="index.php?id_menu=edit_user&id=<?=$client['id_user']?>"><button type="button" class="btn btn-danger"><i class="fa-solid fa-pencil"></i></button></a>
-              <a href="index.php?id_menu=delete_user&id=<?=$client['id_user']?>"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button></a>
+              <a onclick="return confirm('Bạn có chắc chắn xóa mục này')" href="index.php?id_menu=delete_user&id=<?=$client['id_user']?>"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button></a>
             </td>
           </tr>
           <?php endforeach;?>

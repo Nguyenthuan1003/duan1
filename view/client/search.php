@@ -60,15 +60,18 @@
         <div class="head-filter">
             <div class="row" style="width: 100%;">
                 <div class="col-md-4">
-                    <form class="d-inline-flex form-filter" action="index.php?" method="post">
-                        <label for="">Sắp xếp theo: </label>
-                        <select name="filter" class="filter">
-                            <option value="moiNhat">Mới nhất</option>
-                            <option value="cuNhat">Cũ nhất</option>
-                            <option value="giaCaoThap">Giá từ cao đến thấp</option>
-                            <option value="giaThapCao">Giá từ thấp đến cao</option>
-                        </select>
-                    </form>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-danger">Sắp xếp theo</button>
+                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="index.php?act=search_pro&key=ORDER BY id_pro DESC">Mới nhất</a></li>
+                        <li><a class="dropdown-item" href="index.php?act=search_pro&key=ORDER BY id_pro ASC">Cũ nhất</a></li>
+                        <li><a class="dropdown-item" href="index.php?act=search_pro&key=ORDER BY price_default DESC">Giá từ cao đến thấp</a></li>
+                        <li><a class="dropdown-item" href="index.php?act=search_pro&key=ORDER BY price_default ASC">Giá từ thấp đến cao</a></li>
+                    </ul>
+                    </div>
                 </div>
                 <div class="col-md-4"></div>
                 <div class="col-md-4">

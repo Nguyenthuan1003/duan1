@@ -1,5 +1,4 @@
-
-    <main>
+<main>
         <div class="container-client">
             
             <div class="add-client-1">
@@ -46,7 +45,7 @@
 
                         <div class="form-group">
                             <label for="">vai trò</label>
-                            <select name="role" id="">
+                            <select name="role" id="" class="form-control">
                                 <option value="" hidden></option>
                                 <option value="0">Admin</option>
                                 <option value="1">khách hàng</option>
@@ -83,5 +82,3 @@
 
 
     </main>
-
-
