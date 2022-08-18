@@ -604,13 +604,7 @@
                     include_once './statistics/userStatistics.php';
                     break;
                 case 'chartuser':
-                    $date = $_GET['date'];
-                    $df = 0;
-                    if($date != ''){
-                        $user = statistics_user($date);
-                    }else{
                         $user = statistics_user('');
-                    }
                     // for ($j=0; $j < count($user); $j++) { 
                         
                         // for($i = 1; $i <= 12; $i++){
@@ -655,6 +649,21 @@
                         // }
                     // echo '<pre>';
                     // print_r($user);
+                    $char = [];
+                    for ($i=1; $i < 13; $i++) { 
+                        $char[$i] = 0;
+                    }  
+                    foreach ($char as $c => $v) {
+                        foreach ($user as $users){
+                            if($c < 10){
+                                if($c == substr($users['created_date_user'],6,1)){
+                                    $v = $users['sums'];
+                                }
+                            }
+                        } 
+                        
+                    }  
+                    print_r($char);
                     include_once './statistics/chartUser.php';
                     break;
                 case 'comment':

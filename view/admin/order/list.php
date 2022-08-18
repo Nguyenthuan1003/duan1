@@ -42,7 +42,7 @@
                         <tr>
                             <td scope="row"><?=$pro['id_order']?></td>
                             <td scope="row"><?=$pro['pro_name']?></td>
-                            <td scope="row"><img src="../../image/<?=$pro['images_default']?>" alt="anh" style="width:50px"></td>
+                            <td scope="row"><img src="../../upload/<?=$pro['images_pro_attri']?>" alt="anh" style="width:50px"></td>
                             <td scope="row"><?=$pro['version_variant']?></td>
                             <td scope="row"><?=$pro['color_variant']?></td>
                             <td scope="row"><?=$pro['name_order']?></td>
