@@ -46,7 +46,9 @@
          return pdo_execute($sql);
      };
      function select_all_od(){
-        $sql = "SELECT * FROM `order_details` as od JOIN orders as o ON od.id_order = o.id_order JOIN products as p ON od.id_pro = p.id_pro JOIN variant as v ON od.id_variant = v.id_variant";
+        $sql = "SELECT * FROM `order_details` as od JOIN orders as o ON od.id_order = o.id_order 
+        JOIN products as p ON od.id_pro = p.id_pro JOIN variant as v ON od.id_variant = v.id_variant 
+        JOIN images_products_attribute as im ON od.id_variant = im.id_variant GROUP BY od.id_variant";
         return pdo_query($sql);
      }
      function select_one_od($id){
