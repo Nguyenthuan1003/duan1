@@ -4,7 +4,9 @@
     include_once '../../model/danhmuc.php';
     include_once '../../model/sanpham.php';
     include_once '../../model/variant.php';
+    include_once '../../model/order.php';
     include_once './header.php';
+    
     if(isset($_GET['id_menu'])){
         $id_menu=$_GET['id_menu'];
         switch ($id_menu) {
@@ -557,6 +559,11 @@
                         $var = select_all_pro_var();
                         include_once './product/list_variant.php';
                     }
+                    break;
+                case 'order':
+                   $order = select_all_order();
+                   include_once './order/list.php';
+
                     break;
             default:
                 # code...
